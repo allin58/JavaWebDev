@@ -1,5 +1,5 @@
 ﻿task1/untitled.iml
 task1/.idea
-task1/lib
-task1/logs
-task1/out
+task1/lib/
+task1/logs/
+task1/out/
