@@ -28,6 +28,7 @@
         <!-- Root Logger -->
         <Root level="all">
             <AppenderRef ref="Console" />
+            <AppenderRef ref="TxtFile" />
         </Root>
     </Loggers>
 
