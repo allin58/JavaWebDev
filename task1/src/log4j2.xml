@@ -19,11 +19,12 @@
     </Appenders>
 
     <Loggers>
-        <Logger name="by.training.log4j2hello.User" level="debug"
+
+      <!--  <Logger name="by.training.log4j2hello.User" level="debug"
                 additivity="true">
             <AppenderRef ref="Console" />
             <AppenderRef ref="TxtFile" />
-        </Logger>
+        </Logger>-->
 
         <!-- Root Logger -->
         <Root level="all">

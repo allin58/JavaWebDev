@@ -1,5 +1,6 @@
 package by.training.task1.entity;
-import by.training.task1.main.Main;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * Candy class inherited from the abstract class sweetness.
@@ -9,6 +10,8 @@ import by.training.task1.main.Main;
  */
 
 public class Candy extends Sweetness {
+
+    public static final Logger logger = LogManager.getLogger(Candy.class);
 
 
     /**
@@ -23,7 +26,7 @@ public class Candy extends Sweetness {
         this.setName(name);
         this.setId(id);
         this.setSugar(weight * PERCENT);
-        Main.logger.debug("created candy");
+        logger.debug("created candy");
     }
 
 

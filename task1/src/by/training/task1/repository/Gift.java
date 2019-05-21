@@ -81,7 +81,7 @@ import java.util.List;
      *Function to get gift weight.
      *@return returns weight
      */
-    public double getWeight() {
+    public double getTotalWeight() {
         double weight = 0;
         for (Sweetness sweet : sweets) {
             weight += sweet.getWeight();
@@ -96,10 +96,13 @@ import java.util.List;
      */
     public List<Sweetness> query(final SweetnessSpecification spec) {
         ArrayList<Sweetness> result = new ArrayList();
+
         if (spec instanceof SweetnessSort) {
             SweetnessSort sweetnessSort = (SweetnessSort) spec;
             sweets.sort(sweetnessSort);
-            result = sweets;
+            for (Sweetness sweet : sweets) {
+                result.add(sweet);
+            }
 
         }
        if (spec instanceof SweetnessSpecificationBy) {

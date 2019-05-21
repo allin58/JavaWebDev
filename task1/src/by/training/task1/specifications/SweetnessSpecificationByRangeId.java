@@ -38,9 +38,6 @@ public class SweetnessSpecificationByRangeId implements SweetnessSpecificationBy
     @Override
     public boolean specified(final Sweetness sweetness) {
         int actual = sweetness.getID();
-        if (min <= actual && actual <= max)   {
-            return true;
-        }
-        return false;
+        return (min <= actual && actual <= max);
     }
 }

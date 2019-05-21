@@ -1,15 +1,14 @@
 package by.training.task1.reader;
 
-import by.training.task1.entity.CandySwetnessFactory;
-import by.training.task1.entity.ChocolateSweetnessFactory;
-import by.training.task1.entity.Sweetness;
-import by.training.task1.entity.SweetnessFactory;
+import by.training.task1.entity.*;
 import by.training.task1.idgenerator.GeneratorID;
 import by.training.task1.repository.Gift;
 import by.training.task1.sweetnessexeption.SweetnessReaderExeption;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import java.io.BufferedReader;
 import java.io.FileReader;
-import static by.training.task1.main.Main.logger;
+
 
 
 
@@ -22,6 +21,7 @@ import static by.training.task1.main.Main.logger;
  */
 public final class SweetnesReader {
 
+    public static Logger logger = LogManager.getLogger(SweetnesReader.class);
      /**
      * This is empty constructior.
      */
@@ -41,17 +41,15 @@ public final class SweetnesReader {
                 str = br.readLine();
                 arr = str.split(" ");
                 Sweetness sweetness;
-                try {
-                    SweetnessFactory sweetnessFactory = createSweetnessFactory(arr[0]);
-                    sweetness = sweetnessFactory.createSweetness(arr[1], Double.parseDouble(arr[2]), GeneratorID.getId());
-                    gift.add(sweetness);
-                } catch (Exception e) {
-                    logger.debug("input error " + str);
-                }
+
+                SweetnessFactory sweetnessFactory = createSweetnessFactory(arr[0]);
+                sweetness = sweetnessFactory.createSweetness(arr[1], Double.parseDouble(arr[2]), GeneratorID.getId());
+                gift.add(sweetness);
+
 
             }
         } catch (Exception e) {
-            logger.debug("file not found");
+            logger.debug("input error");
         }
     }
 

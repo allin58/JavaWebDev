@@ -32,10 +32,7 @@ public class SweetnessSpecificationById implements SweetnessSpecificationBy {
     @Override
     public boolean specified(final Sweetness sweetness) {
         int actual = sweetness.getID();
-        if (actual == id) {
-            return true;
-        }
-        return false;
+        return (actual == id);
 
     }
 }

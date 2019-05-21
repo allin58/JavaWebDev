@@ -9,7 +9,7 @@ package by.training.task1.sweetnessexeption;
  * @version 1.0
  */
 public class SweetnessReaderExeption extends Exception {
-    public SweetnessReaderExeption(String message) {
+    public SweetnessReaderExeption(final String message) {
         super(message);
 
     }

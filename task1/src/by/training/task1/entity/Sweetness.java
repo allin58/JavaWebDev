@@ -124,9 +124,6 @@ public abstract class Sweetness {
             return false;
         }
         Sweetness sweetness = (Sweetness) o;
-        if (sweetness.getName().equals(name) && sweetness.getWeight() == weight && sweetness.getSugar() == sugar) {
-        return true;
-        }
-        return false;
+        return (sweetness.getName().equals(name) && sweetness.getWeight() == weight && sweetness.getSugar() == sugar);
     }
 }
