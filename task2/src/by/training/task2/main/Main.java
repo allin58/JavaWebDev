@@ -1,17 +1,23 @@
 package by.training.task2.main;
 
-import by.training.task2.entity.Text;
-
-import java.util.ArrayList;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import by.training.task2.entity.TextComponent;
+import by.training.task2.parsers.*;
+import by.training.task2.reader.TextReader;
 
 public class Main {
 
     public static void main(String[] args) {
-        Text text = new Text("data/input.txt");
 
+       TextReader textReader = new TextReader();
+       String text = textReader.readFile("data/input.txt");
 
+        CharacterParser characterParser = new CharacterParser();
+        WordParser wordParser = new WordParser(characterParser);
+        SentenceParser sentenceParser = new SentenceParser(wordParser);
+        ParagrphParser paragrphParser = new ParagrphParser(sentenceParser);
+
+        TextComponent textComponent = new TextComponent(text);
+        textComponent.setParagraphs(paragrphParser.handleRequest(text));
 
 
 

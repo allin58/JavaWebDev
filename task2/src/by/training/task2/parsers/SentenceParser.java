@@ -1,17 +1,20 @@
 package by.training.task2.parsers;
 
-import by.training.task2.entity.Paragraph;
-import by.training.task2.entity.Sentence;
+import by.training.task2.entity.SentenceComponent;
 
-import javax.sound.midi.Soundbank;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class SentenceParser implements BasicParser{
+public class SentenceParser extends BasicParser{
+
+    private final String p = "[.!?]";
 
     private BasicParser nextParser;
+
+    public SentenceParser() {
+    }
 
     public SentenceParser(BasicParser nextParser) {
         this.nextParser = nextParser;
@@ -20,9 +23,9 @@ public class SentenceParser implements BasicParser{
     public List handleRequest(String text) {
 
 
-        ArrayList<Sentence> sentences = new ArrayList<>();
+        ArrayList<SentenceComponent> sentences = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("[.!?]");
+        Pattern pattern = Pattern.compile(p);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
         while (matcher.find()) {
@@ -33,7 +36,7 @@ public class SentenceParser implements BasicParser{
         for (int i = 0; i <pos.size() ; i++) {
             int currentPos = pos.get(i);
             String s = text.substring(pastPos,currentPos).trim();
-            Sentence sentence = new Sentence(s);
+            SentenceComponent sentence = new SentenceComponent(s);
             sentence.setWords(nextParser.handleRequest(s));
             sentences.add(sentence);
             pastPos = currentPos;

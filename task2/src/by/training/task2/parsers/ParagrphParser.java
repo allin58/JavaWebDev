@@ -1,16 +1,23 @@
 package by.training.task2.parsers;
 
 
-import by.training.task2.entity.Paragraph;
+import by.training.task2.entity.ParagraphComponent;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ParagrphParser implements BasicParser{
+public class ParagrphParser extends BasicParser{
+
+    private final String p = "\\t\\t";
 
    private BasicParser nextParser;
+
+    public ParagrphParser() {
+           }
+
+
 
     public ParagrphParser(BasicParser nextParser) {
         this.nextParser = nextParser;
@@ -19,9 +26,9 @@ public class ParagrphParser implements BasicParser{
     public List handleRequest(String text) {
 
 
-         ArrayList<Paragraph> paragraphs = new ArrayList<>();
+         ArrayList<ParagraphComponent> paragraphs = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile("\\t\\t");
+        Pattern pattern = Pattern.compile(p);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
         while (matcher.find()) {
@@ -32,13 +39,13 @@ public class ParagrphParser implements BasicParser{
         for (int i = 1; i < pos.size(); i++) {
             currentPos = pos.get(i);
             String p = text.substring(pastPos,currentPos-1);
-            Paragraph paragraph = new Paragraph(p);
+            ParagraphComponent paragraph = new ParagraphComponent(p);
             paragraph.setSentences(nextParser.handleRequest(p));
             paragraphs.add(paragraph);
             pastPos = currentPos;
           }
         String p = text.substring(pastPos);
-        Paragraph paragraph = new Paragraph(p);
+        ParagraphComponent paragraph = new ParagraphComponent(p);
         paragraph.setSentences(nextParser.handleRequest(p));
         paragraphs.add(paragraph);
 
