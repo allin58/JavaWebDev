@@ -1,5 +1,7 @@
 package by.training.task2.parsers;
 
+import by.training.task2.entity.Component;
+import by.training.task2.entity.ParagraphComponent;
 import by.training.task2.entity.SentenceComponent;
 
 import java.util.ArrayList;
@@ -32,18 +34,34 @@ public class SentenceParser extends BasicParser{
             pos.add(matcher.end());
         }
         int pastPos=0;
-
+        int currentPos = 0;
         for (int i = 0; i <pos.size() ; i++) {
-            int currentPos = pos.get(i);
+            currentPos = pos.get(i);
             String s = text.substring(pastPos,currentPos).trim();
             SentenceComponent sentence = new SentenceComponent(s);
             sentence.setWords(nextParser.handleRequest(s));
             sentences.add(sentence);
             pastPos = currentPos;
-           }
+            }
 
 
         return sentences;
+    }
+
+    public  String assemble(Component component) {
+
+
+        ParagraphComponent paragraphComponent = (ParagraphComponent)component;
+        String str = "";
+
+
+
+        for (int i = 0; i < paragraphComponent.getSize(); i++) {
+                   str = str + nextParser.assemble(paragraphComponent.getChild(i));
+                }
+
+        str = str.trim();
+        return str;
     }
 
 

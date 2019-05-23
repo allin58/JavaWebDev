@@ -1,8 +1,7 @@
 package by.training.task2.entity;
 
-import by.training.task2.parsers.ParagrphParser;
-import by.training.task2.parsers.SentenceParser;
-import by.training.task2.parsers.WordParser;
+
+import by.training.task2.specification.TextComporator;
 
 import java.util.List;
 
@@ -35,5 +34,9 @@ public class TextComponent extends Component{
 
 
 
+   public void query(TextComporator textComporator){
+       paragraphs.sort(textComporator);
+
+   }
 
 }

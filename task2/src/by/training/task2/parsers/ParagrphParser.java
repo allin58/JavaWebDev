@@ -1,7 +1,9 @@
 package by.training.task2.parsers;
 
 
+import by.training.task2.entity.Component;
 import by.training.task2.entity.ParagraphComponent;
+import by.training.task2.entity.TextComponent;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +12,7 @@ import java.util.regex.Pattern;
 
 public class ParagrphParser extends BasicParser{
 
-    private final String p = "\\t\\t";
+    private final String  p = "\\t\\t";
 
    private BasicParser nextParser;
 
@@ -51,6 +53,22 @@ public class ParagrphParser extends BasicParser{
 
         return paragraphs;
     }
+
+
+    public  String assemble(Component component) {
+
+        TextComponent textComponent = (TextComponent)component;
+        String str ="";
+         for (int i = 0; i < textComponent.getSize() ; i++) {
+             str= str + "\n\t\t" + nextParser.assemble(textComponent.getChild(i));
+
+        }
+
+
+
+        return str;
+    }
+
 
 
 }

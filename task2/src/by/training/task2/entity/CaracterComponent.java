@@ -15,9 +15,7 @@ public class CaracterComponent extends Component {
     }
 
     @Override
-    public void addComponent(Component component) {
-
-    }
+    public void addComponent(Component component) {}
 
     @Override
     public Component getChild(int i) {

@@ -1,5 +1,7 @@
 package by.training.task2.parsers;
 
+import by.training.task2.entity.Component;
+import by.training.task2.entity.SentenceComponent;
 import by.training.task2.entity.WordComponent;
 
 import java.util.ArrayList;
@@ -9,7 +11,7 @@ import java.util.regex.Pattern;
 
 public class WordParser extends BasicParser {
 
-    private final String p = ",|\\.\\.\\.";
+    private final String p = "[!?//.]|,|\\.\\.\\.";
 
     private BasicParser nextParser;
 
@@ -24,7 +26,6 @@ public class WordParser extends BasicParser {
     public List handleRequest(String text) {
         ArrayList<WordComponent> list = new ArrayList<>();
 
-        text = text.substring(0,text.length()-1);
         Pattern pattern = Pattern.compile(p);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
@@ -33,20 +34,42 @@ public class WordParser extends BasicParser {
             pos.add(matcher.start());
         }
 
-        for (int i = pos.size()-1; i >= 0 ; i--) {
-            text=text.substring(0,pos.get(i)) + " " + text.substring(pos.get(i),text.length());
+        for (int i = pos.size() - 1; i >= 0; i--) {
+            text = text.substring(0, pos.get(i)) + " " + text.substring(pos.get(i), text.length());
+
         }
 
         for (String s : text.split(" ")) {
             WordComponent word = new WordComponent(s);
             word.setCharacters(nextParser.handleRequest(s));
-            list.add(new WordComponent(s));
+           // list.add(new WordComponent(s));
+            list.add(word);
 
         }
 
 
-
-
         return list;
     }
+
+    public String assemble(Component component) {
+
+
+
+        SentenceComponent sentenceComponent = (SentenceComponent) component;
+        String str = "";
+        String temp;
+
+         for (int i = 0; i < sentenceComponent.getSize(); i++) {
+            temp = nextParser.assemble(sentenceComponent.getChild(i));
+            if (",".equals(temp) || ".".equals(temp) || "?".equals(temp) || "!".equals(temp) || "...".equals(temp)) {
+                str = str + temp;
+            } else {
+                str = str + " " + temp;
+            }
+        }
+
+        return str;
+    }
 }
+
+

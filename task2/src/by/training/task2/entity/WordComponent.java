@@ -1,7 +1,5 @@
 package by.training.task2.entity;
 
-import by.training.task2.parsers.BasicParser;
-
 import java.util.List;
 
 public class WordComponent extends Component{
