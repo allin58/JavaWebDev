@@ -1,6 +1,6 @@
 package by.training.task2.entity;
 
-import by.training.task2.specification.TextComporator;
+
 
 import java.util.List;
 
@@ -30,10 +30,7 @@ public class SentenceComponent extends Component {
         this.words = sentences;
     }
 
-    public void query(TextComporator textComporator){
 
-        words.sort(textComporator);
 
-    }
 
 }

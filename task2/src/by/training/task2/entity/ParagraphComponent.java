@@ -1,7 +1,6 @@
 package by.training.task2.entity;
 
-import by.training.task2.specification.TextComporator;
-import by.training.task2.specification.TextComporatorToSentence;
+
 
 import java.util.List;
 
@@ -32,8 +31,6 @@ public class ParagraphComponent extends Component {
         this.sentences = sentences;
     }
 
-    public void query(TextComporator textComporator){
-       sentences.sort(textComporator);
-    }
+
 
 }

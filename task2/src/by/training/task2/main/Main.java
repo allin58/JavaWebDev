@@ -26,13 +26,18 @@ public class Main {
         SentenceParser sentenceParser = new SentenceParser(wordParser);
         ParagrphParser paragrphParser = new ParagrphParser(sentenceParser);
 
-        TextComponent textComponent = new TextComponent(text);
-        textComponent.setParagraphs(paragrphParser.handleRequest(text));
+        try {
+            TextComponent textComponent = new TextComponent(text);
+            textComponent.setParagraphs(paragrphParser.handleRequest(text));
+            System.out.println(paragrphParser.assemble(textComponent));
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
 
-
-
-        System.out.println(SortHelper.sortWords(textComponent,wordParser,0,0));
+        //System.out.println(SortHelper.sortParagraphs(textComponent,sentenceParser));
+        //System.out.println(SortHelper.sortSentensies(textComponent,wordParser,0));
+        //System.out.println(SortHelper.sortWords(textComponent,characterParser,0,0));
 
     }
 

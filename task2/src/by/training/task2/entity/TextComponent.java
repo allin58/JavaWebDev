@@ -1,7 +1,9 @@
 package by.training.task2.entity;
 
 
-import by.training.task2.specification.TextComporator;
+
+
+import by.training.task2.exception.TextException;
 
 import java.util.List;
 
@@ -9,7 +11,11 @@ public class TextComponent extends Component{
     private List<Component> paragraphs;
 
 
-    public TextComponent(String text) {
+    public TextComponent(String text) throws TextException{
+
+        if("".equals(text))  {
+            throw new TextException("text error");}
+
         super.setComponent(text);
     }
 
@@ -34,9 +40,6 @@ public class TextComponent extends Component{
 
 
 
-   public void query(TextComporator textComporator){
-       paragraphs.sort(textComporator);
 
-   }
 
 }

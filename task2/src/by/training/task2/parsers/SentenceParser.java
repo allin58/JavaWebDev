@@ -15,8 +15,7 @@ public class SentenceParser extends BasicParser{
 
     private BasicParser nextParser;
 
-    public SentenceParser() {
-    }
+
 
     public SentenceParser(BasicParser nextParser) {
         this.nextParser = nextParser;
@@ -43,7 +42,7 @@ public class SentenceParser extends BasicParser{
             sentences.add(sentence);
             pastPos = currentPos;
             }
-
+        logger.debug("The paragraph was divided into " + sentences.size() + " sentence.");
 
         return sentences;
     }
@@ -61,6 +60,7 @@ public class SentenceParser extends BasicParser{
                 }
 
         str = str.trim();
+        logger.debug("The paragraph was assembled from " + paragraphComponent.getSize() + " sentencies.");
         return str;
     }
 

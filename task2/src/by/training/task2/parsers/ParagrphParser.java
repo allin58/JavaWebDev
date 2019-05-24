@@ -16,8 +16,6 @@ public class ParagrphParser extends BasicParser{
 
    private BasicParser nextParser;
 
-    public ParagrphParser() {
-           }
 
 
 
@@ -50,6 +48,7 @@ public class ParagrphParser extends BasicParser{
         ParagraphComponent paragraph = new ParagraphComponent(p);
         paragraph.setSentences(nextParser.handleRequest(p));
         paragraphs.add(paragraph);
+        logger.debug("The text was divided into " + paragraphs.size() + " paragraphs.");
 
         return paragraphs;
     }
@@ -63,7 +62,7 @@ public class ParagrphParser extends BasicParser{
              str= str + "\n\t\t" + nextParser.assemble(textComponent.getChild(i));
 
         }
-
+        logger.debug("The text was assembled from " + textComponent.getSize() + " paragraphs.");
 
 
         return str;

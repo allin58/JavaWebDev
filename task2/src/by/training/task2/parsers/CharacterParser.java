@@ -17,6 +17,7 @@ public class CharacterParser extends BasicParser {
 
         }
 
+
         return list;
     }
 

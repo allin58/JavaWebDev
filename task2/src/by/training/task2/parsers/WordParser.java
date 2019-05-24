@@ -16,15 +16,14 @@ public class WordParser extends BasicParser {
     private BasicParser nextParser;
 
 
-    public WordParser() {
-    }
+
 
     public WordParser(BasicParser nextParser) {
         this.nextParser = nextParser;
     }
 
     public List handleRequest(String text) {
-        ArrayList<WordComponent> list = new ArrayList<>();
+        ArrayList<WordComponent> words = new ArrayList<>();
 
         Pattern pattern = Pattern.compile(p);
         Matcher matcher = pattern.matcher(text);
@@ -43,12 +42,12 @@ public class WordParser extends BasicParser {
             WordComponent word = new WordComponent(s);
             word.setCharacters(nextParser.handleRequest(s));
            // list.add(new WordComponent(s));
-            list.add(word);
+            words.add(word);
 
         }
 
-
-        return list;
+        logger.debug("The sentence was divided into " + words.size() + " words.");
+        return words;
     }
 
     public String assemble(Component component) {
@@ -67,7 +66,7 @@ public class WordParser extends BasicParser {
                 str = str + " " + temp;
             }
         }
-
+        logger.debug("The sentence was assembled from " + sentenceComponent.getSize() + " words.");
         return str;
     }
 }
