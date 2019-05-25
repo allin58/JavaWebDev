@@ -1,31 +1,51 @@
 package by.training.task2.parsers;
 
 import by.training.task2.entity.Component;
-import by.training.task2.entity.SentenceComponent;
-import by.training.task2.entity.WordComponent;
+import by.training.task2.entity.SentenceComposite;
+import by.training.task2.entity.WordComposite;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Class SentenceParser is crated for parsing to words.
+ *<b>nextParser</b>
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class WordParser extends BasicParser {
 
-    private final String p = "[!?//.]|,|\\.\\.\\.";
+    /**
+     * Template for regular expression.
+     */
+    private final String TEMPLATE = "[!?//.]|,|\\.\\.\\.";
 
+    /**
+     * Next parser for implantation chain of responsibility.
+     */
     private BasicParser nextParser;
 
 
 
-
-    public WordParser(BasicParser nextParser) {
+    /**
+     * Constructor sets next parser.
+     * @param nextParser varible for linking parsers
+     */
+    public WordParser(final BasicParser nextParser) {
         this.nextParser = nextParser;
     }
 
+    /**
+     * handleRequest method parses string.
+     * @param text input string
+     * @return list of composites
+     */
     public List handleRequest(String text) {
-        ArrayList<WordComponent> words = new ArrayList<>();
+        ArrayList<WordComposite> words = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile(p);
+        Pattern pattern = Pattern.compile(TEMPLATE);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
 
@@ -39,34 +59,39 @@ public class WordParser extends BasicParser {
         }
 
         for (String s : text.split(" ")) {
-            WordComponent word = new WordComponent(s);
+            WordComposite word = new WordComposite(s);
             word.setCharacters(nextParser.handleRequest(s));
            // list.add(new WordComponent(s));
             words.add(word);
 
         }
 
-        logger.debug("The sentence was divided into " + words.size() + " words.");
+        super.LOGGER.debug("The sentence was divided into " + words.size() + " words.");
         return words;
     }
 
-    public String assemble(Component component) {
+    /**
+     * assemble method assembles to string.
+     * @param component list of composites
+     * @return output string
+     */
+    public String assemble(final Component component) {
 
 
 
-        SentenceComponent sentenceComponent = (SentenceComponent) component;
+        SentenceComposite sentenceComposite = (SentenceComposite) component;
         String str = "";
         String temp;
 
-         for (int i = 0; i < sentenceComponent.getSize(); i++) {
-            temp = nextParser.assemble(sentenceComponent.getChild(i));
+         for (int i = 0; i < sentenceComposite.getSize(); i++) {
+            temp = nextParser.assemble(sentenceComposite.getChild(i));
             if (",".equals(temp) || ".".equals(temp) || "?".equals(temp) || "!".equals(temp) || "...".equals(temp)) {
                 str = str + temp;
             } else {
                 str = str + " " + temp;
             }
         }
-        logger.debug("The sentence was assembled from " + sentenceComponent.getSize() + " words.");
+        super.LOGGER.debug("The sentence was assembled from " + sentenceComposite.getSize() + " words.");
         return str;
     }
 }

@@ -2,67 +2,91 @@ package by.training.task2.parsers;
 
 
 import by.training.task2.entity.Component;
-import by.training.task2.entity.ParagraphComponent;
-import by.training.task2.entity.TextComponent;
+import by.training.task2.entity.ParagraphComposite;
+import by.training.task2.entity.TextComposite;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ParagrphParser extends BasicParser{
 
-    private final String  p = "\\t\\t";
+/**
+ * Class ParagrphParser is crated for parsing to paragraphs.
+ *<b>nextParser</b>
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
+public class ParagrphParser extends BasicParser {
 
-   private BasicParser nextParser;
+    /**
+     * Template for regular expression.
+     */
+    private final String  TEMPLATE = "\\t\\t";
+
+    /**
+     * Next parser for implantation chain of responsibility.
+     */
+    private BasicParser nextParser;
 
 
-
-
-    public ParagrphParser(BasicParser nextParser) {
+    /**
+     * Constructor sets next parser.
+     * @param nextParser varible for linking parsers
+     */
+    public ParagrphParser(final BasicParser nextParser) {
         this.nextParser = nextParser;
     }
 
-    public List handleRequest(String text) {
 
+    /**
+     * handleRequest method parses string.
+     * @param text input string
+     * @return list of composites
+     */
+    public List handleRequest(final String text) {
 
-         ArrayList<ParagraphComponent> paragraphs = new ArrayList<>();
+         ArrayList<ParagraphComposite> paragraphs = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile(p);
+        Pattern pattern = Pattern.compile(TEMPLATE);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
         while (matcher.find()) {
             pos.add(matcher.start());
         }
-        int pastPos=0;
-        int currentPos=0;
+        int pastPos = 0;
+        int currentPos = 0;
         for (int i = 1; i < pos.size(); i++) {
             currentPos = pos.get(i);
-            String p = text.substring(pastPos,currentPos-1);
-            ParagraphComponent paragraph = new ParagraphComponent(p);
+            String p = text.substring(pastPos, currentPos - 1);
+            ParagraphComposite paragraph = new ParagraphComposite(p);
             paragraph.setSentences(nextParser.handleRequest(p));
             paragraphs.add(paragraph);
             pastPos = currentPos;
           }
         String p = text.substring(pastPos);
-        ParagraphComponent paragraph = new ParagraphComponent(p);
+        ParagraphComposite paragraph = new ParagraphComposite(p);
         paragraph.setSentences(nextParser.handleRequest(p));
         paragraphs.add(paragraph);
-        logger.debug("The text was divided into " + paragraphs.size() + " paragraphs.");
+        super.LOGGER.debug("The text was divided into " + paragraphs.size() + " paragraphs.");
 
         return paragraphs;
     }
 
+    /**
+     * assemble method assembles to string.
+     * @param component list of composites
+     * @return output string
+     */
+    public  String assemble(final Component component) {
 
-    public  String assemble(Component component) {
-
-        TextComponent textComponent = (TextComponent)component;
-        String str ="";
-         for (int i = 0; i < textComponent.getSize() ; i++) {
-             str= str + "\n\t\t" + nextParser.assemble(textComponent.getChild(i));
+        TextComposite textComponent = (TextComposite) component;
+        String str = "";
+         for (int i = 0; i < textComponent.getSize(); i++) {
+             str = str + "\n\t\t" + nextParser.assemble(textComponent.getChild(i));
 
         }
-        logger.debug("The text was assembled from " + textComponent.getSize() + " paragraphs.");
+        super.LOGGER.debug("The text was assembled from " + textComponent.getSize() + " paragraphs.");
 
 
         return str;

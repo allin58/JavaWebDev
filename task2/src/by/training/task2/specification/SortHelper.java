@@ -1,23 +1,32 @@
 package by.training.task2.specification;
 
 import by.training.task2.entity.Component;
-import by.training.task2.entity.ParagraphComponent;
-import by.training.task2.entity.SentenceComponent;
-import by.training.task2.entity.TextComponent;
+import by.training.task2.entity.ParagraphComposite;
+import by.training.task2.entity.SentenceComposite;
+import by.training.task2.entity.TextComposite;
 import by.training.task2.parsers.CharacterParser;
-import by.training.task2.parsers.ParagrphParser;
 import by.training.task2.parsers.SentenceParser;
 import by.training.task2.parsers.WordParser;
 
 import java.util.ArrayList;
 
-public class SortHelper {
 
-    public static String sortParagraphs(TextComponent textComponent, SentenceParser sentenceParser) {
+/**Class SortHelper helps to sort.
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
+ public class SortHelper {
+     /**
+     * Method sortParagraphs sorts the paragraphs by the number of sentences.
+     * @param textComposite contains required paragraphs
+     * @param sentenceParser for assembling to string
+     * @return string representation of paragraphs
+     */
+    public static String sortParagraphs(final TextComposite textComposite, final SentenceParser sentenceParser) {
         ArrayList<Component> arrayList = new ArrayList<>();
         String str = "  ";
-        for (int i = 0; i < textComponent.getSize(); i++) {
-            arrayList.add(textComponent.getChild(i));
+        for (int i = 0; i < textComposite.getSize(); i++) {
+            arrayList.add(textComposite.getChild(i));
         }
         arrayList.sort(new TextComporatorToParagraph());
         for (Component component : arrayList) {
@@ -27,13 +36,21 @@ public class SortHelper {
         return str;
     }
 
-    public static String sortSentensies(TextComponent textComponent, WordParser wordParser, int paragraphNumber) {
+
+    /**
+     * Method sortSentensies sorts the sentences by the number of words.
+     * @param textComposite contains required sentences
+     * @param wordParser for assembling to string
+     * @param paragraphNumber number of paragraph
+     * @return string representation of sentences
+     */
+    public static String sortSentences(final TextComposite textComposite, final WordParser wordParser, final int paragraphNumber) {
         ArrayList<Component> arrayList = new ArrayList<>();
         String str = "";
-        ParagraphComponent paragraphComponent = (ParagraphComponent)(textComponent.getChild(paragraphNumber));
+        ParagraphComposite paragraphComposite = (ParagraphComposite) (textComposite.getChild(paragraphNumber));
 
-        for (int i = 0; i < paragraphComponent.getSize(); i++) {
-            arrayList.add(paragraphComponent.getChild(i));
+        for (int i = 0; i < paragraphComposite.getSize(); i++) {
+            arrayList.add(paragraphComposite.getChild(i));
         }
         arrayList.sort(new TextComporatorToSentence());
 
@@ -45,19 +62,24 @@ public class SortHelper {
     }
 
 
-
-
-
-    public static String sortWords(TextComponent textComponent, CharacterParser characterParser, int paragraphNumber, int sentenseNumber) {
+    /**
+     * Method sortWords sorts the words by the length.
+     * @param textComposite contains required words
+     * @param characterParser for assembling to string
+     * @param paragraphNumber number of paragraph
+     * @param sentenseNumber number of sentence
+     * @return string representation of words
+     */
+    public static String sortWords(final TextComposite textComposite, final CharacterParser characterParser, final int paragraphNumber, final int sentenseNumber) {
 
         ArrayList<Component> arrayList = new ArrayList<>();
         String str = "";
 
-        ParagraphComponent paragraphComponent = (ParagraphComponent)(textComponent.getChild(paragraphNumber));
-        SentenceComponent sentenceComponent = (SentenceComponent)paragraphComponent.getChild(sentenseNumber);
+        ParagraphComposite paragraphComposite = (ParagraphComposite) (textComposite.getChild(paragraphNumber));
+        SentenceComposite sentenceComposite = (SentenceComposite) paragraphComposite.getChild(sentenseNumber);
 
-        for (int i = 0; i < sentenceComponent.getSize(); i++) {
-            arrayList.add(sentenceComponent.getChild(i));
+        for (int i = 0; i < sentenceComposite.getSize(); i++) {
+            arrayList.add(sentenceComposite.getChild(i));
         }
         arrayList.sort(new TextComporatorToWorld());
 
