@@ -21,7 +21,7 @@ public class SentenceParser extends BasicParser {
     /**
      * Template for regular expression.
      */
-    private final String TEMPLATE = "[.!?]";
+    private final String TEMPLATE = "\\.\\.\\.|[.!?]";
 
     /**
      * Next parser for implantation chain of responsibility.
@@ -53,6 +53,8 @@ public class SentenceParser extends BasicParser {
         ArrayList<Integer> pos = new ArrayList<>();
         while (matcher.find()) {
             pos.add(matcher.end());
+
+
         }
         int pastPos = 0;
         int currentPos = 0;

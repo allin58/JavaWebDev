@@ -30,6 +30,8 @@ public class Main {
          * Here is the text is parsed and assembled back.
          */
         try {
+
+
             TextComposite textComponent = new TextComposite(text);
             textComponent.setParagraphs(paragrphParser.handleRequest(text));
             System.out.println(paragrphParser.assemble(textComponent));
