@@ -17,10 +17,12 @@ import java.util.regex.Pattern;
  */
 public class WordParser extends BasicParser {
 
+
     /**
      * Template for regular expression.
      */
-    private final String TEMPLATE = "[!?//.]|,|\\.\\.\\.";
+    private final String TEMPLATE1 = "[!?//.]|,|\\.\\.\\.";
+    private final String TEMPLATE2 = " ";
 
     /**
      * Next parser for implantation chain of responsibility.
@@ -45,7 +47,7 @@ public class WordParser extends BasicParser {
     public List handleRequest(String text) {
         ArrayList<WordComposite> words = new ArrayList<>();
 
-        Pattern pattern = Pattern.compile(TEMPLATE);
+        Pattern pattern = Pattern.compile(TEMPLATE1);
         Matcher matcher = pattern.matcher(text);
         ArrayList<Integer> pos = new ArrayList<>();
 
@@ -58,7 +60,7 @@ public class WordParser extends BasicParser {
 
         }
 
-        for (String s : text.split(" ")) {
+        for (String s : text.split(TEMPLATE2)) {
             WordComposite word = new WordComposite(s);
             word.setCharacters(nextParser.handleRequest(s));
            // list.add(new WordComponent(s));

@@ -1,4 +1,4 @@
 /**
- * Info about this package doing something for package-info.java file.
+ * This package stores items which implements composite pattern.
  */
 package by.training.task2.entity;

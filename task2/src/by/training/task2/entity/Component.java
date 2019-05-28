@@ -24,7 +24,7 @@ public abstract class Component {
     /**
      *This is abstract function which returns child composire.
      * @param i index
-     * @return component depennds on i
+     * @return component depends on i
      */
     public abstract Component getChild(int i);
 
@@ -36,7 +36,7 @@ public abstract class Component {
     public abstract int getSize();
 
     /**
-     * Function which returns textual representation of the composire.
+     * Function which returns textual representation of the composite.
      * @return list of components
      */
     public String getComponent() {

@@ -1,4 +1,4 @@
 /**
- * Info about this package doing something for package-info.java file.
+ * Package stores a generation of id.
  */
 package by.training.task1.idgenerator;

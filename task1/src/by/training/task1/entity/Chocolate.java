@@ -12,7 +12,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Chocolate extends Sweetness {
 
-    public static final Logger logger = LogManager.getLogger(Chocolate.class);
+    public static final Logger LOGGER = LogManager.getLogger(Chocolate.class);
 
     /**
      *Constructor - creating a new object with specific values.
@@ -26,7 +26,7 @@ public class Chocolate extends Sweetness {
         this.setName(name);
         this.setId(id);
         this.setSugar(weight * PERCENT);
-        logger.debug("created chocolate");
+        LOGGER.debug("created chocolate");
     }
 
 

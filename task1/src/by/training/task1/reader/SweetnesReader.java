@@ -21,7 +21,7 @@ import java.io.FileReader;
  */
 public final class SweetnesReader {
 
-    public static Logger logger = LogManager.getLogger(SweetnesReader.class);
+    public static Logger LOGGER = LogManager.getLogger(SweetnesReader.class);
      /**
      * This is empty constructior.
      */
@@ -35,21 +35,26 @@ public final class SweetnesReader {
      */
     public static void readFile(final String file, final Gift gift) {
         String str;
-        String[] arr;
+        String[] arr = null;
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
             while (br.ready()) {
                 str = br.readLine();
                 arr = str.split(" ");
                 Sweetness sweetness;
 
-                SweetnessFactory sweetnessFactory = createSweetnessFactory(arr[0]);
-                sweetness = sweetnessFactory.createSweetness(arr[1], Double.parseDouble(arr[2]), GeneratorID.getId());
-                gift.add(sweetness);
+
+                try {
+                    SweetnessFactory sweetnessFactory = createSweetnessFactory(arr[0]);
+                    sweetness = sweetnessFactory.createSweetness(arr[1], Double.parseDouble(arr[2]), GeneratorID.getId());
+                    gift.add(sweetness);
+                } catch (Exception e) {
+                    LOGGER.debug("error in line " + str );
+                }
 
 
             }
         } catch (Exception e) {
-            logger.debug("input error");
+            LOGGER.debug("input error" );
         }
     }
 

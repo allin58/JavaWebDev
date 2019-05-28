@@ -64,7 +64,7 @@ public class SentenceParser extends BasicParser {
             sentences.add(sentence);
             pastPos = currentPos;
             }
-        super.LOGGER.debug("The paragraph was divided into " + sentences.size() + " sentence.");
+        super.LOGGER.debug("The paragraph was divided into " + sentences.size() + " sentences.");
 
         return sentences;
     }
@@ -87,7 +87,7 @@ public class SentenceParser extends BasicParser {
                 }
 
         str = str.trim();
-        super.LOGGER.debug("The paragraph was assembled from " + paragraphComponent.getSize() + " sentencies.");
+        super.LOGGER.debug("The paragraph was assembled from " + paragraphComponent.getSize() + " sentences.");
         return str;
     }
 

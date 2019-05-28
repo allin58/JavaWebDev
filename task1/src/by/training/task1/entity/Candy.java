@@ -11,7 +11,7 @@ import org.apache.logging.log4j.Logger;
 
 public class Candy extends Sweetness {
 
-    public static final Logger logger = LogManager.getLogger(Candy.class);
+    public static final Logger LOGGER = LogManager.getLogger(Candy.class);
 
 
     /**
@@ -26,7 +26,7 @@ public class Candy extends Sweetness {
         this.setName(name);
         this.setId(id);
         this.setSugar(weight * PERCENT);
-        logger.debug("created candy");
+        LOGGER.debug("created candy");
     }
 
 

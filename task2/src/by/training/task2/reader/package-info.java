@@ -1,4 +1,4 @@
 /**
- * Info about this package doing something for package-info.java file.
+ * There is reader of text.
  */
 package by.training.task2.reader;
