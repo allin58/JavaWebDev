@@ -1,9 +1,6 @@
 package by.training.task2.parsers;
 
-import by.training.task2.entity.Component;
-import by.training.task2.entity.SentenceComposite;
 import by.training.task2.entity.WordComposite;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -21,8 +18,12 @@ public class WordParser extends BasicParser {
     /**
      * Template for regular expression.
      */
-    private final String TEMPLATE1 = "[!?//.]|,|\\.\\.\\.";
-    private final String TEMPLATE2 = " ";
+    private static final String TEMPLATE1 = "[!?//.]|,|\\.\\.\\.";
+
+    /**
+     * Template for regular expression.
+     */
+    private static final String TEMPLATE2 = " ";
 
     /**
      * Next parser for implantation chain of responsibility.
@@ -61,41 +62,17 @@ public class WordParser extends BasicParser {
         }
 
         for (String s : text.split(TEMPLATE2)) {
-            WordComposite word = new WordComposite(s);
+            WordComposite word = new WordComposite();
             word.setCharacters(nextParser.handleRequest(s));
-           // list.add(new WordComponent(s));
             words.add(word);
 
         }
 
-        super.LOGGER.debug("The sentence was divided into " + words.size() + " words.");
+        LOGGER.debug("The sentence was divided into " + words.size() + " words.");
         return words;
     }
 
-    /**
-     * assemble method assembles to string.
-     * @param component list of composites
-     * @return output string
-     */
-    public String assemble(final Component component) {
 
-
-
-        SentenceComposite sentenceComposite = (SentenceComposite) component;
-        String str = "";
-        String temp;
-
-         for (int i = 0; i < sentenceComposite.getSize(); i++) {
-            temp = nextParser.assemble(sentenceComposite.getChild(i));
-            if (",".equals(temp) || ".".equals(temp) || "?".equals(temp) || "!".equals(temp) || "...".equals(temp)) {
-                str = str + temp;
-            } else {
-                str = str + " " + temp;
-            }
-        }
-        super.LOGGER.debug("The sentence was assembled from " + sentenceComposite.getSize() + " words.");
-        return str;
-    }
 }
 
 

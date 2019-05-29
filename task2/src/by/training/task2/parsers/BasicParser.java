@@ -2,7 +2,7 @@ package by.training.task2.parsers;
 
 
 
-import by.training.task2.entity.Component;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,9 +16,9 @@ import java.util.List;
  */
 public abstract class BasicParser {
     /**
-     * This logger logs the creation of parsers.
+     * This logger logs the action of parsers.
      */
-    public static final Logger LOGGER = LogManager.getLogger(BasicParser.class);
+    public static final Logger LOGGER = LogManager.getLogger("by.training.task2.Parser");
 
     /**
      * Abstract method, which implamentation will parse string.
@@ -27,20 +27,14 @@ public abstract class BasicParser {
      */
     public abstract List handleRequest(String text);
 
-    /**
-     * Abstract method, which implamentation will assemble components to string.
-     * @param component input component
-     * @return string
-     */
-    public abstract String assemble(Component component);
+
 
     /**
      * Constructor which logs creating of parsers.
      */
     public BasicParser() {
         ParserCounter.incremantCounter();
-        LOGGER.debug("Parser was created " + ParserCounter.checkCounter());
-    }
+      }
 
 
 

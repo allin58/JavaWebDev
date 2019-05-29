@@ -10,7 +10,7 @@ import java.util.List;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class ParagraphComposite extends Component {
+public class ParagraphComposite implements Component {
 
     /**
      * Varible which stores list of sentences.
@@ -18,24 +18,25 @@ public class ParagraphComposite extends Component {
     private List<Component> sentences;
 
 
-    /**
-     * Constructor sets textual representation of the composite.
-     * @param paragraph textual representation of the composit
-     */
-    public ParagraphComposite(final String paragraph) {
-        super.setComponent(paragraph);
-    }
-
-
 
     /**
-     * Implementation abstract method getSize().
+     *  Method to get size.
      * @return size of list
      */
     public int getSize() {
 
         return sentences.size();
     }
+
+
+    /**
+     * Implementation abstract method remove().
+     * @param component to delite
+     */
+    public void remove(final Component component) {
+        sentences.remove(component);
+    }
+
 
     /**
      * Implementation abstract method addComponent(Component component).
@@ -64,6 +65,55 @@ public class ParagraphComposite extends Component {
     public void setSentences(final List<Component> sentences) {
         this.sentences = sentences;
     }
+
+
+    /**
+     *This is function which return string.
+     * @return textual representation of composite
+     */
+    @Override
+    public String assemble() {
+        String str = "";
+
+        for (Component sentence : sentences) {
+            str += sentence.assemble();
+        }
+        str = str.trim();
+        return str;
+    }
+
+
+
+
+    /**
+     * HashCode function.
+     * @return hashcode of composite
+     */
+    public int hashCode() {
+        return sentences.hashCode();
+    }
+
+    /**
+     *
+     * @param o object for comparing
+     * @return true if objects are equals
+     */
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        ParagraphComposite object = (ParagraphComposite) o;
+        return (object.sentences.equals(sentences));
+    }
+
+
+
 
 
 

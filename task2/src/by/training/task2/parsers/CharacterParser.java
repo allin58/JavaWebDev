@@ -1,8 +1,7 @@
 package by.training.task2.parsers;
 
 import by.training.task2.entity.CaracterComposite;
-import by.training.task2.entity.Component;
-import by.training.task2.entity.WordComposite;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,23 +34,6 @@ public class CharacterParser extends BasicParser {
     }
 
 
-    /**
-     * assemble method assembles to string.
-     * @param component list of composites
-     * @return output string
-     */
-    public  String assemble(final Component component) {
 
-        WordComposite wordComposite = (WordComposite) component;
-        String str = "";
-
-
-        for (int i = 0; i < wordComposite.getSize(); i++) {
-         str = str + wordComposite.getChild(i).getComponent();
-
-        }
-
-        return str;
-    }
 
 }

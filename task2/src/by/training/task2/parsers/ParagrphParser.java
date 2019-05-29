@@ -1,10 +1,8 @@
 package by.training.task2.parsers;
 
 
-import by.training.task2.entity.Component;
-import by.training.task2.entity.ParagraphComposite;
-import by.training.task2.entity.TextComposite;
 
+import by.training.task2.entity.ParagraphComposite;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.regex.Matcher;
@@ -22,7 +20,7 @@ public class ParagrphParser extends BasicParser {
     /**
      * Template for regular expression.
      */
-    private final String  TEMPLATE = "\\t\\t";
+    private static final String  TEMPLATE = "\\t\\t";
 
     /**
      * Next parser for implantation chain of responsibility.
@@ -59,38 +57,21 @@ public class ParagrphParser extends BasicParser {
         for (int i = 1; i < pos.size(); i++) {
             currentPos = pos.get(i);
             String p = text.substring(pastPos, currentPos - 1);
-            ParagraphComposite paragraph = new ParagraphComposite(p);
+            ParagraphComposite paragraph = new ParagraphComposite();
             paragraph.setSentences(nextParser.handleRequest(p));
             paragraphs.add(paragraph);
             pastPos = currentPos;
           }
         String p = text.substring(pastPos);
-        ParagraphComposite paragraph = new ParagraphComposite(p);
+        ParagraphComposite paragraph = new ParagraphComposite();
         paragraph.setSentences(nextParser.handleRequest(p));
         paragraphs.add(paragraph);
-        super.LOGGER.debug("The text was divided into " + paragraphs.size() + " paragraphs.");
+        LOGGER.debug("The text was divided into " + paragraphs.size() + " paragraphs.");
 
         return paragraphs;
     }
 
-    /**
-     * assemble method assembles to string.
-     * @param component list of composites
-     * @return output string
-     */
-    public  String assemble(final Component component) {
 
-        TextComposite textComponent = (TextComposite) component;
-        String str = "";
-         for (int i = 0; i < textComponent.getSize(); i++) {
-             str = str + "\n\t\t" + nextParser.assemble(textComponent.getChild(i));
-
-        }
-        super.LOGGER.debug("The text was assembled from " + textComponent.getSize() + " paragraphs.");
-
-
-        return str;
-    }
 
 
 

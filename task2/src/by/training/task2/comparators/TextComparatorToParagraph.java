@@ -1,16 +1,16 @@
-package by.training.task2.specification;
+package by.training.task2.comparators;
 
 import by.training.task2.entity.Component;
 import by.training.task2.entity.ParagraphComposite;
 
 
 
-/** Class TextComporatorToParagraph is intend for sorting by paragraphs.
+/** Class TextComparatorToParagraph is intend for sorting by paragraphs.
  *
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class TextComporatorToParagraph implements TextComporator {
+public class TextComparatorToParagraph implements TextComparator {
 
     /**
      * This is method of comparing.
@@ -22,7 +22,6 @@ public class TextComporatorToParagraph implements TextComporator {
     public int compare(final Component o1, final Component o2) {
         ParagraphComposite paragraphComposite1 = (ParagraphComposite) o1;
         ParagraphComposite paragraphComposite2 = (ParagraphComposite) o2;
-
 
         return paragraphComposite1.getSize() - paragraphComposite2.getSize();
     }

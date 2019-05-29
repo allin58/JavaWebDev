@@ -1,4 +1,4 @@
 /**
  * Package stores specifications for sorting.
  */
-package by.training.task2.specification;
+package by.training.task2.comparators;

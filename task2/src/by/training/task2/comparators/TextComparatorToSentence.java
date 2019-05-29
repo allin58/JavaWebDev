@@ -1,14 +1,14 @@
-package by.training.task2.specification;
+package by.training.task2.comparators;
 
 import by.training.task2.entity.Component;
 import by.training.task2.entity.SentenceComposite;
 
-/** Class TextComporatorToSentence is intend for sorting by sntences.
+/** Class TextComparatorToSentence is intend for sorting by sntences.
  *
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class TextComporatorToSentence implements TextComporator {
+public class TextComparatorToSentence implements TextComparator {
 
 
     /**

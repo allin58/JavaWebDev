@@ -12,7 +12,7 @@ import java.util.List;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class TextComposite extends Component {
+public class TextComposite implements Component {
 
     /**
      * Varible which stores list of paragraghs.
@@ -31,7 +31,6 @@ public class TextComposite extends Component {
             throw new TextException("text error");
         }
 
-        super.setComponent(text);
     }
 
 
@@ -39,10 +38,45 @@ public class TextComposite extends Component {
      * Implementation abstract method getSize().
      * @return size of list
      */
-    @Override
-    public int getSize() {
+     public int getSize() {
         return paragraphs.size();
     }
+
+
+    /**
+     * Implementation abstract method remove().
+     * @param component to delite
+     */
+    public void remove(final Component component) {
+        paragraphs.remove(component);
+    }
+
+
+
+
+
+    /**
+     *This is function which return string.
+     * @return textual representation of composite
+     */
+    @Override
+    public String assemble() {
+        String str = "";
+
+        for (Component paragraph : paragraphs) {
+            str = str + "\n\t\t" + paragraph.assemble();
+        }
+
+
+        return str;
+    }
+
+
+
+
+
+
+
 
     /**
      * Implementation abstract method addComponent(Component component).
@@ -73,6 +107,33 @@ public class TextComposite extends Component {
             this.paragraphs = paragraphs;
     }
 
+
+    /**
+     * HashCode function.
+     * @return hashcode of composite
+     */
+    public int hashCode() {
+        return paragraphs.hashCode();
+    }
+
+    /**
+     *
+     * @param o object for comparing
+     * @return true if objects are equals
+     */
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        TextComposite object = (TextComposite) o;
+        return (object.paragraphs.equals(paragraphs));
+    }
 
 
 

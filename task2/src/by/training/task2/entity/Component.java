@@ -1,83 +1,48 @@
 package by.training.task2.entity;
 
 /**
- * Abstract class Component with properties.
+ * Interfase Component with properties.
  * <b>component</b>
  *
  * @author Nikita Karchahin
  * @version 1.0
  */
-public abstract class Component {
+public interface Component {
 
-    /**
-     * Field for storing textual representation of the composire.
-     */
-    private String component;
 
 
     /**
-     * Abstract function for adding a new composire.
+     * Abstract function for adding a new composite.
      * @param com composire for adding
      */
-    public abstract void addComponent(Component com);
+     void addComponent(Component com);
 
     /**
-     *This is abstract function which returns child composire.
+     *This is abstract function which returns child composite.
      * @param i index
      * @return component depends on i
      */
-    public abstract Component getChild(int i);
+    Component getChild(int i);
+
+    /**
+     *This is abstract function which remove child composite.
+     * @param component object to remove
+     */
+     void remove(Component component);
+
+    /**
+     *This is abstract function which return string.
+     * @return textual representation of composite
+     */
+    String assemble();
 
 
     /**
-     * Abstract function returns list size.
-     * @return size of list
+     * Abstract method getSize().
+     * @return size of character
      */
-    public abstract int getSize();
-
-    /**
-     * Function which returns textual representation of the composite.
-     * @return list of components
-     */
-    public String getComponent() {
-        return component;
-    }
-
-    /**
-     * Function which sets textual representation of the composire.
-     * @param component textual representation of the composire
-     */
-    public void setComponent(final String component) {
-        this.component = component;
-    }
+    int getSize();
 
 
-    /**
-     * HashCode function.
-     * @return hashcode of composite
-     */
-    public int hashCode() {
-
-        return component.hashCode();
-    }
-
-    /**
-     *
-     * @param o object for comparing
-     * @return true if objects are equals
-     */
-    public boolean equals(final Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null) {
-            return false;
-        }
-        if (this.getClass() != o.getClass()) {
-            return false;
-        }
-        Component object = (Component) o;
-        return (object.getComponent().equals(component));
-    }
 
 }

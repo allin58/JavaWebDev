@@ -1,9 +1,24 @@
 package by.training.task2.parsers;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 /** Class ParserCounter is created for counting parsers.
  * <b>counter</b>
  */
-public class ParserCounter {
+public final  class ParserCounter {
+
+    /**
+     * Private constructor.
+     */
+    private ParserCounter() {
+    }
+
+    /**
+     * This logger logs the creation of parsers.
+     */
+    public static final Logger LOGGER = LogManager.getLogger("by.training.task2.Counter");
+
 
     /**
      * Varible to store the number of parsers.
@@ -14,7 +29,9 @@ public class ParserCounter {
      * Method which increments counter.
      */
    public static void incremantCounter() {
-        counter++;
+       counter++;
+       LOGGER.debug("Parser was created " + ParserCounter.counter);
+
     }
 
     /**

@@ -1,7 +1,14 @@
 package by.training.task2.reader;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
+
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**Class TextReader helps to read file and to return string.
  * <b>path</b>
@@ -13,21 +20,22 @@ public class TextReader {
 
     /**
      * Method which reads file and returns string.
-     * @param path to file
+     * @param p path to file
      * @return textual representation of the file
      */
-    public String readFile(final String path) {
+    public String readFile(final String p) {
         String text = "";
 
-        try {
-            BufferedReader br = new BufferedReader(new FileReader(path));
-            while (br.ready()) {
-                text = text + br.readLine() + '\n';
-            }
-            br.close();
-        } catch (Exception e) {
-            e.printStackTrace();
+        List<String> lines = new ArrayList<>();
+        Path path = Paths.get(p);
+                try (Stream<String> lineStream = Files.lines(path)) {
+            lines =  lineStream.map(str -> str + '\n').collect(Collectors.toList());
+        } catch (IOException ignored) {
         }
+        for (String line : lines) {
+            text += line;
+        }
+
 
 
         return text;

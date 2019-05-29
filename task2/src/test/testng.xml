@@ -5,7 +5,12 @@
     <test name="test1">
 
         <classes>
-            <class name="test.TestEntities" />
+            <class name="test.reader.TextReaderTest" />
+            <class name="test.parsers.CharacterParserTest" />
+            <class name="test.parsers.WordParserTest" />
+            <class name="test.parsers.SenteceParserTest" />
+            <class name="test.parsers.ParagraphParserTest" />
+            <class name="test.comporators.TextCoparatorToWorldTest" />
 
             </classes>
     </test>

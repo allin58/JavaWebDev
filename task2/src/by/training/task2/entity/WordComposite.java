@@ -8,21 +8,12 @@ import java.util.List;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class WordComposite extends Component {
+public class WordComposite implements Component {
 
     /**
      * Varible which stores list of characters.
      */
     private List<Component> characters;
-
-
-    /**
-     * Constructor sets textual representation of the composite.
-     * @param word textual representation of the composite
-     */
-    public WordComposite(final String word) {
-        super.setComponent(word);
-    }
 
 
     /**
@@ -60,4 +51,62 @@ public class WordComposite extends Component {
 
         this.characters = characters;
     }
+
+    /**
+     * Implementation abstract method remove().
+     * @param component to delite
+     */
+    public void remove(final Component component) {
+        characters.remove(component);
+    }
+
+
+    /**
+     *This is function which return string.
+     * @return textual representation of composite
+     */
+    @Override
+    public String assemble() {
+        String str = "";
+
+        for (Component character : characters) {
+            str += character.assemble();
+        }
+
+        return str;
+    }
+
+
+
+
+
+    /**
+     * HashCode function.
+     * @return hashcode of composite
+     */
+    public int hashCode() {
+        return characters.hashCode();
+    }
+
+    /**
+     *
+     * @param o object for comparing
+     * @return true if objects are equals
+     */
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null) {
+            return false;
+        }
+        if (this.getClass() != o.getClass()) {
+            return false;
+        }
+        WordComposite object = (WordComposite) o;
+        return (object.characters.equals(characters));
+    }
+
+
+
 }

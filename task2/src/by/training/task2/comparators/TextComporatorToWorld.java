@@ -1,4 +1,4 @@
-package by.training.task2.specification;
+package by.training.task2.comparators;
 
 import by.training.task2.entity.Component;
 import by.training.task2.entity.WordComposite;
@@ -8,7 +8,7 @@ import by.training.task2.entity.WordComposite;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class TextComporatorToWorld implements TextComporator {
+public class TextComporatorToWorld implements TextComparator {
 
     /**
      * This is method of comparing.
