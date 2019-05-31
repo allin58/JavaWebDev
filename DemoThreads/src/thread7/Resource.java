@@ -1,0 +1,44 @@
+package thread7;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+
+public class Resource {
+    FileWriter fileWriter;
+
+    public Resource(String file) {
+        try {
+            fileWriter = new FileWriter(file,true);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        }
+
+
+    public synchronized void writing(String str, int i) {
+
+
+        try {
+            fileWriter.append(str+i);
+            System.out.print(str+i);
+            TimeUnit.MILLISECONDS.sleep((long)(Math.random() * 50));
+            fileWriter.append("->" + i + " ");
+            System.out.print("->" + i + " ");
+        } catch (IOException e) {
+            System.err.print("ошибка файла " + e);
+        } catch (InterruptedException e) {
+            System.err.print("ошибка потока " + e);
+        }
+
+    }
+
+public void close() {
+    try {
+        fileWriter.close();
+    } catch (IOException e) {
+        System.err.print("ошибка закрытия файла " + e);
+    }
+}
+}
