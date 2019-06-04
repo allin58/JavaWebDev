@@ -1,4 +1,4 @@
-package by.training.task3.repository;
+package by.training.task3.bean;
 
 public class MatrixRepository {
     private int[][] matrix;
@@ -26,7 +26,9 @@ public class MatrixRepository {
 
     }
 
-
+    public int[][] getMatrix() {
+        return matrix;
+    }
 
     public void setMatrix(int[][] matrix) {
         this.matrix = matrix;

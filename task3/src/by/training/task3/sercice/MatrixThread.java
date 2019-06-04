@@ -1,6 +1,6 @@
-package by.training.task3.threads;
+package by.training.task3.sercice;
 
-import by.training.task3.repository.MatrixRepository;
+import by.training.task3.bean.MatrixRepository;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -14,11 +14,13 @@ public class MatrixThread implements Runnable {
         this.locker = locker;
         this.matrixRepository = matrixRepository;
         this.value = value;
+      //  System.out.println(value);
     }
 
     @Override
     public void run() {
         locker.lock();
+
         matrixRepository.setNext(value);
 
         locker.unlock();

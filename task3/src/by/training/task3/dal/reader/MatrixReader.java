@@ -1,7 +1,7 @@
-package by.training.task3.reader;
+package by.training.task3.dal.reader;
 
 import by.training.task3.exception.MatrixException;
-import by.training.task3.validator.MatrixLineValidator;
+import by.training.task3.dal.validator.MatrixLineValidator;
 
 import java.io.IOException;
 import java.nio.file.Files;

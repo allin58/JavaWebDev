@@ -1,4 +1,4 @@
-package by.training.task3.validator;
+package by.training.task3.dal.validator;
 
 import by.training.task3.exception.MatrixException;
 
