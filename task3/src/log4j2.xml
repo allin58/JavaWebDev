@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="patternfull">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n
+        </Property>
+        <Property name="patternshort">
+            %d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+
+
+        <File name="service" fileName="logs/serviceLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+
+        <File name="dal" fileName="logs/dalLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+        <File name="view" fileName="logs/viewLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+
+
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="by.training.task3.service" level="debug"
+                additivity="true">
+               <AppenderRef ref="service" />
+        </Logger>
+
+        <Logger name="by.training.task3.dal" level="debug"
+                additivity="true">
+            <AppenderRef ref="dal" />
+        </Logger>
+
+        <Logger name="by.training.task3.view" level="debug"
+                additivity="true">
+            <AppenderRef ref="view" />
+        </Logger>
+
+
+
+
+
+        <!-- Root Logger -->
+        <Root level="all">
+            <!--<AppenderRef ref="Console" />
+            <AppenderRef ref="TxtFile" />-->
+        </Root>
+    </Loggers>
+
+
+</Configuration>
