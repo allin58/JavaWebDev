@@ -27,13 +27,14 @@ public final class Main {
         MatrixService matrixService = null;
         boolean flag = true;
 
+        System.out.println("1 - read matrix from the file" + '\n'
+                + "2 - fill the matrix" + '\n'
+                + "3 - dirive the matrix to the screen" + '\n'
+                + "4 - write the matrix to the file" + '\n'
+                + "5 - exit");
+
 
 while (flag) {
-    System.out.println("1 - read matrix from the file" + '\n'
-                       + "2 - fill the matrix" + '\n'
-                       + "3 - 1dirive the matrix to the screen" + '\n'
-                       + "4 - write the matrix to the file" + '\n'
-                       + "5 - exit");
 
     String str = scanner.next();
 

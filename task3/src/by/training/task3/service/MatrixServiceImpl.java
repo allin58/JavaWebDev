@@ -4,6 +4,7 @@ import by.training.task3.bean.Matrix;
 import by.training.task3.dal.MatrixDAL;
 import by.training.task3.dal.MatrixReader;
 import by.training.task3.exception.MatrixException;
+import by.training.task3.bean.PosGenerator;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -75,9 +76,17 @@ public class MatrixServiceImpl implements MatrixService {
 
         }
 
-        for (Integer integer : dataForFill) {
-            new Thread(new MatrixThread(locker, matrixBean, integer)).start();
+
+        PosGenerator posGenerator = new PosGenerator();
+
+
+
+        for (int j = 0; j < dataForFill.size(); j++) {
+            new Thread(new MatrixThread(locker, matrixBean, dataForFill.get(j), posGenerator)).start();
         }
+
+
+
         LOGGER.debug("The diagonal of the matrix is filled with data");
 
     }

@@ -1,6 +1,7 @@
 package by.training.task3.service;
 
 import by.training.task3.bean.Matrix;
+import by.training.task3.bean.PosGenerator;
 
 import java.util.concurrent.locks.ReentrantLock;
 
@@ -31,15 +32,26 @@ public class MatrixThread implements Runnable {
 
 
     /**
+     * PosGenerator ensures iteration to diagonal of matrix.
+     */
+    private PosGenerator posGenerator;
+
+
+
+    /**
      * Constructor with parametrs.
      * @param locker common locker
      * @param matrixBean bean
      * @param value digit is for each threads
+     * @param posGenerator Generator of position
      */
-    public MatrixThread(final ReentrantLock locker, final Matrix matrixBean, final int value) {
+    public MatrixThread(final ReentrantLock locker,
+                        final Matrix matrixBean,
+                        final int value, final PosGenerator posGenerator) {
         this.locker = locker;
         this.matrixBean = matrixBean;
         this.value = value;
+        this.posGenerator = posGenerator;
 
     }
 
@@ -51,7 +63,7 @@ public class MatrixThread implements Runnable {
     public void run() {
         locker.lock();
 
-        matrixBean.setNext(value);
+        matrixBean.setUnit(value, posGenerator.getNext());
 
         locker.unlock();
     }

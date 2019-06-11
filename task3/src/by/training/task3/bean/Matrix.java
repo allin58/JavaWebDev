@@ -21,8 +21,8 @@ public final  class Matrix {
 
     /**
      * The position for thread.
-     */
-    private int pos = 0;
+     *//*
+    private int pos = 0;*/
 
 
     /**
@@ -78,10 +78,26 @@ public final  class Matrix {
         this.matrixInt = matrix;
     }
 
+
     /**
+     * Method for seting diagonal element.
+     * @param value value
+     * @param pos position
+     */
+    public void setUnit(final int value, final int pos) {
+
+    matrixInt[pos][pos] = value;
+
+
+}
+
+
+
+
+   /* *//**
      * Threads use this method for setting of diagonal data.
      * @param value diagonal data
-     */
+     *//*
     public void setNext(final int value) {
 
         if (pos < matrixInt.length) {
@@ -90,7 +106,7 @@ public final  class Matrix {
         }
 
     }
-
+*/
 
 
 
