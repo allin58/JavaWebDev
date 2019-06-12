@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<candies
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="candyschema.xsd">
+
+
+
+  <candy>
+      <name>alpen Gold</name>
+      <energy>500</energy>
+      <type>chocolate</type>
+
+
+      <value>
+          <proteins>15</proteins>
+          <fats>20</fats>
+          <carbohydrates>7</carbohydrates>
+      </value>
+      <production>proizvoditel</production>
+  </candy>
+
+
+
+
+  <candy>
+      <name>sdf</name>
+      <energy>fgh</energy>
+
+      <type>caramel</type>
+      <value>
+          <proteins>2</proteins>
+          <fats>2</fats>
+          <carbohydrates>2</carbohydrates>
+      </value>
+      <production>fgh</production>
+  </candy>
+
+
+
+
+
+</candies>

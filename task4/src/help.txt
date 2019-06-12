@@ -1,0 +1,80 @@
+ <xs:attribute name="orderid" type="xs:string" use="required"/>
+
+  <xs:element name="r" type="xs:string"/>
+                 <xs:element name="shipto">
+                     <xs:complexType>
+                         <xs:sequence>
+                             <xs:element name="name" type="xs:string"/>
+                             <xs:element name="address" type="xs:string"/>
+                             <xs:element name="city" type="xs:string"/>
+                             <xs:element name="country" type="xs:string"/>
+                         </xs:sequence>
+                     </xs:complexType>
+                 </xs:element>
+                 <xs:element name="item" maxOccurs="unbounded">
+                     <xs:complexType>
+                         <xs:sequence>
+                             <xs:element name="title" type="xs:string"/>
+                             <xs:element name="note" type="xs:string" minOccurs="0"/>
+                             <xs:element name="quantity" type="xs:positiveInteger"/>
+                             <xs:element name="price" type="xs:decimal"/>
+                         </xs:sequence>
+                     </xs:complexType>
+                 </xs:element>
+
+
+
+
+                  <orderperson>John Smith</orderperson>
+                     <shipto>
+                         <name>Ola Nordmann</name>
+                         <address>Langgt 23</address>
+                         <city>4000 Stavanger</city>
+                         <country>Norway</country>
+                     </shipto>
+                     <item>
+                         <title>Empire Burlesque</title>
+                         <note>Special Edition</note>
+                         <quantity>1</quantity>
+                         <price>10.90</price>
+                     </item>
+                     <item>
+                         <title>Hide your heart</title>
+                         <quantity>1</quantity>
+                         <price>9.90</price>
+                     </item>
+
+
+
+                     <orderperson>John Smith</orderperson>         <xs:element name="orderperson" type="xs:string"/>
+
+
+
+
+
+ <xs:element name="car">
+ <xs:simpleType>
+   <xs:restriction base="xs:string">
+     <xs:enumeration value="Audi"/>
+     <xs:enumeration value="Mercedes"/>
+     <xs:enumeration value="Volvo"/>
+   </xs:restriction>
+ </xs:simpleType>
+ </xs:element>
+
+
+
+
+
+
+
+
+
+                      <xs:element name="age">
+                        <xs:simpleType>
+                          <xs:restriction base="xs:integer">
+                            <xs:minInclusive value="0"/>
+                            <xs:maxInclusive value="100"/>
+                          </xs:restriction>
+                        </xs:simpleType>
+                      </xs:element>
