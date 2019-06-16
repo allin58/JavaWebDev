@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+
+    <xs:element name="candies" >
+
+
+        <xs:complexType>
+
+
+
+
+
+            <xs:sequence>
+
+                <xs:element name="candy" minOccurs="16" maxOccurs="unbounded">
+                    <xs:complexType>
+
+                        <xs:all>
+
+                            <xs:element name="type">
+
+                                 <xs:simpleType>
+                                       <xs:restriction base="contains"/>
+                                 </xs:simpleType>
+
+
+
+                            </xs:element>
+
+                            <xs:element name="value">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                       <xs:element name="proteins" type="xs:unsignedInt" default="0"/>
+                                       <xs:element name="fats" type="xs:unsignedInt" default="0"/>
+                                       <xs:element name="carbohydrates" type="xs:unsignedInt" default="0"/>
+                                    </xs:sequence>
+                                </xs:complexType>
+                            </xs:element>
+
+
+                            <xs:element name="ingredients">
+
+
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="water" type="xs:unsignedInt" default="0"/>
+                                        <xs:element name="sugar" type="xs:unsignedInt" default="0"/>
+                                        <xs:element name="fructose" type="xs:unsignedInt" default="0"/>
+                                        <xs:element name="vanillin" type="xs:unsignedInt" default="0"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="typeOfChocolate" type="typeOfChocolate" use = "optional"/>
+                                </xs:complexType>
+
+                            </xs:element>
+
+
+
+                        </xs:all>
+
+                        <xs:attribute name="name" type="xs:string" use = "required"/>
+                       <!-- <xs:attribute name="energy" type="xs:string" use = "optional"/>-->
+
+
+                        <xs:attribute name="energy" use="optional">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:int">
+                                    <xs:minExclusive value="0"/>
+                                    <xs:maxInclusive value="1000"/>
+
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+
+
+
+
+
+
+                      <xs:attribute name="production" type="xs:string" use = "required"/>
+
+                       <!-- <xs:attribute name="production" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value="^[A-Z].+" />
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>-->
+
+
+
+
+                        <xs:attribute name="id" type="xs:ID" use = "required"/>
+
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+
+
+
+
+    </xs:element>
+
+
+
+
+    <xs:simpleType name="typeOfChocolate">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="black"/>
+            <xs:enumeration value="white"/>
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+    <xs:simpleType name="contains">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="caramel"/>
+            <xs:enumeration value="chocolate"/>
+            <xs:enumeration value="chocolate with stuffing"/>
+
+        </xs:restriction>
+    </xs:simpleType>
+
+
+
+
+
+
+</xs:schema>
+

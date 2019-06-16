@@ -1,0 +1,208 @@
+Элементы XML Schema
+<xs:schema> <xs:element>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:element name="note">
+.
+.(здесь располагаются подэлемнты)
+.
+</xs:element>
+</xs:schema>
+
+<xs:annotation> <xs:appInfo> <xs:documentation>
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+<xs:annotation>
+  <xs:appInfo>W3Schools Note</xs:appInfo>
+  <xs:documentation xml:lang="en">
+      Данная схема определена в W3Schools
+  </xs:documentation>
+</xs:annotation>
+<xs:element name="note">
+.
+.( здесь располагаются подэлемнты)
+.
+
+<xs:complexType> <xs:sequence>
+
+<xs:element name="note">
+    <xs:complexType>
+      <xs:sequence>
+	<element name="to" type="xs:string"/>
+	<element name="from" type="xs:string"/>
+	<element name="heading" type="xs:string"/>
+	<element name="body" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+</xs:element>
+
+<xs:simpleType> <xs:restriction>
+
+<xs:element name="age">
+<xs:simpleType>
+  <xs:restriction base="xs:integer">
+  .
+  .( здесь располагаются ограничения)
+  .
+  </xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:minInclusive> <xs:maxInclusive>
+
+<xs:element name="age">
+<xs:simpleType>
+  <xs:restriction base="xs:integer">
+    <xs:minInclusive value="16"/>
+    <xs:maxInclusive value="34"/>
+  </xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:minExclusive> <xs:maxExclusive>
+
+<xs:element name="age">
+<xs:simpleType>
+  <xs:restriction base="xs:integer">
+    <xs:minInclusive value="15"/>
+    <xs:maxInclusive value="35"/>
+  </xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:enumeration>
+
+<xs:element name="car">
+<xs:simpleType>
+  <xs:restriction base="xs:string">
+    <xs:enumeration value="Audi"/>
+    <xs:enumeration value="Mercedes"/>
+    <xs:enumeration value="Volvo"/>
+  </xs:restriction>
+</xs:simpleType>
+</xs:element>
+
+<xs:length> <xs:totalDigits> <xs:fractionDigits>
+
+<xs:element name="salary">
+<xs:simpleType>
+  <xs:restriction base="xs:decimal">
+    <xs:length value="6"/>
+    <xs:totalDigits value="5"/>
+    <xs:fractionDigits value="2"/>
+  </xs:restriction>
+</xs:simpleType>
+Атрибуты XML Schema
+name, type, use
+<element name="lastname" type="xs:string" use="required"/>
+<element name="firstname" type="xs:string" use""required"/>
+<element name="dateborn" type="xs:date" use="required"/>
+<element name="salary" type="xs:decimal" use="optional"/>
+
+
+
+
+<attribute
+ default=строка
+ fixed=строка
+ form=qualified | unqualified
+ id=идентификатор
+ name=NCName
+ ref=QName
+ type=QName
+ use=optional | prohibited | required
+ любые атрибуты
+ >
+
+ (annotation?, (simpleType?))
+
+</attribute>
+
+
+
+<simpleType name="contains">
+            <xs:restriction base="xs:string">
+                <xs:enumeration value="caramel"/>
+                <xs:enumeration value="chocolate"/>
+                </xs:restriction>
+        </simpleType>
+
+
+
+
+         <simpleType name="contains">
+                <xs:simpleContent>
+                 <xs:restriction base="xs:string">
+                    <xs:enumeration value="caramel"/>
+                    <xs:enumeration value="chocolate"/>
+                 </xs:restriction>
+                </xs:simpleContent>
+            </simpleType>
+
+            /////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+            <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+            <xs:attribute name="allframesize">
+              <xs:simpleType>
+                <xs:union>
+                  <xs:simpleType>
+                    <xs:restriction base="roadbikesize"/>
+                  </xs:simpleType>
+                  <xs:simpleType>
+                    <xs:restriction base="mountainbikesize"/>
+                  </xs:simpleType>
+                </xs:union>
+              </xs:simpleType>
+            </xs:attribute>
+
+            <xs:simpleType name="roadbikesize">
+              <xs:restriction base="xs:positiveInteger">
+                <xs:enumeration value="46"/>
+                <xs:enumeration value="52"/>
+                <xs:enumeration value="55"/>
+              </xs:restriction>
+            </xs:simpleType>
+
+            <xs:simpleType name="mountainbikesize">
+              <xs:restriction base="xs:string">
+                <xs:enumeration value="small"/>
+                <xs:enumeration value="medium"/>
+                <xs:enumeration value="large"/>
+              </xs:restriction>
+            </xs:simpleType>
+            </xs:schema>
+            ////////////////////////////////////////////////////////////////////////
+
+            <xs:element name="root">
+                <xs:complexType>
+                  <xs:attribute name="qwerty" use="optional" type="mstns:qattext"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:simpleType name="qatt" id="qatt">
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="q"/>
+                  <xs:enumeration value="w"/>
+                  <xs:enumeration value="e"/>
+                </xs:restriction>
+              </xs:simpleType>
+
+              <xs:simpleType name="qattext">
+                <xs:union memberTypes="mstns:qatt">
+                  <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                      <xs:enumeration value="r"/>
+                      <xs:enumeration value="t"/>
+                      <xs:enumeration value="y"/>
+                    </xs:restriction>
+                  </xs:simpleType>
+                </xs:union>
+              </xs:simpleType>
+
+
+
+
+
+
+
