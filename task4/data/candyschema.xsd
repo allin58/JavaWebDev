@@ -1,20 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
 
-
     <xs:element name="candies" >
-
 
         <xs:complexType>
 
-
-
-
-
             <xs:sequence>
 
-                <xs:element name="candy" minOccurs="16" maxOccurs="unbounded">
-                    <xs:complexType>
+                <xs:element name="candy" minOccurs="16" maxOccurs="unbounded">                    <xs:complexType>
 
                         <xs:all>
 
@@ -23,8 +16,6 @@
                                  <xs:simpleType>
                                        <xs:restriction base="contains"/>
                                  </xs:simpleType>
-
-
 
                             </xs:element>
 
