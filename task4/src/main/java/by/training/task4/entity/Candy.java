@@ -1,8 +1,8 @@
-package by.taining.task4.entity;
+package by.training.task4.entity;
 
 public class Candy {
 
-    String id;
+    Integer id;
 
     String name;
     Integer enrgy;
@@ -21,11 +21,11 @@ public class Candy {
 
 
 
-    public String getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 

@@ -1,4 +1,4 @@
-package by.taining.task4.services;
+package by.training.task4.services;
 
 import java.util.ArrayList;
 

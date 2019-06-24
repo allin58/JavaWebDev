@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<candies
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="candyschema.xsd">
+
+
+
+  <candy name = "Alpen Gold" energy="520" production="Kraft Heinz Company" id="ID-1">
+      <type>chocolate</type>
+
+      <value>
+          <proteins>5</proteins>
+          <fats>6</fats>
+          <carbohydrates>60</carbohydrates>
+      </value>
+
+      <ingredients typeOfChocolate="black">
+          <water></water>
+          <sugar></sugar>
+          <fructose></fructose>
+          <vanillin></vanillin>
+      </ingredients>
+
+  </candy>
+
+
+    <candy name = "Cherry hit" energy="367" production= "Spartak" id="ID-2">
+
+
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>0</fats>
+            <carbohydrates>100</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+
+    </candy>
+
+
+
+    <candy name = "Alpen Gold with blueberries" energy="550" production="Kraft Heinz Company" id="ID-3">
+
+
+        <type>chocolate with stuffing</type>
+
+        <value>
+            <proteins>4</proteins>
+            <fats>33</fats>
+            <carbohydrates>57</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="black">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+
+    </candy>
+
+    <candy name = "Alpen cappuccino" energy="539" production="Kraft Heinz Company" id="ID-4">
+
+
+        <type>chocolate with stuffing</type>
+
+        <value>
+            <proteins>4</proteins>
+            <fats>33</fats>
+            <carbohydrates>57</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="black">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+    <candy name = "Alpen Gold with almond" energy="545" production="Kraft Heinz Company" id="ID-5">
+        <type>chocolate</type>
+
+        <value>
+            <proteins>6</proteins>
+            <fats>33</fats>
+            <carbohydrates>58</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="white">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+    <candy name = "Ritter Sport whole nut" energy="577" production="Ritter Sport" id="ID-6">
+        <type>chocolate</type>
+
+        <value>
+            <proteins>9</proteins>
+            <fats>41</fats>
+            <carbohydrates>37</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="black">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+
+    <candy name = "Ritter Sport whole almond" energy="577" production="Ritter Sport" id="ID-7">
+        <type>chocolate</type>
+
+        <value>
+            <proteins>10</proteins>
+            <fats>37</fats>
+            <carbohydrates>45</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="black">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+    <candy name = "Ritter Sport  whole hazelnut" energy="583" production="Ritter Sport" id="ID-8">
+        <type>chocolate</type>
+
+        <value>
+            <proteins>8</proteins>
+            <fats>40</fats>
+            <carbohydrates>48</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="white">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+
+    <candy name = "Ritter Sport  marzipan" energy="496" production="Ritter Sport" id="ID-9">
+        <type>chocolate</type>
+
+        <value>
+            <proteins>7</proteins>
+            <fats>27</fats>
+            <carbohydrates>52</carbohydrates>
+        </value>
+
+        <ingredients typeOfChocolate="black">
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+
+    <candy name = "Fruit berries" energy="380" production="Krasny Oktabr" id="ID-10">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>0</fats>
+            <carbohydrates>96</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+    <candy name = "Takeoff" energy="369" production="Krasny Oktabr" id="ID-11">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>0</fats>
+            <carbohydrates>95</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+    <candy name = "Sun" energy="354" production="Krasny Oktabr" id="ID-12">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>0</fats>
+            <carbohydrates>92</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+    <candy name = "Crow's feet" energy="409" production="Krasny Oktabr" id="ID-13">
+        <type>caramel</type>
+
+        <value>
+            <proteins>2</proteins>
+            <fats>8</fats>
+            <carbohydrates>88</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+    <candy name = "Lemon" energy="356" production="Krasny Oktabr" id="ID-14">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>0</fats>
+            <carbohydrates>93</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+    <candy name = "Baby" energy="376" production="Krasny Oktabr" id="ID-15">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>1</fats>
+            <carbohydrates>97</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+
+
+    <candy name = "Duchess" energy="380" production="Krasny Oktabr" id="ID-16">
+        <type>caramel</type>
+
+        <value>
+            <proteins>0</proteins>
+            <fats>2</fats>
+            <carbohydrates>95</carbohydrates>
+        </value>
+
+        <ingredients>
+            <water></water>
+            <sugar></sugar>
+            <fructose></fructose>
+            <vanillin></vanillin>
+        </ingredients>
+
+    </candy>
+
+</candies>

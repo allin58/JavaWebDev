@@ -1,22 +1,23 @@
-package by.taining.task4.services;
+package by.training.task4.services;
 
-import by.taining.task4.dal.DALParser;
-import by.taining.task4.entity.Candy;
+
+
+import by.training.task4.dal.DALImpl;
+import by.training.task4.entity.Candy;
 
 import javax.xml.XMLConstants;
 import javax.xml.parsers.SAXParser;
 import javax.xml.parsers.SAXParserFactory;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
-import java.io.File;
 import java.util.ArrayList;
 
 public class SAXParserService implements ParseService {
 
 
-    @Override
+
     public ArrayList parse(String filename, String schemaname) {
-        ArrayList<Candy> candies = new ArrayList<>();
+        ArrayList<Candy> candies = new ArrayList<Candy>();
 
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         Schema schema = null;
@@ -26,7 +27,7 @@ public class SAXParserService implements ParseService {
 
         try {
 
-            DALParser dalParser = new DALParser();
+            DALImpl dalParser = new DALImpl();
 
             schema = factory.newSchema(dalParser.getFile(schemaname));
             SAXParserFactory spf = SAXParserFactory.newInstance();

@@ -1,4 +1,4 @@
-package by.taining.task4.dal;
+package by.training.task4.dal;
 
 import java.io.File;
 

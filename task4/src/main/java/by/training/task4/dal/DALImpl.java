@@ -1,8 +1,8 @@
-package by.taining.task4.dal;
+package by.training.task4.dal;
 
 import java.io.File;
 
-public class DALParser implements DAL {
+public class DALImpl implements DAL {
 
 
   public File getFile(String name) {

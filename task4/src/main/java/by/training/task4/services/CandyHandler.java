@@ -1,6 +1,7 @@
-package by.taining.task4.services;
+package by.training.task4.services;
 
-import by.taining.task4.entity.Candy;
+
+import by.training.task4.entity.Candy;
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -40,7 +41,7 @@ private Candy tempCandy;
             }
 
             if ("id".equals(atts.getLocalName(i))) {
-                tempCandy.setId(atts.getValue(i));
+                tempCandy.setId(new Integer(atts.getValue(i).split("-")[1]));
             }
 
             if ("typeOfChocolate".equals(atts.getLocalName(i))) {
