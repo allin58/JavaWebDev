@@ -1,0 +1,18 @@
+ID      Name                           Type                      TypeOfChocolate    Carbohyd  Enrgy        Fats       Fructose   Proteins   Sugar      Vanillin   Water
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ID-1    Alpen Gold                     chocolate                 black              60        520          6          0          5          0          0          0
+ID-2    Cherry hit                     caramel                   null              100        367          0          0          0          0          0          0
+ID-3    Alpen Gold with blueberries    chocolate with stuffing   black              57        550         33          0          4          0          0          0
+ID-4    Alpen cappuccino               chocolate with stuffing   black              57        539         33          0          4          0          0          0
+ID-5    Alpen Gold with almond         chocolate                 white              58        545         33          0          6          0          0          0
+ID-6    Ritter Sport whole nut         chocolate                 black              37        577         41          0          9          0          0          0
+ID-7    Ritter Sport whole almond      chocolate                 black              45        577         37          0         10          0          0          0
+ID-8    Ritter Sport  whole hazelnut   chocolate                 white              48        583         40          0          8          0          0          0
+ID-9    Ritter Sport  marzipan         chocolate                 black              52        496         27          0          7          0          0          0
+ID-10   Fruit berries                  caramel                   null               96        380          0          0          0          0          0          0
+ID-11   Takeoff                        caramel                   null               95        369          0          0          0          0          0          0
+ID-12   Sun                            caramel                   null               92        354          0          0          0          0          0          0
+ID-13   Crow's feet                    caramel                   null               88        409          8          0          2          0          0          0
+ID-14   Lemon                          caramel                   null               93        356          0          0          0          0          0          0
+ID-15   Baby                           caramel                   null               97        376          1          0          0          0          0          0
+ID-16   Duchess                        caramel                   null               95        380          2          0          0          0          0          0

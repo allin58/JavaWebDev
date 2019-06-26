@@ -4,11 +4,11 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
 
-
+    <display-name>Parsers</display-name>
 
     <servlet>
         <servlet-name>parser</servlet-name>
-        <servlet-class>by.training.task4.view.ParserServlet</servlet-class>
+        <servlet-class>by.training.task4.controller.ParserServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
