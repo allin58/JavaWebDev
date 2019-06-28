@@ -15,7 +15,7 @@
 
 
 
-     <%--   <select name="language">
+        <select name="language">
             <option value="russian">russian</option>
             <option value="english" selected>english</option>
 
@@ -26,7 +26,7 @@
             <option value="SAX">SAX</option>
             <option value="DOM" selected>DOM</option>
             <option value="STAX">STAX</option>
-        </select>--%>
+        </select>
 
     <input type="submit" value="parse">
 </form>

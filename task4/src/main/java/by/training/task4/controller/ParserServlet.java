@@ -1,101 +1,124 @@
 package by.training.task4.controller;
 
-import by.training.task4.controller.ParserController;
 import by.training.task4.entity.Candy;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.Part;
 import java.io.*;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.GregorianCalendar;
-import java.util.List;
-import org.apache.commons.fileupload.FileItem;
-import org.apache.commons.fileupload.disk.DiskFileItemFactory;
-import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import java.util.Locale;
+import java.util.ResourceBundle;
+import by.training.task4.services.*;
+import org.apache.commons.io.FileUtils;
 
+/** This class extends from HttpServlet and implements doGet and doPost methods.
+  */
+@MultipartConfig
 public class ParserServlet extends HttpServlet {
 
 
+    /**The method that handles GET requests.
+     *
+     * @param req object of request
+     * @param resp object of response
+     * @throws ServletException ServletException
+     * @throws IOException IOException
+     */
+    public void doGet(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
 
 
-
-    private static final int MEMORY_THRESHOLD   = 1024 * 1024 * 3;  // 3MB
-    private static final int MAX_FILE_SIZE      = 1024 * 1024 * 40; // 40MB
-    private static final int MAX_REQUEST_SIZE   = 1024 * 1024 * 50; // 50MB
-    // location to store file uploaded
-    private static final String UPLOAD_DIRECTORY = "upload";
-
-    public void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
-     /*   resp.setContentType("text/html;charset=utf-8");
-        PrintWriter pw = resp.getWriter();
-        ParserController parserController = new ParserController();
-        ArrayList<Candy> arrayList = parserController.parse();
-        for (Candy candy : arrayList) {
-            pw.println("<H1>"+candy.getName()+" "+candy.getEnrgy() +"</H1>");
-        }*/
-
-       // pw.println("<H1>Hello, world!</H1>");
 
 
         RequestDispatcher requestDispatcher = req.getRequestDispatcher("views/index.jsp");
         requestDispatcher.forward(req, resp);
     }
 
-
+    /**The method that handles POST requests.
+     *
+     * @param req object of request
+     * @param resp object of response
+     * @throws ServletException ServletException
+     * @throws IOException IOException
+     */
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-       /* GregorianCalendar gc = new GregorianCalendar();
-        String timeJsp = req.getParameter("time");
-        float delta = ((float)(gc.getTimeInMillis() - Long.parseLong(timeJsp)))/1000;
-        req.setAttribute("res", delta);
-        req.getRequestDispatcher("/views/result.jsp").forward(req, resp);*/
-
-      /*  System.out.println( req.getParameter("typeOfParser"));
-        System.out.println( req.getParameter("language"));*/
+    protected void doPost(final HttpServletRequest req, final HttpServletResponse resp) throws ServletException, IOException {
 
 
+        String schemaname = "data/candyschema.xsd";
+        String parser;
+        String language;
 
-      /////////////////////////////////////////////////////////////////////////////////////////////
+        BufferedReader bufferedReader1 = new BufferedReader(new InputStreamReader(req.getPart("language").getInputStream()));
+        language = bufferedReader1.readLine();
+        bufferedReader1.close();
+
+        BufferedReader bufferedReader2 = new BufferedReader(new InputStreamReader(req.getPart("typeOfParser").getInputStream()));
+        parser = bufferedReader2.readLine();
+        bufferedReader2.close();
+
+        File file = File.createTempFile("txt", "txt");
+        FileUtils.copyInputStreamToFile(req.getPart("file").getInputStream(), file);
 
 
-        if(ServletFileUpload.isMultipartContent(req)){
-            try {
-                List<FileItem> multiparts = new ServletFileUpload(
-                        new DiskFileItemFactory()).parseRequest(req);
 
-                for(FileItem item : multiparts){
-                    if(!item.isFormField()){
-                        String name = new File(item.getName()).getName();
-                        item.write( new File(UPLOAD_DIRECTORY + File.separator + name));
-                    }
-                }
 
-                //File uploaded successfully
-                req.setAttribute("message", "File Uploaded Successfully");
-            } catch (Exception ex) {
-                req.setAttribute("message", "File Upload Failed due to " + ex);
-            }
+        AbstractCandiesBuilder candiesBuilder = new CandyBuilderFactory().createCandyBuilder(parser);
+        candiesBuilder.buildListCandies(file, schemaname);
+        ArrayList<Candy> arrayList = candiesBuilder.getCandies();
 
-        }else{
-            req.setAttribute("message",
-                    "Sorry this Servlet only handles file upload request");
+
+
+        Locale locale = null;
+        if ("russian".equals(language)) {
+            locale = new Locale("ru");
+        }
+        if ("english".equals(language)) {
+            locale = new Locale("en");
         }
 
-        req.getRequestDispatcher("views/result.jsp").forward(req, resp);
+        ResourceBundle resourceBundle = ResourceBundle.getBundle("text", locale, new UTF8Control());
 
 
-
-
+        req.setAttribute("name", resourceBundle.getString("candy.name"));
+        req.setAttribute("energy", resourceBundle.getString("candy.energy"));
+        req.setAttribute("production", resourceBundle.getString("candy.production"));
+        req.setAttribute("id", resourceBundle.getString("candy.id"));
+        req.setAttribute("type", resourceBundle.getString("candy.type"));
+        req.setAttribute("proteins", resourceBundle.getString("candy.proteins"));
+        req.setAttribute("fats", resourceBundle.getString("candy.fats"));
+        req.setAttribute("typeOfChocolate", resourceBundle.getString("candy.typeOfChocolate"));
+        req.setAttribute("water", resourceBundle.getString("candy.water"));
+        req.setAttribute("sugar", resourceBundle.getString("candy.sugar"));
+        req.setAttribute("fructose", resourceBundle.getString("candy.fructose"));
+        req.setAttribute("vanillin", resourceBundle.getString("candy.vanillin"));
+        req.setAttribute("carbohydrates", resourceBundle.getString("candy.carbohydrates"));
+        req.setAttribute("typeOfParser", parser);
+        req.setAttribute("candyList", arrayList);
+        req.getRequestDispatcher("/views/result.jsp").forward(req, resp);
 
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     }

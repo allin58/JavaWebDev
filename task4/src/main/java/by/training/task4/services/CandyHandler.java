@@ -8,22 +8,59 @@ import org.xml.sax.helpers.DefaultHandler;
 
 import java.util.ArrayList;
 
-public class CandyHandler extends DefaultHandler {
-private String thisElement;
-private ArrayList<Candy> candies;
-private Candy tempCandy;
 
-    public CandyHandler(ArrayList<Candy> candies) {
+/**Class for SAX2 event handlers.
+ *
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
+public class CandyHandler extends DefaultHandler {
+
+    /**
+     * Current element.
+     */
+    private String thisElement;
+
+    /**
+     * Collection of candy.
+     */
+    private ArrayList<Candy> candies;
+
+    /**
+     * Temp candy.
+     */
+    private Candy tempCandy;
+
+
+    /**
+     * Constuctor with parameter.
+     * @param candies candies
+     */
+    public CandyHandler(final ArrayList<Candy> candies) {
         this.candies = candies;
     }
 
+
+    /**
+     * Receive notification of the beginning of the document.
+     * @throws SAXException SAXException
+     */
     @Override
     public void startDocument() throws SAXException {
-        System.out.println("Start parse XML...");
+
     }
 
+
+    /**
+     * Receive notification of the start of an element.
+     * @param namespaceURI namespaceURI
+     * @param localName localName
+     * @param qName qName
+     * @param atts atts
+     * @throws SAXException SAXException
+     */
     @Override
-    public void startElement(String namespaceURI, String localName, String qName, Attributes atts) throws SAXException {
+    public void startElement(final String namespaceURI, final String localName, final String qName, final Attributes atts) throws SAXException {
         thisElement = qName;
 
         for (int i = 0; i < atts.getLength(); i++) {
@@ -33,7 +70,7 @@ private Candy tempCandy;
            }
 
             if ("energy".equals(atts.getLocalName(i))) {
-                tempCandy.setEnrgy(new Integer(atts.getValue(i)));
+                tempCandy.setEnergy(new Integer(atts.getValue(i)));
             }
 
             if ("production".equals(atts.getLocalName(i))) {
@@ -53,18 +90,39 @@ private Candy tempCandy;
 
     }
 
+
+    /**
+     * Receive notification of the end of the document.
+     * @throws SAXException SAXException
+     */
     @Override
     public void endDocument() throws SAXException {
         super.endDocument();
     }
 
+
+    /**
+     * Receive notification of the end of an element.
+     * @param uri uri
+     * @param localName localName
+     * @param qName qName
+     * @throws SAXException SAXException
+     */
     @Override
-    public void endElement(String uri, String localName, String qName) throws SAXException {
+    public void endElement(final String uri, final String localName, final String qName) throws SAXException {
         thisElement = "";
     }
 
+
+    /**
+     * Receive notification of character data inside an element.
+     * @param ch ch
+     * @param start start
+     * @param length length
+     * @throws SAXException SAXException
+     */
     @Override
-    public void characters(char[] ch, int start, int length) throws SAXException {
+    public void characters(final char[] ch, final int start, final int length) throws SAXException {
 
 
         if (thisElement.equals("type")) {

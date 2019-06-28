@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Properties>
+        <Property name="patternfull">
+            %d{yyyy-MM-dd HH:mm:ss.SSS} [%t] %-5level %logger{5} - %msg%n
+        </Property>
+        <Property name="patternshort">
+            %d{HH:mm:ss.SSS} [%t] %-5level %logger{1} - %msg%n
+        </Property>
+    </Properties>
+
+    <Appenders>
+
+
+        <File name="sax" fileName="logs/SAXParserLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+
+        <File name="stax" fileName="logs/STAXParserLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+        <File name="dom" fileName="logs/DOMParserLogs.log" bufferedIO="true">
+            <PatternLayout pattern="${patternfull}" />
+        </File>
+
+
+
+
+    </Appenders>
+
+    <Loggers>
+
+        <Logger name="by.training.task4.services.CandyDOMBuilder" level="debug"
+                additivity="true">
+               <AppenderRef ref="dom" />
+        </Logger>
+
+        <Logger name="by.training.task4.services.CandySAXBuilder" level="debug"
+                additivity="true">
+            <AppenderRef ref="sax" />
+        </Logger>
+
+        <Logger name="by.training.task4.services.CandySTAXBuilder" level="debug"
+                additivity="true">
+            <AppenderRef ref="stax" />
+        </Logger>
+
+
+
+
+
+        <!-- Root Logger -->
+        <Root level="all">
+            <!--<AppenderRef ref="Console" />
+            <AppenderRef ref="TxtFile" />-->
+        </Root>
+    </Loggers>
+
+
+</Configuration>

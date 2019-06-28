@@ -1,32 +1,41 @@
 package by.training.task4.services;
 
-
-
 import by.training.task4.dal.DALImpl;
 import by.training.task4.entity.Candy;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.xml.XMLConstants;
-
-
 import javax.xml.stream.XMLInputFactory;
 import javax.xml.stream.XMLStreamReader;
 import javax.xml.validation.Schema;
 import javax.xml.validation.SchemaFactory;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.util.ArrayList;
-import java.util.Iterator;
-
-public class STAXParserService implements ParseService {
 
 
-    public ArrayList parse(String filename, String schemaname) {
-        ArrayList<Candy> candies = new ArrayList<Candy>();
+/** CandySTAXBuilder class which extends AbstractCandiesBuilder.
+ *
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
+public class CandySTAXBuilder extends AbstractCandiesBuilder {
 
+    /**
+     * Logger for STAX parser.
+     */
+    static Logger LOGGER = LogManager.getLogger("by.training.task4.services.CandySTAXBuilder");
+
+
+    /**
+     * Method which implementations parse xml file.
+     * @param file file
+     * @param schemaname schemaname
+     */
+    public void buildListCandies(File file, String schemaname) {
         Candy tempCandy = null;
 
-        File file = new File(filename);
+
         XMLInputFactory factory = XMLInputFactory.newInstance();
         String language = XMLConstants.W3C_XML_SCHEMA_NS_URI;
         DALImpl dalImpl = new DALImpl();
@@ -63,7 +72,7 @@ public class STAXParserService implements ParseService {
                             tempCandy.setProduction(production);
 
                             String energy = streamReader.getAttributeValue(null,"energy");
-                            tempCandy.setEnrgy(Integer.valueOf(energy));
+                            tempCandy.setEnergy(Integer.valueOf(energy));
 
                         }
 
@@ -94,7 +103,7 @@ public class STAXParserService implements ParseService {
                     }
 
                     if(streamReader.getLocalName().equalsIgnoreCase("water")) {
-                       String water =streamReader.getElementText();
+                        String water =streamReader.getElementText();
                         if (!"".equals(water)) {
                             Double aDouble = Double.parseDouble(water);
                             Integer integer = aDouble.intValue();
@@ -146,25 +155,20 @@ public class STAXParserService implements ParseService {
                 if(streamReader.getEventType() == XMLStreamReader.END_ELEMENT)
                 {
                     if(streamReader.getLocalName().equalsIgnoreCase("candy")) {
-                        candies.add(tempCandy);
+                        super.getCandies().add(tempCandy);
                     }
                 }
 
 
             }
-
+            LOGGER.debug("File is parsed");
 
 
 
 
         } catch (Exception e) {
-            e.printStackTrace();
+            LOGGER.debug("Error of parsing");
         }
 
-
-
-
-
-        return candies;
     }
 }

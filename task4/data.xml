@@ -12,10 +12,10 @@
       </value>
 
       <ingredients typeOfChocolate="black">
-          <water></water>
-          <sugar></sugar>
+          <water>7</water>
+          <sugar>5</sugar>
           <fructose></fructose>
-          <vanillin></vanillin>
+          <vanillin>10</vanillin>
       </ingredients>
 
   </candy>
@@ -33,9 +33,9 @@
         </value>
 
         <ingredients>
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
+            <water>4</water>
+            <sugar>7</sugar>
+            <fructose>3</fructose>
             <vanillin></vanillin>
         </ingredients>
 
@@ -77,10 +77,10 @@
         </value>
 
         <ingredients typeOfChocolate="black">
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <water>1</water>
+            <sugar>1</sugar>
+            <fructose>1</fructose>
+            <vanillin>1</vanillin>
         </ingredients>
 
     </candy>
@@ -95,10 +95,10 @@
         </value>
 
         <ingredients typeOfChocolate="white">
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <water>5</water>
+            <sugar>5</sugar>
+            <fructose>5</fructose>
+            <vanillin>1</vanillin>
         </ingredients>
 
     </candy>
@@ -134,10 +134,10 @@
         </value>
 
         <ingredients typeOfChocolate="black">
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <water>9</water>
+            <sugar>10</sugar>
+            <fructose>10</fructose>
+            <vanillin>6</vanillin>
         </ingredients>
 
     </candy>
@@ -155,7 +155,7 @@
         <ingredients typeOfChocolate="white">
             <water></water>
             <sugar></sugar>
-            <fructose></fructose>
+            <fructose>5</fructose>
             <vanillin></vanillin>
         </ingredients>
 
@@ -173,10 +173,10 @@
         </value>
 
         <ingredients typeOfChocolate="black">
-            <water></water>
+            <water>3</water>
             <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <fructose>4</fructose>
+            <vanillin>2</vanillin>
         </ingredients>
 
     </candy>
@@ -193,10 +193,10 @@
         </value>
 
         <ingredients>
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <water>5</water>
+            <sugar>5</sugar>
+            <fructose>5</fructose>
+            <vanillin>5</vanillin>
         </ingredients>
 
     </candy>
@@ -212,10 +212,10 @@
         </value>
 
         <ingredients>
-            <water></water>
-            <sugar></sugar>
+            <water>0</water>
+            <sugar>5</sugar>
             <fructose></fructose>
-            <vanillin></vanillin>
+            <vanillin>10</vanillin>
         </ingredients>
 
     </candy>
@@ -249,10 +249,10 @@
         </value>
 
         <ingredients>
-            <water></water>
+            <water>1</water>
             <sugar></sugar>
             <fructose></fructose>
-            <vanillin></vanillin>
+            <vanillin>5</vanillin>
         </ingredients>
 
     </candy>
@@ -267,9 +267,9 @@
         </value>
 
         <ingredients>
-            <water></water>
+            <water>4</water>
             <sugar></sugar>
-            <fructose></fructose>
+            <fructose>6</fructose>
             <vanillin></vanillin>
         </ingredients>
 
@@ -286,10 +286,10 @@
         </value>
 
         <ingredients>
-            <water></water>
-            <sugar></sugar>
-            <fructose></fructose>
-            <vanillin></vanillin>
+            <water>2</water>
+            <sugar>2</sugar>
+            <fructose>2</fructose>
+            <vanillin>5</vanillin>
         </ingredients>
 
     </candy>
@@ -306,10 +306,10 @@
         </value>
 
         <ingredients>
-            <water></water>
-            <sugar></sugar>
+            <water>1</water>
+            <sugar>2</sugar>
             <fructose></fructose>
-            <vanillin></vanillin>
+            <vanillin>10</vanillin>
         </ingredients>
 
     </candy>
