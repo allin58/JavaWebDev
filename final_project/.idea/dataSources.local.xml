@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="market@localhost" uuid="caf90801-8491-4d7b-9a10-6f8d0aab579e">
+      <database-info product="MariaDB" version="10.4.6-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.4.1">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>market</user-name>
+      <introspection-schemas>*:market</introspection-schemas>
+    </data-source>
+  </component>
+</project>

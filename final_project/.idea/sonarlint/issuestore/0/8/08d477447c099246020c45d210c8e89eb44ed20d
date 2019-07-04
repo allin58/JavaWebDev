@@ -1,0 +1,18 @@
+
+fsquid:S2259œ"GA "NullPointerException" could be thrown; "statement" is nullable here.(³úÀ‹8€”ËÀ»-
+Msquid:S00108.")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8üÈ«À»-
+Msquid:S00108t")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8¤¥‡¿»-
+esquid:S2259-"GA "NullPointerException" could be thrown; "resultSet" is nullable here.(èå²×8üÈ«À»-
+Fsquid:S1481z"(Remove this unused "sql" local variable.(Ö£¼ë8ÿâÆÀ»-
+Msquid:S001081")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8üÈ«À»-
+Nsquid:S00108‰")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8‰šÀÀ»-
+Msquid:S00108P")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8û´„¿»-
+esquid:S2259p"GA "NullPointerException" could be thrown; "resultSet" is nullable here.(èå²×8¤¥‡¿»-
+Msquid:S00108q")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8¤¥‡¿»-
+esquid:S2259O"GA "NullPointerException" could be thrown; "resultSet" is nullable here.(èå²×8û´„¿»-
+fsquid:S2259ˆ"GA "NullPointerException" could be thrown; "statement" is nullable here.(³úÀ‹8‰šÀÀ»-
+Zsquid:UselessImportCheck"*Remove this unused import 'entity.Entity'.(—õ“Ÿþÿÿÿÿ8û´„¿»-
+Msquid:S00108S")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8û´„¿»-
+esquid:S2259}"GA "NullPointerException" could be thrown; "statement" is nullable here.(Îà¥‡8ÿâÆÀ»-
+nsquid:CommentedOutCodeLineH"<This block of commented-out lines of code should be removed.(Ÿ‹’·þÿÿÿÿ8û´„¿»-
+Nsquid:S00108")Either remove or fill this block of code.(ô‡¤§úÿÿÿÿ8€”ËÀ»-
