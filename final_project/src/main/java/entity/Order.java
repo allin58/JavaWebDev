@@ -2,19 +2,19 @@ package entity;
 
 public class Order extends Entity {
 
-    String userName;
+    Integer userId;
     String pair;
-    Float amount;
-    Float price;
+    Double amount;
+    Double price;
     String type;
     String state;
 
-    public String getUserName() {
-        return userName;
+    public Integer getUserId() {
+        return userId;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
 
     public String getPair() {
@@ -25,19 +25,19 @@ public class Order extends Entity {
         this.pair = pair;
     }
 
-    public Float getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Float amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
-    public Float getPrice() {
+    public Double getPrice() {
         return price;
     }
 
-    public void setPrice(Float price) {
+    public void setPrice(Double price) {
         this.price = price;
     }
 

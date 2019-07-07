@@ -3,9 +3,9 @@ package entity;
 public class Wallet extends Entity {
 
     //Integer userId;
-    Float btc;
-    Float eth;
-    Float usdt;
+    private  Double btc;
+    private  Double eth;
+    private  Double usdt;
 
    /* public Integer getUserId() {
         return userId;
@@ -15,27 +15,60 @@ public class Wallet extends Entity {
         this.userId = userId;
     }*/
 
-    public Float getBtc() {
+    public Double getBtc() {
         return btc;
     }
 
-    public void setBtc(Float btc) {
+    public void setBtc(Double btc) {
         this.btc = btc;
     }
 
-    public Float getEth() {
+    public Double getEth() {
         return eth;
     }
 
-    public void setEth(Float eth) {
+    public void setEth(Double eth) {
         this.eth = eth;
     }
 
-    public Float getUsdt() {
+    public Double getUsdt() {
         return usdt;
     }
 
-    public void setUsdt(Float usdt) {
+    public void setUsdt(Double usdt) {
         this.usdt = usdt;
     }
+
+    public void reduceCurrency(Double value, String ticker) {
+
+        switch (ticker) {
+            case "BTC" : btc = btc - value;
+                break;
+
+            case "ETH" : eth = eth - value;
+                break;
+
+            case "USDT" : usdt = usdt - value;;
+                break;
+
+        }
+    }
+
+    public void increaseCurrency(Double value, String ticker) {
+
+        switch (ticker) {
+            case "BTC" : btc = btc + value;
+                break;
+
+            case "ETH" : eth = eth + value;
+                break;
+
+            case "USDT" : usdt = usdt + value;;
+                break;
+
+        }
+    }
+
+
+
 }

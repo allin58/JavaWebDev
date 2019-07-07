@@ -5,6 +5,7 @@ import entity.User;
 import entity.Wallet;
 import exception.PersistentException;
 
+import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -37,9 +38,9 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
 
                 wallet = new Wallet();
                 wallet.setIdentity(Integer.valueOf(resultSet.getString("user_id")));
-                wallet.setBtc(Float.valueOf(resultSet.getString("BTC")));
-                wallet.setEth(Float.valueOf(resultSet.getString("ETH")));
-                wallet.setUsdt(Float.valueOf(resultSet.getString("USDT")));
+                wallet.setBtc(resultSet.getBigDecimal("BTC").doubleValue());
+                wallet.setEth(resultSet.getBigDecimal("ETH").doubleValue());
+                wallet.setUsdt(resultSet.getBigDecimal("USDT").doubleValue());
 
 
                 arrayList.add(wallet);
@@ -66,10 +67,10 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
         try {
             statement = connection.prepareStatement(createSql, Statement.RETURN_GENERATED_KEYS);
 
-            statement.setString(1, wallet.getIdentity().toString());
-            statement.setString(2, wallet.getBtc().toString());
-            statement.setString(3, wallet.getEth().toString());
-            statement.setString(4, wallet.getUsdt().toString());
+            statement.setInt(1, wallet.getIdentity());
+            statement.setBigDecimal(2, new BigDecimal(wallet.getBtc()));
+            statement.setBigDecimal(3, new BigDecimal(wallet.getEth()));
+            statement.setBigDecimal(4, new BigDecimal(wallet.getUsdt()));
 
 
 
@@ -101,9 +102,9 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             if(resultSet.next()) {
                 wallet = new Wallet();
                 wallet.setIdentity(identity);
-                wallet.setBtc(Float.valueOf(resultSet.getString("BTC")));
-                wallet.setEth(Float.valueOf(resultSet.getString("ETH")));
-                wallet.setUsdt(Float.valueOf(resultSet.getString("USDT")));
+                wallet.setBtc(resultSet.getBigDecimal("BTC").doubleValue());
+                wallet.setEth(resultSet.getBigDecimal("ETH").doubleValue());
+                wallet.setUsdt(resultSet.getBigDecimal("USDT").doubleValue());
 
             }
             return wallet;
@@ -125,10 +126,10 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(updateSql);
-            statement.setFloat(4, wallet.getIdentity());
-            statement.setFloat(1, wallet.getBtc());
-            statement.setFloat(2, wallet.getEth());
-            statement.setFloat(3, wallet.getUsdt());
+            statement.setInt(4, wallet.getIdentity());
+            statement.setBigDecimal(1, new BigDecimal(wallet.getBtc()));
+            statement.setBigDecimal(2, new BigDecimal(wallet.getEth()));
+            statement.setBigDecimal(3, new BigDecimal(wallet.getUsdt()));
             statement.executeUpdate();
         } catch(SQLException e) {
             throw new PersistentException(e);

@@ -1,23 +1,16 @@
 package dao;
 
 import entity.Order;
+import entity.User;
 import exception.PersistentException;
 
 import java.util.List;
 
-public interface OrderDao extends Dao  {
-
-    Order read(String userName) throws PersistentException;
+public interface OrderDao extends Dao<Order>   {
 
     List<Order> read() throws PersistentException;
 
-    List<Order> readByType() throws PersistentException;
 
-
-    List<Order> readByState() throws PersistentException;
-
-
-    List<Order> readByStateAndName() throws PersistentException;
 
 
 
