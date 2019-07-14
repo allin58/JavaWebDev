@@ -13,6 +13,10 @@ public class CommandFactory {
        commands.put("login", new LoginCommand());
 
         commands.put("logout", new LogoutCommand());
+        commands.put("toregistration", new ToRegistrationCommand());
+        commands.put("registration", new RegistrationCommand());
+
+
   /*      commands.put("setLanguage", new SetLanguageCommand());
         commands.put("showIndexPage", new ShowIndexPageCommand());
 */

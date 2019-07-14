@@ -22,7 +22,9 @@ public class LoginCommand implements Command {
 
             if (username != null && password != null) {
                 UserService userService = new UserService();
-                Integer id = userService.getIdByUserName(username, password);
+
+               Integer id = userService.getIdByUserNameAndPassword(username, password);
+
                 User user = userService.getUserById(id);
                 if (user != null) {
                     request.getSession().setAttribute("user", user);
@@ -38,8 +40,8 @@ public class LoginCommand implements Command {
 
 
         request.getSession().setAttribute("message","ошибка входа");
-/*добавить сообщение ошибки*/
-        return "views/login.jsp";
+
+        return "login.jsp";
 
 
 

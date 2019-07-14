@@ -59,16 +59,25 @@ public class MarketServlet extends HttpServlet {
         Command command;
 
         String commandName = request.getParameter("command");
+
         String path = "views/error.jsp";
         command = commandFactory.createCommand(commandName);
-        System.out.println(commandName);
+
+
+
         try {
             path = command.execute(request, response);
+
         } catch (Exception e) {
 
         }
 
-            response.sendRedirect(response.encodeRedirectURL(path));
+
+   /*     RequestDispatcher rd = request.getRequestDispatcher(path);
+        rd.forward(request, response);*/
+
+           response.sendRedirect(response.encodeRedirectURL(path));
+            //response.sendRedirect(path);
 
 
        }

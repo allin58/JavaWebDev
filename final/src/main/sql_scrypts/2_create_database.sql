@@ -1,0 +1,6 @@
+CREATE DATABASE `market` DEFAULT CHARACTER SET utf8;
+
+GRANT SELECT,INSERT,UPDATE,DELETE
+ON `market`.*
+TO market@localhost
+IDENTIFIED BY 'market';
