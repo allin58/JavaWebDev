@@ -13,22 +13,19 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class SetOrderTransaction implements DataBaseTransaction {
+public class SetOrderTransaction extends DataBaseTransaction {
 
 
     private static  String createSql = "INSERT INTO `orders` (`user_id`,`pair`,`amount`,`price`,`type`,`state`) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-
-
-
     public SetOrderTransaction(Connection connection) {
+        super(connection);
 
-        this.connection = connection;
     }
 
     private Order order;
-    private Connection connection;
+
 
     public Order getOrder() {
         return order;
@@ -68,6 +65,7 @@ public class SetOrderTransaction implements DataBaseTransaction {
             }
             walletDao.update(wallet);
             connection.commit();
+            connection.setAutoCommit(true);
 
 
         } catch (Exception e) {

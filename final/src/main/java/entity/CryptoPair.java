@@ -2,9 +2,9 @@ package entity;
 
 public class CryptoPair extends  Entity {
 
-    Integer firstCurrency;
-    Integer secondCurrency;
-    Boolean active;
+    private Integer firstCurrency;
+    private Integer secondCurrency;
+    private Boolean active;
 
 
     public Integer getFirstCurrency() {

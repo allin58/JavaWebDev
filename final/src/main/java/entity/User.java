@@ -1,11 +1,11 @@
 package entity;
 
 public class User extends Entity {
-    String userName;
-    String name;
-    String surname;
-    String hashOfPassword;
-    String role;
+    private  String userName;
+    private  String name;
+    private  String surname;
+    private   String hashOfPassword;
+    private   String role;
 
 
     public String getName() {

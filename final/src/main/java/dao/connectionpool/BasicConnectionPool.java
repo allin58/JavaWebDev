@@ -17,8 +17,8 @@ public class BasicConnectionPool  implements ConnectionPool {
     private String password;
 
     private static BasicConnectionPool basicConnectionPool;
- /*   private List<Connection> connectionPool;
-    private List<Connection> usedConnections = new ArrayList<>();*/
+    //private List<Connection> connectionPool;
+   // private List<Connection> usedConnections = new ArrayList<>();
 
     private ArrayBlockingQueue<Connection> connectionPool;
     private ArrayBlockingQueue<Connection> usedConnections;
@@ -29,13 +29,15 @@ public class BasicConnectionPool  implements ConnectionPool {
 
         if (basicConnectionPool == null) {
             ArrayBlockingQueue<Connection> pool = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+            //ArrayList<Connection> pool = new ArrayList<>(INITIAL_POOL_SIZE);
 
             for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
                 pool.add(createConnection(url, user, password));
             }
 
             basicConnectionPool = new BasicConnectionPool(url, user, password, pool);
-            basicConnectionPool.usedConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+           basicConnectionPool.usedConnections = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
+            //basicConnectionPool.usedConnections = new ArrayList<>(INITIAL_POOL_SIZE);
 
         }
     }
@@ -44,6 +46,7 @@ public class BasicConnectionPool  implements ConnectionPool {
         return basicConnectionPool;
     }
 
+    //private BasicConnectionPool(String url, String user, String password, ArrayList<Connection> connectionPool) {
     private BasicConnectionPool(String url, String user, String password, ArrayBlockingQueue<Connection> connectionPool) {
         this.url = url;
         this.user = user;
@@ -59,7 +62,7 @@ public class BasicConnectionPool  implements ConnectionPool {
            throw new PersistentException();
         }
 
-      //  Connection connection = connectionPool.remove(connectionPool.size() - 1);
+       // Connection connection = connectionPool.remove(connectionPool.size() - 1);
         Connection connection = connectionPool.poll();
 
         usedConnections.add(connection);

@@ -1,6 +1,8 @@
 package command;
 
 import entity.User;
+import service.CryptoPairService;
+import service.TransactionService;
 import service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -19,7 +21,7 @@ public class LoginCommand implements Command {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
-
+        request.getSession().setAttribute("message",null);
             if (username != null && password != null) {
                 UserService userService = new UserService();
 
@@ -29,9 +31,13 @@ public class LoginCommand implements Command {
                 if (user != null) {
                     request.getSession().setAttribute("user", user);
                   switch (user.getRole()) {
-                      case "admin" :   return "views/admin.jsp";
+                      case "admin" :
+                          request.getSession().setAttribute("transactionData", new TransactionService().getPendingTransactions());
+                          return "views/admin.jsp";
 
-                      case "sec" :   return "views/sec.jsp";
+                      case "sec" :
+                          request.getSession().setAttribute("secData", new CryptoPairService().getAllPairs());
+                          return "views/sec.jsp";
 
                       case "user" :   return "views/market.jsp";
                   }

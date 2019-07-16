@@ -4,12 +4,20 @@ import java.sql.Timestamp;
 
 public class Transaction extends Entity {
 
-    Integer userId;
-    Integer coinId;
-    Double amount;
-    String type;
-    Timestamp timestamp;
+    private Integer userId;
+    private Integer coinId;
+    private Double amount;
+    private String type;
+    private Timestamp timestamp;
+    private String status;
 
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
 
     public Integer getUserId() {
         return userId;

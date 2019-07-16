@@ -14,10 +14,10 @@ import java.util.List;
 
 public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
-    private static  String createSql = "INSERT INTO `transactions` (`user_id`, `coin_id`, `amount`, `type`, `date`) VALUES (?, ?, ?, ?, ?)";
-    private static  String readListSql = "SELECT `identity`,`user_id`, `coin_id`, `amount`, `type`, `date` FROM `transactions`";
-    private static  String readSql = "SELECT `identity`,`user_id`, `coin_id`, `amount`, `type`, `date` FROM `transactions` WHERE `identity` = ?";
-    private static  String updateSql = "UPDATE `transactions` SET `user_id` = ?, `coin_id` = ?, `amount` = ?, `type` = ?, `date` = ? WHERE `identity` = ?";
+    private static  String createSql = "INSERT INTO `transactions` (`user_id`, `coin_id`, `amount`, `type`, `date`, `status`) VALUES (?, ?, ?, ?, ?, ?)";
+    private static  String readListSql = "SELECT `identity`,`user_id`, `coin_id`, `amount`, `type`, `date`, `status` FROM `transactions`";
+    private static  String readSql = "SELECT `identity`,`user_id`, `coin_id`, `amount`, `type`, `date`, `status` FROM `transactions` WHERE `identity` = ?";
+    private static  String updateSql = "UPDATE `transactions` SET `user_id` = ?, `coin_id` = ?, `amount` = ?, `type` = ?, `date` = ?, `status`= ? WHERE `identity` = ?";
     private static  String deleteSql = "DELETE FROM `transactions` WHERE `identity` = ?";
 
 
@@ -46,6 +46,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
                 transaction.setCoinId((resultSet.getInt("coin_id")));
                 transaction.setAmount((resultSet.getBigDecimal("amount")).doubleValue());
                 transaction.setType((resultSet.getString("type")));
+                transaction.setStatus((resultSet.getString("status")));
                 transaction.setTimestamp((resultSet.getTimestamp("date")));
 
                 arrayList.add(transaction);
@@ -78,6 +79,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             statement.setBigDecimal(3, new BigDecimal(transaction.getAmount()));
             statement.setString(4, transaction.getType());
             statement.setTimestamp(5, transaction.getTimestamp());
+            statement.setString(6, transaction.getStatus());
 
             statement.executeUpdate();
             resultSet = statement.getGeneratedKeys();
@@ -117,6 +119,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
                 transaction.setAmount((resultSet.getBigDecimal("amount")).doubleValue());
                 transaction.setType((resultSet.getString("type")));
                 transaction.setTimestamp((resultSet.getTimestamp("date")));
+                transaction.setStatus((resultSet.getString("status")));
 
             }
             return transaction;
@@ -144,7 +147,9 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             statement.setBigDecimal(3, new BigDecimal(transaction.getAmount()));
             statement.setString(4, transaction.getType());
             statement.setTimestamp(5, transaction.getTimestamp());
-            statement.setInt(6, transaction.getIdentity());
+            statement.setString(6, transaction.getStatus());
+            statement.setInt(7, transaction.getIdentity());
+
 
             statement.executeUpdate();
         } catch(SQLException e) {

@@ -2,8 +2,17 @@ package dao.transaction;
 
 import exception.PersistentException;
 
-public interface DataBaseTransaction {
+import java.sql.Connection;
 
-    public void commit() throws PersistentException;
-    public void rollback() throws PersistentException;
+abstract public class DataBaseTransaction {
+
+
+    public Connection connection;
+
+    public DataBaseTransaction(Connection connection) {
+        this.connection = connection;
+    }
+
+    abstract void commit() throws PersistentException;
+    abstract void rollback() throws PersistentException;
 }

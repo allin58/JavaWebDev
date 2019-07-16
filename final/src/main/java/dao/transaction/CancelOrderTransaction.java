@@ -10,16 +10,13 @@ import exception.PersistentException;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-public class CancelOrderTransaction implements DataBaseTransaction {
+public class CancelOrderTransaction extends DataBaseTransaction {
 
     private Order order;
-    private Connection connection;
-
 
     public CancelOrderTransaction(Connection connection) {
-        this.connection = connection;
+        super(connection);
     }
-
 
     public Order getOrder() {
         return order;
@@ -55,6 +52,7 @@ public class CancelOrderTransaction implements DataBaseTransaction {
             walletDao.update(wallet);
             orderDao.update(order);
             connection.commit();
+            connection.setAutoCommit(true);
 
 
         } catch (SQLException e) {

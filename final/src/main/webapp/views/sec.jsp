@@ -2,15 +2,51 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html title="Вход в систему">
-    <H2>sec</H2>
+    <H2>Security Exchange Commission </H2>
     ${user.role}
 
-    <c:url value="/login.html?command=logout" var="Url"/>
+    <c:url value="/login.html?command=logout" var="logoutUrl"/>
+    <c:url value="/login.html?command=towallet" var="walletUrl"/>
+    <c:url value="/login.html?command=tocabinet" var="tocabinet"/>
+    <c:url value="/login.html?command=tomarket" var="marketUrl"/>
+    <c:url value="/login.html?command=togglepair&identity=" var="toggleUrl"/>
 
 
-    <FORM action="${Url}" method="post">
+    <c:if test = "${user.role != 'user'}">
+        <FORM action="${tocabinet}" method="post">
+            <BUTTON type="submit">в кабинет</BUTTON>
+        </FORM>
+    </c:if>
+
+    <FORM action="${marketUrl}" method="post">
+        <BUTTON type="submit">торговать</BUTTON>
+    </FORM>
+
+
+
+    <FORM action="${logoutUrl}" method="post">
         <BUTTON type="submit">выйти</BUTTON>
     </FORM>
+
+    <FORM action="${walletUrl}" method="post">
+        <BUTTON type="submit">кошелёк</BUTTON>
+    </FORM>
+
+
+
+
+    <table>
+        <c:forEach var="pair" items="${secData}" >
+        <tr> <td>${pair.identity}</td> <td>${pair.pair}</td> <td>${pair.active}</td>
+            <td>
+            <FORM action="${toggleUrl}+${pair.identity}" method="post">
+                <BUTTON type="submit">переключить</BUTTON>
+            </FORM>
+            </td>
+
+        </tr>
+        </c:forEach>
+    </table>
 
 
 </html>

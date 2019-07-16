@@ -1,8 +1,8 @@
 package entity;
 
 public class Coin extends Entity {
-    String ticker;
-    String fullName;
+    private String ticker;
+    private String fullName;
 
     public String getTicker() {
         return ticker;

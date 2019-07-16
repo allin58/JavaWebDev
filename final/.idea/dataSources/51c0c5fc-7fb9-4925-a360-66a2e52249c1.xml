@@ -1309,289 +1309,304 @@
     <table id="327" parent="3" name="coins"/>
     <table id="328" parent="3" name="cryptocurrency_pairs"/>
     <table id="329" parent="3" name="orders"/>
-    <table id="330" parent="3" name="state_of_order"/>
-    <table id="331" parent="3" name="types"/>
-    <table id="332" parent="3" name="users"/>
-    <table id="333" parent="3" name="wallets"/>
-    <column id="334" parent="327" name="identity">
+    <table id="330" parent="3" name="transactions"/>
+    <table id="331" parent="3" name="users"/>
+    <table id="332" parent="3" name="wallets"/>
+    <column id="333" parent="327" name="identity">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="335" parent="327" name="coin">
+    <column id="334" parent="327" name="coin">
       <Position>2</Position>
       <DataType>varchar(5)|0s</DataType>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="336" parent="327" name="full_name">
+    <column id="335" parent="327" name="full_name">
       <Position>3</Position>
       <DataType>varchar(20)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <key id="337" parent="327" name="PRIMARY">
+    <key id="336" parent="327" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>identity</ColNames>
       <Primary>1</Primary>
     </key>
-    <column id="338" parent="328" name="identity">
+    <column id="337" parent="328" name="identity">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="339" parent="328" name="first_currency">
+    <column id="338" parent="328" name="first_currency">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="340" parent="328" name="second_currency">
+    <column id="339" parent="328" name="second_currency">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="341" parent="328" name="pair">
+    <column id="340" parent="328" name="active">
       <Position>4</Position>
       <DataType>tinyint(1)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="342" parent="328" name="first_currency">
+    <index id="341" parent="328" name="first_currency">
       <ColNames>first_currency</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="343" parent="328" name="second_currency">
+    <index id="342" parent="328" name="second_currency">
       <ColNames>second_currency</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="344" parent="328" name="PRIMARY">
+    <key id="343" parent="328" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>identity</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="345" parent="328" name="cryptocurrency_pairs_ibfk_1">
+    <foreign-key id="344" parent="328" name="cryptocurrency_pairs_ibfk_1">
       <ColNames>first_currency</ColNames>
       <RefSchemaName>market</RefSchemaName>
       <RefTableName>coins</RefTableName>
       <RefColNames>identity</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="346" parent="328" name="cryptocurrency_pairs_ibfk_2">
+    <foreign-key id="345" parent="328" name="cryptocurrency_pairs_ibfk_2">
       <ColNames>second_currency</ColNames>
       <RefSchemaName>market</RefSchemaName>
       <RefTableName>coins</RefTableName>
       <RefColNames>identity</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <column id="347" parent="329" name="identity">
+    <column id="346" parent="329" name="identity">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="348" parent="329" name="user_id">
+    <column id="347" parent="329" name="user_id">
       <Position>2</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="349" parent="329" name="pair">
+    <column id="348" parent="329" name="pair">
       <Position>3</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="350" parent="329" name="amount">
+    <column id="349" parent="329" name="amount">
       <Position>4</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="351" parent="329" name="price">
+    <column id="350" parent="329" name="price">
       <Position>5</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="352" parent="329" name="type">
+    <column id="351" parent="329" name="type">
       <Position>6</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>enum(&apos;Ask&apos;, &apos;Bid&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="353" parent="329" name="state">
+    <column id="352" parent="329" name="state">
       <Position>7</Position>
-      <DataType>int(11)|0s</DataType>
+      <DataType>enum(&apos;canceled&apos;, &apos;active&apos;, &apos;executed&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="354" parent="329" name="user_id">
+    <index id="353" parent="329" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="355" parent="329" name="pair">
+    <index id="354" parent="329" name="pair">
       <ColNames>pair</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="356" parent="329" name="type">
-      <ColNames>type</ColNames>
-      <Type>btree</Type>
-    </index>
-    <index id="357" parent="329" name="state">
-      <ColNames>state</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="358" parent="329" name="PRIMARY">
+    <key id="355" parent="329" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>identity</ColNames>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="359" parent="329" name="orders_ibfk_1">
+    <foreign-key id="356" parent="329" name="orders_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefSchemaName>market</RefSchemaName>
       <RefTableName>users</RefTableName>
       <RefColNames>identity</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="360" parent="329" name="orders_ibfk_2">
+    <foreign-key id="357" parent="329" name="orders_ibfk_2">
       <ColNames>pair</ColNames>
       <RefSchemaName>market</RefSchemaName>
       <RefTableName>cryptocurrency_pairs</RefTableName>
       <RefColNames>identity</RefColNames>
       <OnUpdate>cascade</OnUpdate>
     </foreign-key>
-    <foreign-key id="361" parent="329" name="orders_ibfk_3">
-      <ColNames>type</ColNames>
-      <RefSchemaName>market</RefSchemaName>
-      <RefTableName>types</RefTableName>
-      <RefColNames>identity</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
-    <foreign-key id="362" parent="329" name="orders_ibfk_4">
-      <ColNames>state</ColNames>
-      <RefSchemaName>market</RefSchemaName>
-      <RefTableName>state_of_order</RefTableName>
-      <RefColNames>identity</RefColNames>
-      <OnUpdate>cascade</OnUpdate>
-    </foreign-key>
-    <column id="363" parent="330" name="identity">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="364" parent="330" name="state">
-      <Position>2</Position>
-      <DataType>varchar(20)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="365" parent="330" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>identity</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="366" parent="331" name="identity">
-      <Position>1</Position>
-      <DataType>int(11)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <column id="367" parent="331" name="type">
-      <Position>2</Position>
-      <DataType>varchar(5)|0s</DataType>
-      <NotNull>1</NotNull>
-      <ColumnKind>normal</ColumnKind>
-    </column>
-    <key id="368" parent="331" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <ColNames>identity</ColNames>
-      <Primary>1</Primary>
-    </key>
-    <column id="369" parent="332" name="identity">
+    <column id="358" parent="330" name="identity">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <SequenceIdentity>1</SequenceIdentity>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="370" parent="332" name="user_name">
+    <column id="359" parent="330" name="user_id">
+      <Position>2</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="360" parent="330" name="coin_id">
+      <Position>3</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="361" parent="330" name="amount">
+      <Position>4</Position>
+      <DataType>decimal(12,6 digit) unsigned|0s</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="362" parent="330" name="type">
+      <Position>5</Position>
+      <DataType>enum(&apos;deposit&apos;, &apos;withdrow&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="363" parent="330" name="date">
+      <Position>6</Position>
+      <DataType>timestamp|0s</DataType>
+      <NotNull>1</NotNull>
+      <DefaultExpression>current_timestamp()</DefaultExpression>
+      <ColumnKind>normal</ColumnKind>
+      <OnUpdate>current_timestamp()</OnUpdate>
+    </column>
+    <column id="364" parent="330" name="status">
+      <Position>7</Position>
+      <DataType>enum(&apos;pending&apos;, &apos;approved&apos;, &apos;rejected&apos;)|0e</DataType>
+      <NotNull>1</NotNull>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <index id="365" parent="330" name="user_id">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="366" parent="330" name="coin_id">
+      <ColNames>coin_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="367" parent="330" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <ColNames>identity</ColNames>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="368" parent="330" name="transactions_ibfk_1">
+      <ColNames>user_id</ColNames>
+      <RefSchemaName>market</RefSchemaName>
+      <RefTableName>users</RefTableName>
+      <RefColNames>identity</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <foreign-key id="369" parent="330" name="transactions_ibfk_2">
+      <ColNames>coin_id</ColNames>
+      <RefSchemaName>market</RefSchemaName>
+      <RefTableName>coins</RefTableName>
+      <RefColNames>identity</RefColNames>
+      <OnUpdate>cascade</OnUpdate>
+    </foreign-key>
+    <column id="370" parent="331" name="identity">
+      <Position>1</Position>
+      <DataType>int(11)|0s</DataType>
+      <NotNull>1</NotNull>
+      <SequenceIdentity>1</SequenceIdentity>
+      <ColumnKind>normal</ColumnKind>
+    </column>
+    <column id="371" parent="331" name="user_name">
       <Position>2</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="371" parent="332" name="name">
+    <column id="372" parent="331" name="name">
       <Position>3</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="372" parent="332" name="surname">
+    <column id="373" parent="331" name="surname">
       <Position>4</Position>
       <DataType>varchar(30)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="373" parent="332" name="hash_of_password">
+    <column id="374" parent="331" name="hash_of_password">
       <Position>5</Position>
       <DataType>varchar(64)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="374" parent="332" name="role">
+    <column id="375" parent="331" name="role">
       <Position>6</Position>
-      <DataType>varchar(30)|0s</DataType>
+      <DataType>enum(&apos;user&apos;, &apos;sec&apos;, &apos;admin&apos;)|0e</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="375" parent="332" name="user_name">
+    <index id="376" parent="331" name="user_name">
       <ColNames>user_name</ColNames>
       <Unique>1</Unique>
       <Type>btree</Type>
     </index>
-    <key id="376" parent="332" name="PRIMARY">
+    <key id="377" parent="331" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <ColNames>identity</ColNames>
       <Primary>1</Primary>
     </key>
-    <key id="377" parent="332" name="user_name">
+    <key id="378" parent="331" name="user_name">
       <ColNames>user_name</ColNames>
       <UnderlyingIndexName>user_name</UnderlyingIndexName>
     </key>
-    <column id="378" parent="333" name="user_id">
+    <column id="379" parent="332" name="user_id">
       <Position>1</Position>
       <DataType>int(11)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="379" parent="333" name="BTC">
+    <column id="380" parent="332" name="BTC">
       <Position>2</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="380" parent="333" name="ETH">
+    <column id="381" parent="332" name="ETH">
       <Position>3</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <column id="381" parent="333" name="USDT">
+    <column id="382" parent="332" name="USDT">
       <Position>4</Position>
-      <DataType>decimal(10)|0s</DataType>
+      <DataType>decimal(12,6 digit)|0s</DataType>
       <NotNull>1</NotNull>
       <ColumnKind>normal</ColumnKind>
     </column>
-    <index id="382" parent="333" name="user_id">
+    <index id="383" parent="332" name="user_id">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <foreign-key id="383" parent="333" name="wallets_ibfk_1">
+    <foreign-key id="384" parent="332" name="wallets_ibfk_1">
       <ColNames>user_id</ColNames>
       <RefSchemaName>market</RefSchemaName>
       <RefTableName>users</RefTableName>

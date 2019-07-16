@@ -11,10 +11,19 @@ public class CommandFactory {
         commands = new HashMap<>();
 
        commands.put("login", new LoginCommand());
-
-        commands.put("logout", new LogoutCommand());
-        commands.put("toregistration", new ToRegistrationCommand());
-        commands.put("registration", new RegistrationCommand());
+       commands.put("logout", new LogoutCommand());
+       commands.put("toregistration", new ToRegistrationCommand());
+       commands.put("registration", new RegistrationCommand());
+       commands.put("tomarket", new ToMarketCommand());
+       commands.put("tocabinet", new ToCabinetCommand());
+       commands.put("towallet", new ToWalletCommand());
+       commands.put("togglepair", new TogglePairCommand());
+       commands.put("approvetransaction", new ApproveTransactionCommand());
+       commands.put("rejectransaction", new RejectTransactionCommand());
+       commands.put("deposit", new DepositCommand());
+       commands.put("todeposit", new ToDepositCommand());
+       commands.put("towithdrow", new ToWithdrowCommand());
+       commands.put("withdrow", new WithdrowCommand());
 
 
   /*      commands.put("setLanguage", new SetLanguageCommand());
@@ -31,10 +40,11 @@ public class CommandFactory {
     }
 
     public Command createCommand(String command) {
-        Command toReturn = commands.get(command);
+        Command toReturn = commands.get(command.trim());
         if (toReturn == null) {
-            toReturn = commands.get("showIndexPage");
+            toReturn = commands.get("view/error.jsp");
         }
+
         return toReturn;
     }
 }

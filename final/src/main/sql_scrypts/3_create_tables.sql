@@ -15,7 +15,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `name` VARCHAR(30) NOT NULL,
     `surname` VARCHAR(30) NOT NULL,
     `hash_of_password` VARCHAR(64) NOT NULL,  
-    `role` VARCHAR(30) NOT NULL          
+    `role` ENUM('user','sec','admin') NOT NULL          
 ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
@@ -83,7 +83,28 @@ ON DELETE RESTRICT
 ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
+CREATE TABLE IF NOT EXISTS `transactions` (
+  `identity` INTEGER PRIMARY KEY AUTO_INCREMENT,
+  `user_id` INTEGER NOT NULL,
+  `coin_id` INTEGER NOT NULL,
+  `amount`  decimal(12, 6) UNSIGNED NOT NULL,
+  `type`  ENUM('deposit', 'withdrow') NOT NULL,
+  `date` TIMESTAMP,
+  `status`  ENUM('pending', 'approved','rejected') NOT NULL,
 
+FOREIGN KEY (`user_id`)
+REFERENCES `users` (`identity`)
+ON UPDATE CASCADE
+ON DELETE RESTRICT,
+    
+    FOREIGN KEY (`coin_id`)
+REFERENCES `coins` (`identity`)
+ON UPDATE CASCADE
+ON DELETE RESTRICT
+
+
+
+) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
 

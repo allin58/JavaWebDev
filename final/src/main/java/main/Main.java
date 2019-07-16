@@ -1,13 +1,14 @@
 package main;
 
+import command.CommandFactory;
 import dao.connectionpool.BasicConnectionPool;
 import dao.sql.CryptoPairDaoImpl;
 import dao.sql.OrderDaoImpl;
+import dao.sql.TransactionDaoImpl;
 import dao.sql.WalletDaoImpl;
-import entity.CryptoPair;
-import entity.Order;
-import entity.Wallet;
+import entity.*;
 import org.bouncycastle.util.encoders.Hex;
+import service.CryptoPairService;
 import service.UserService;
 
 import java.nio.charset.StandardCharsets;
@@ -25,17 +26,24 @@ public class Main {
 
        BasicConnectionPool basicConnectionPool = BasicConnectionPool.getBasicConnectionPool();
        Connection connection = basicConnectionPool.getConnection();
-        CryptoPairDaoImpl cryptoPairDao = new CryptoPairDaoImpl();
-        OrderDaoImpl orderDao = new OrderDaoImpl();
-        orderDao.setConnection(connection);
-        for (Order order : orderDao.read()) {
-            System.out.println(order.getState());
-        }
+
+
+
+        TransactionDaoImpl transactionDao = new TransactionDaoImpl();
+        transactionDao.setConnection(connection);
+
+        Transaction transaction = new Transaction();
+
+        transaction.setAmount(18.0);
+        transaction.setUserId(1);
+        transaction.setType("withdrow");
+        transaction.setCoinId(3);
+        transaction.setStatus("pending");
+        transactionDao.create(transaction);
 
 
 
         basicConnectionPool.releaseConnection(connection);
-
 
 
 

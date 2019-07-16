@@ -2,12 +2,12 @@ package entity;
 
 public class Order extends Entity {
 
-    Integer userId;
-    String pair;
-    Double amount;
-    Double price;
-    String type;
-    String state;
+    private Integer userId;
+    private String pair;
+    private  Double amount;
+    private Double price;
+    private  String type;
+    private  String state;
 
     public Integer getUserId() {
         return userId;
