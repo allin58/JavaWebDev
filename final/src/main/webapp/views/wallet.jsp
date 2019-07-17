@@ -13,6 +13,7 @@
     <c:url value="/login.html?command=todeposit" var="todepositUrl"/>
     <c:url value="/login.html?command=towithdrow" var="towithdrowUrl"/>
     <c:url value="/login.html?command=rejectransaction&identity=" var="rejectransactionUrl"/>
+    <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
     <c:if test = "${user.role != 'user'}">
@@ -36,6 +37,9 @@
     </FORM>
 
 
+    <FORM action="${toorderUrl}" method="post">
+        <BUTTON type="submit">мои заявки</BUTTON>
+    </FORM>
 
     <table>
 

@@ -11,6 +11,7 @@
     <c:url value="/login.html?command=tomarket" var="marketUrl"/>
        <c:url value="/login.html?command=approvetransaction&identity=" var="approvteransactionUrl"/>
     <c:url value="/login.html?command=rejectransaction&identity=" var="rejectransactionUrl"/>
+    <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
     <c:if test = "${user.role != 'user'}">
@@ -33,6 +34,9 @@
         <BUTTON type="submit">кошелёк</BUTTON>
     </FORM>
 
+    <FORM action="${toorderUrl}" method="post">
+        <BUTTON type="submit">мои заявки</BUTTON>
+    </FORM>
 
 
 

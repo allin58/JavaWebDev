@@ -40,10 +40,47 @@ VALUES
 
 INSERT INTO `orders` (`user_id`, `pair`, `amount`,`price`,`type`,`state`)
 VALUES
-(1, 1,100,15000,'Ask','active'),
-(1, 1,50,10000,'Ask','active'),
-(1, 1,1,1,'Bid','executed');
+(1, 'BTC-USDT',100,15000,'Ask','executed'),
+(2, 'BTC-USDT',50,14000,'Ask','executed'),
+(3, 'BTC-USDT',50,13000,'Ask','active'),
+(4, 'BTC-USDT',50,12000,'Ask','active'),
+(5, 'BTC-USDT',50,11000,'Ask','active'),
+(5, 'BTC-USDT',50,16000,'Ask','active'),
+(1, 'BTC-USDT',50,10500,'Ask','active'),
+(1, 'BTC-USDT',100,15000,'Bid','executed'),
+(2, 'BTC-USDT',50,14000,'Bid','executed'),
+(3, 'BTC-USDT',50,10000,'Bid','active'),
+(4, 'BTC-USDT',50,9585,'Bid','active'),
+(5, 'BTC-USDT',50,8000,'Bid','active'),
+(1, 'BTC-USDT',50,8538,'Bid','active'),
 
+(1, 'ETH-USDT',100,15000,'Ask','executed'),
+(2, 'ETH-USDT',50,14000,'Ask','executed'),
+(3, 'ETH-USDT',50,350,'Ask','active'),
+(4, 'ETH-USDT',50,320,'Ask','active'),
+(5, 'ETH-USDT',50,310,'Ask','active'),
+(1, 'ETH-USDT',50,300,'Ask','active'),
+(1, 'ETH-USDT',100,290,'Bid','executed'),
+(2, 'ETH-USDT',50,280,'Bid','executed'),
+(3, 'ETH-USDT',50,285,'Bid','active'),
+(4, 'ETH-USDT',50,270,'Bid','active'),
+(5, 'ETH-USDT',50,250,'Bid','active'),
+(1, 'ETH-USDT',50,270,'Bid','active'),
+
+(1, 'BTC-ETH',100,15000,'Ask','executed'),
+(2, 'BTC-ETH',50,14000,'Ask','executed'),
+(3, 'BTC-ETH',50,50,'Ask','active'),
+(4, 'BTC-ETH',50,49,'Ask','active'),
+(5, 'BTC-ETH',50,47,'Ask','active'),
+(1, 'BTC-ETH',50,43,'Ask','active'),
+(1, 'BTC-ETH',100,290,'Bid','executed'),
+(2, 'BTC-ETH',50,280,'Bid','executed'),
+(3, 'BTC-ETH',50,40,'Bid','active'),
+(4, 'BTC-ETH',50,41,'Bid','active'),
+(5, 'BTC-ETH',50,35,'Bid','active'),
+(1, 'BTC-ETH',50,17,'Bid','active'),
+
+(1, 'BTC-USDT',1,1,'Ask','executed');
 
 
  

@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html title="Вход в систему">
-    <H2>sec</H2>
+    <H2>Security Exchange Commission </H2>
     ${user.role}
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
@@ -10,6 +10,7 @@
     <c:url value="/login.html?command=tocabinet" var="tocabinet"/>
     <c:url value="/login.html?command=tomarket" var="marketUrl"/>
     <c:url value="/login.html?command=togglepair&identity=" var="toggleUrl"/>
+    <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
     <c:if test = "${user.role != 'user'}">
@@ -32,7 +33,9 @@
         <BUTTON type="submit">кошелёк</BUTTON>
     </FORM>
 
-
+    <FORM action="${toorderUrl}" method="post">
+        <BUTTON type="submit">мои заявки</BUTTON>
+    </FORM>
 
 
     <table>

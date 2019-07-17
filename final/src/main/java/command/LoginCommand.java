@@ -2,6 +2,7 @@ package command;
 
 import entity.User;
 import service.CryptoPairService;
+import service.OrderService;
 import service.TransactionService;
 import service.UserService;
 
@@ -9,6 +10,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.List;
 
 public class LoginCommand implements Command {
 
@@ -39,7 +41,20 @@ public class LoginCommand implements Command {
                           request.getSession().setAttribute("secData", new CryptoPairService().getAllPairs());
                           return "views/sec.jsp";
 
-                      case "user" :   return "views/market.jsp";
+                      case "user" :
+                          String pair = request.getParameter("pair");
+                          if (pair == null) {
+                              pair = "BTC-USDT";
+                          }
+                          request.getSession().setAttribute("pair",pair);
+                          OrderService orderService = new OrderService();
+                          List askList = orderService.getAskOrdersByPair(pair.trim());
+                          request.getSession().setAttribute("asklist",askList);
+
+                          List bidList = orderService.getBidOrdersByPair(pair.trim());
+                          request.getSession().setAttribute("bidlist",bidList);
+
+                          return "views/market.jsp";
                   }
                 }
             }

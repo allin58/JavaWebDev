@@ -24,6 +24,8 @@ public class CommandFactory {
        commands.put("todeposit", new ToDepositCommand());
        commands.put("towithdrow", new ToWithdrowCommand());
        commands.put("withdrow", new WithdrowCommand());
+       commands.put("toorders", new ToMyOrdersCommand());
+       commands.put("rejectorder", new RejectOrderCommand());
 
 
   /*      commands.put("setLanguage", new SetLanguageCommand());

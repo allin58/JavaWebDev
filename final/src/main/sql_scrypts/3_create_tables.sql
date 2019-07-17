@@ -37,6 +37,12 @@ CREATE TABLE IF NOT EXISTS `cryptocurrency_pairs` (
 ) ENGINE=INNODB DEFAULT CHARACTER SET utf8;
 
 
+
+
+
+
+
+
 CREATE TABLE IF NOT EXISTS `wallets` (
     `user_id` INTEGER NOT NULL,
     `BTC` DECIMAL(12,6) NOT NULL,
@@ -62,19 +68,14 @@ CREATE TABLE IF NOT EXISTS `wallets` (
 CREATE TABLE IF NOT EXISTS `orders` (
   `identity` INTEGER PRIMARY KEY AUTO_INCREMENT,
   `user_id` INTEGER NOT NULL,
-  `pair` INTEGER NOT NULL,
-  `amount`  DECIMAL(12,6) NOT NULL,
-  `price`  DECIMAL(12,6) NOT NULL,
-  `type` ENUM('Ask','Bid') NOT NULL,
-  `state`  ENUM('canceled','active','executed')NOT NULL,
+  `pair`  ENUM('BTC-USDT', 'ETH-USDT', 'BTC-ETH') NOT NULL,
+  `amount`  decimal(12, 6) UNSIGNED NOT NULL,
+  `price`  decimal(12, 6) UNSIGNED NOT NULL,
+  `type`  ENUM('Ask', 'Bid') NOT NULL,
+  `state`  ENUM('active', 'executed','canceled') NOT NULL,
 
 FOREIGN KEY (`user_id`)
 REFERENCES `users` (`identity`)
-ON UPDATE CASCADE
-ON DELETE RESTRICT,
-
-  FOREIGN KEY (`pair`)
-REFERENCES `cryptocurrency_pairs` (`identity`)
 ON UPDATE CASCADE
 ON DELETE RESTRICT
 

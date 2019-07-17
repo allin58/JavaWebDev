@@ -20,7 +20,7 @@ public class ToCabinetCommand implements Command {
             case "admin" :
 
                 List<MappingTransaction> transactionList = new TransactionService().getPendingTransactions();
-                System.out.println(transactionList.size());
+
                 request.getSession().setAttribute("transactionData", transactionList);
                 return "views/admin.jsp";
 
