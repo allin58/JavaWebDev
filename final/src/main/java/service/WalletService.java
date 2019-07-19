@@ -28,4 +28,26 @@ public class WalletService {
     }
 
 
+
+    public void addNewWallet(Wallet wallet) throws Exception {
+
+
+        Connection connection = null;
+
+        try {
+            connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
+            WalletDaoImpl walletDao = new WalletDaoImpl();
+            walletDao.setConnection(connection);
+            walletDao.create(wallet);
+
+        }
+        finally {
+            BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
+        }
+
+
+
+    }
+
+
 }

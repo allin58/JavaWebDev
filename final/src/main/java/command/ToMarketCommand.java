@@ -12,6 +12,7 @@ public class ToMarketCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+        request.getSession().setAttribute("setlimitordermessage",null);
        String pair = request.getParameter("pair");
        if (pair == null) {
            pair = "BTC-USDT";

@@ -43,7 +43,7 @@
 
     <table>
 
-            <tr> <td>BTC</td> <td>${wallet.btc}</td>
+            <tr> <td>Bitcoin</td> <td>${wallet.btc}</td>
                 <td>
                     <FORM action="${todepositUrl}+&coin=BTC" method="post">
                         <BUTTON type="submit">пополнить</BUTTON>
@@ -63,7 +63,7 @@
 
 
 
-            <tr> <td>ETH</td> <td>${wallet.eth}</td>
+            <tr> <td>Ethereum</td> <td>${wallet.eth}</td>
                 <td>
                     <FORM action="${todepositUrl}+&coin=ETH" method="post">
                         <BUTTON type="submit">пополнить</BUTTON>
@@ -77,7 +77,7 @@
                 </td>
 
             </tr>
-            <tr> <td>USDT</td> <td>${wallet.usdt}</td>
+            <tr> <td>Tether</td> <td>${wallet.usdt}</td>
 
                 <td>
                     <FORM action="${todepositUrl}+&coin=USDT" method="post">

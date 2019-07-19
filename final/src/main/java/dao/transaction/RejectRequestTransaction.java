@@ -6,7 +6,7 @@ import dao.sql.WalletDaoImpl;
 import entity.Coin;
 import entity.Transaction;
 import entity.Wallet;
-import entity.WalletQualifier;
+import entity.qualifier.WalletQualifier;
 import exception.PersistentException;
 
 import java.sql.Connection;

@@ -4,7 +4,7 @@ package dao.transaction;
 import dao.sql.WalletDaoImpl;
 import entity.Order;
 import entity.Wallet;
-import entity.WalletQualifier;
+import entity.qualifier.WalletQualifier;
 import exception.PersistentException;
 
 import java.math.BigDecimal;
@@ -60,7 +60,7 @@ public class SetOrderTransaction extends DataBaseTransaction {
                 case "Ask": walletQualifier.reduceCurrency(order.getAmount(),stringArr[0],wallet);
                     break;
 
-                case "Bid": walletQualifier.reduceCurrency(order.getAmount(),stringArr[1],wallet);
+                case "Bid": walletQualifier.reduceCurrency(order.getAmount() * order.getPrice() ,stringArr[1],wallet);
                     break;
             }
             walletDao.update(wallet);

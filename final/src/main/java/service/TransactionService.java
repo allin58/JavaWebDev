@@ -96,10 +96,12 @@ public class TransactionService {
 
 
         try {
+
             transactionConnection = BasicConnectionPool.getBasicConnectionPool().getConnection();
             ApproveRequestTransaction approveRequestTransaction = new ApproveRequestTransaction(transactionConnection);
             approveRequestTransaction.setIdTransaction(identity);
             approveRequestTransaction.commit();
+
 
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(transactionConnection);

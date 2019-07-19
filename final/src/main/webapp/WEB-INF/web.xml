@@ -26,7 +26,7 @@
 
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>filter.LoginFilter</filter-class>
+        <filter-class>controller.filter.LoginFilter</filter-class>
 
     </filter>
 
@@ -38,7 +38,7 @@
 
     <filter>
         <filter-name>AccessFilter</filter-name>
-        <filter-class>filter.AccessFilter</filter-class>
+        <filter-class>controller.filter.AccessFilter</filter-class>
 
     </filter>
 

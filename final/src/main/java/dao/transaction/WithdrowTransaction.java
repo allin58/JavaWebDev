@@ -3,16 +3,13 @@ package dao.transaction;
 import dao.sql.CoinDaoImpl;
 import dao.sql.TransactionDaoImpl;
 import dao.sql.WalletDaoImpl;
-import entity.Coin;
 import entity.Transaction;
 import entity.Wallet;
-import entity.WalletQualifier;
+import entity.qualifier.WalletQualifier;
 import exception.PersistentException;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.util.Date;
 
 public class WithdrowTransaction extends DataBaseTransaction {
 

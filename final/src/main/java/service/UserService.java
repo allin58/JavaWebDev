@@ -15,7 +15,7 @@ import java.util.List;
 public class UserService {
 
 
-    public void addUser(User user) throws Exception {
+    public Integer addUser(User user) throws Exception {
 
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest((user.getHashOfPassword() + "cryptomarket").getBytes(StandardCharsets.UTF_8));
@@ -27,7 +27,9 @@ public class UserService {
             connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
             UserDaoImpl userDao = new UserDaoImpl();
             userDao.setConnection(connection);
-            userDao.create(user);
+            return userDao.create(user);
+
+
         }
         finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);

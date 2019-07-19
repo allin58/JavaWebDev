@@ -14,7 +14,13 @@
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
-    <c:if test = "${user.role != 'user'}">
+
+    <FORM action="${logoutUrl}" method="post">
+        <BUTTON type="submit">выйти</BUTTON>
+    </FORM>
+
+
+  <%--  <c:if test = "${user.role != 'user'}">
         <FORM action="${tocabinet}" method="post">
             <BUTTON type="submit">в кабинет</BUTTON>
         </FORM>
@@ -37,7 +43,7 @@
     <FORM action="${toorderUrl}" method="post">
         <BUTTON type="submit">мои заявки</BUTTON>
     </FORM>
-
+--%>
 
 
     <table>

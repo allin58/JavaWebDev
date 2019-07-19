@@ -1,4 +1,4 @@
-package filter;
+package controller.filter;
 
 import entity.User;
 import javax.servlet.*;
@@ -24,6 +24,7 @@ public class AccessFilter implements Filter {
 
         if (session != null && session.getAttribute("user") != null) {
             if (checkRequest(httpRequest)) {
+
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
                 session.setAttribute("message","сработала защита от несанкционированного доступа ");
@@ -52,17 +53,26 @@ public class AccessFilter implements Filter {
 
         String role = user.getRole();
 
-        String requestURI = httpRequest.getRequestURI();
+        //String requestURI = httpRequest.getRequestURI();
+        String servletPath= httpRequest.getServletPath();
 
-if("user".equals(role) && (requestURI.contains("sec") || requestURI.contains("admin"))) {
+     /*   if("admin".equals(role) && (!servletPath.contains("admin"))) {
+            return false;
+        }*/
+
+        if("/views/registration.jsp".equals(servletPath.trim()) || "/views/login.jsp".equals(servletPath.trim())) {
+            return false;
+        }
+
+if("user".equals(role) && (servletPath.contains("sec") || servletPath.contains("admin"))) {
     return false;
 }
 
-if("admin".equals(role) && requestURI.contains("sec") ) {
+if("admin".equals(role) && servletPath.contains("sec") ) {
     return false;
 }
 
-        if("sec".equals(role) && requestURI.contains("admin") ) {
+        if("sec".equals(role) && servletPath.contains("admin") ) {
             return false;
         }
 

@@ -12,6 +12,8 @@ ${user.role}
     <c:url value="/login.html?command=tocabinet" var="tocabinet"/>
     <c:url value="/login.html?command=tomarket&pair=" var="marketUrl"/>
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
+    <c:url value="/login.html?command=setlimitorder" var="setlimitorderUrl"/>
+    <c:url value="/login.html?command=executemarketorder" var="executemarketorderUrl"/>
 
 
     <c:if test = "${user.role != 'user'}">
@@ -40,18 +42,7 @@ ${user.role}
     </FORM>
 
 <hr>
-<%--
-    <FORM action="${marketUrl}+BTC-USDT" method="post">
-        <BUTTON type="submit">BTC-USDT</BUTTON>
-    </FORM>
 
-    <FORM action="${marketUrl}+ETH-USDT" method="post">
-        <BUTTON type="submit">ETH-USDT</BUTTON>
-    </FORM>
-
-    <FORM action="${marketUrl}+BTC-ETH" method="post">
-        <BUTTON type="submit">BTC-ETH</BUTTON>
-    </FORM>--%>
 
 <c:forEach var = "pair" items = "${activepairs}">
      <FORM action="${marketUrl}+${pair.pair}" method="post">
@@ -60,8 +51,34 @@ ${user.role}
 
 
 </c:forEach>
+<hr>
 
 
+<H2>лимитный ордер</H2>
+${setlimitordermessage}
+<FORM action="${setlimitorderUrl}" method="post">
+    <LABEL for="price">Цена</LABEL>
+    <INPUT type="text" id="price" name="price">
+
+    <LABEL for="amount">Количество</LABEL>
+    <INPUT type="text" id="amount" name="amount">
+
+    <button type="submit" name="buybutton" value="buy">купить</button>
+    <button type="submit" name="sellbutton" value="sell">продать</button>
+</FORM>
+
+<hr>
+<H2>рыночный ордер</H2>
+${executemarketordermessage}
+<FORM action="${executemarketorderUrl}" method="post">
+
+
+    <LABEL for="amountm">Количество</LABEL>
+    <INPUT type="text" id="amountm" name="amount">
+
+    <button type="submit" name="buybutton" value="buy">купить</button>
+    <button type="submit" name="sellbutton" value="sell">продать</button>
+</FORM>
 
 
 
@@ -84,5 +101,17 @@ ${user.role}
         </c:forEach>
     </table>
     <hr>
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

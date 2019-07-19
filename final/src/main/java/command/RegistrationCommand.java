@@ -1,7 +1,9 @@
 package command;
 
 import entity.User;
+import entity.Wallet;
 import service.UserService;
+import service.WalletService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -32,7 +34,20 @@ public class RegistrationCommand implements Command {
                 user.setSurname(surname);
                 user.setRole("user");
                 user.setHashOfPassword(password);
-                userService.addUser(user);
+                Integer userId =userService.addUser(user);
+
+
+                WalletService walletService = new WalletService();
+                Wallet wallet = new Wallet();
+                wallet.setIdentity(userId);
+                wallet.setBtc(0.0);
+                wallet.setEth(0.0);
+                wallet.setUsdt(0.0);
+
+
+                 walletService.addNewWallet(wallet);
+
+
 
                 request.getSession().setAttribute("message","регистрация прошла успешно");
                 return "login.jsp";

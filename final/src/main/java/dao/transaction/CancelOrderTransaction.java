@@ -4,7 +4,7 @@ import dao.sql.OrderDaoImpl;
 import dao.sql.WalletDaoImpl;
 import entity.Order;
 import entity.Wallet;
-import entity.WalletQualifier;
+import entity.qualifier.WalletQualifier;
 import exception.PersistentException;
 
 import java.sql.Connection;
@@ -45,7 +45,7 @@ public class CancelOrderTransaction extends DataBaseTransaction {
                 case "Ask":    walletQualifier.increaseCurrency(order.getAmount(),stringArr[0],wallet);
                     break;
 
-                case "Bid":    walletQualifier.increaseCurrency(order.getAmount(),stringArr[1],wallet);
+                case "Bid":    walletQualifier.increaseCurrency(order.getAmount() * order.getPrice() ,stringArr[1],wallet);
                     break;
             }
             order.setState("canceled");

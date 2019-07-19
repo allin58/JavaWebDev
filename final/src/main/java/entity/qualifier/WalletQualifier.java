@@ -1,10 +1,11 @@
-package entity;
+package entity.qualifier;
 
+import entity.Wallet;
 import exception.PersistentException;
 
 public class WalletQualifier {
 
-    public void reduceCurrency(Double value, String ticker,Wallet wallet) throws PersistentException {
+    public void reduceCurrency(Double value, String ticker, Wallet wallet) throws PersistentException {
 
         switch (ticker) {
             case "BTC" :  wallet.setBtc(wallet.getBtc() - value);
@@ -44,6 +45,18 @@ public class WalletQualifier {
             throw new PersistentException();
         }
     }
+
+
+
+    public Double getAmountByTicker(Wallet wallet, String ticker) {
+switch(ticker){
+    case "BTC": return wallet.getBtc();
+    case "ETH": return wallet.getEth();
+    case "USDT": return wallet.getUsdt();
+}
+          return 0.0;
+    }
+
 
 
 

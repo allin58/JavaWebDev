@@ -47,6 +47,11 @@ public class LoginCommand implements Command {
                               pair = "BTC-USDT";
                           }
                           request.getSession().setAttribute("pair",pair);
+
+                          CryptoPairService cryptoPairService = new CryptoPairService();
+                          List activePairs = cryptoPairService.getActivePairs();
+                          request.getSession().setAttribute("activepairs",activePairs);
+
                           OrderService orderService = new OrderService();
                           List askList = orderService.getAskOrdersByPair(pair.trim());
                           request.getSession().setAttribute("asklist",askList);

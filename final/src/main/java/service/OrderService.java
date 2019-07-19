@@ -3,7 +3,11 @@ package service;
 import dao.connectionpool.BasicConnectionPool;
 import dao.sql.OrderDaoImpl;
 import dao.transaction.CancelOrderTransaction;
+import dao.transaction.DataBaseTransaction;
+import dao.transaction.ExecuteOrderTransaction;
+import dao.transaction.SetOrderTransaction;
 import entity.Order;
+import entity.User;
 import entity.comparator.OrderComparatorImpl;
 
 import java.sql.Connection;
@@ -64,7 +68,61 @@ public class OrderService {
         return resultOrders;
     }
 
+   public void createNewOrder(Order order) throws Exception {
+       Connection connection = null;
 
+
+       try {
+           connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
+           SetOrderTransaction setOrderTransaction = new SetOrderTransaction(connection);
+           setOrderTransaction.setOrder(order);
+           setOrderTransaction.commit();
+
+       } finally {
+           BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
+       }
+
+
+   }
+
+    public void executeOrder(Order order, User user) throws Exception {
+        Connection connection = null;
+
+
+        try {
+            connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
+            ExecuteOrderTransaction executeOrderTransaction = new ExecuteOrderTransaction(connection);
+            executeOrderTransaction.setOrder(order);
+            executeOrderTransaction.setUser(user);
+            executeOrderTransaction.commit();
+
+        } finally {
+            BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
+        }
+
+
+    }
+
+
+
+    public void executePartlyOrder(Order order, User user, Double amount) throws Exception {
+        Connection connection = null;
+
+
+        try {
+            connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
+            ExecuteOrderTransaction executeOrderTransaction = new ExecuteOrderTransaction(connection);
+            executeOrderTransaction.setOrder(order);
+            executeOrderTransaction.setUser(user);
+            executeOrderTransaction.setAmount(amount);
+            executeOrderTransaction.commit();
+
+        } finally {
+            BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
+        }
+
+
+    }
 
 
 
