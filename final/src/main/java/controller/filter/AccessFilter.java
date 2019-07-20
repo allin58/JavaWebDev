@@ -56,9 +56,12 @@ public class AccessFilter implements Filter {
         //String requestURI = httpRequest.getRequestURI();
         String servletPath= httpRequest.getServletPath();
 
-     /*   if("admin".equals(role) && (!servletPath.contains("admin"))) {
+
+
+        if("admin".equals(role) && (!servletPath.contains("admin")) && !"logout".equals(httpRequest.getParameter("command"))) {
+
             return false;
-        }*/
+        }
 
         if("/views/registration.jsp".equals(servletPath.trim()) || "/views/login.jsp".equals(servletPath.trim())) {
             return false;

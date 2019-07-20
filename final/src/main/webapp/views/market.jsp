@@ -16,29 +16,30 @@ ${user.role}
     <c:url value="/login.html?command=executemarketorder" var="executemarketorderUrl"/>
 
 
+
     <c:if test = "${user.role != 'user'}">
         <FORM action="${tocabinet}" method="post">
-            <BUTTON type="submit">в кабинет</BUTTON>
+            <BUTTON type="submit">${cabinet}</BUTTON>
         </FORM>
     </c:if>
 
     <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">торговать</BUTTON>
+        <BUTTON type="submit">${market}</BUTTON>
     </FORM>
 
 
 
     <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">выйти</BUTTON>
+        <BUTTON type="submit">${logout}</BUTTON>
     </FORM>
 
     <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">кошелёк</BUTTON>
+        <BUTTON type="submit">${mywallet}</BUTTON>
     </FORM>
 
 
     <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">мои заявки</BUTTON>
+        <BUTTON type="submit">${myorders}</BUTTON>
     </FORM>
 
 <hr>
@@ -63,8 +64,8 @@ ${setlimitordermessage}
     <LABEL for="amount">Количество</LABEL>
     <INPUT type="text" id="amount" name="amount">
 
-    <button type="submit" name="buybutton" value="buy">купить</button>
-    <button type="submit" name="sellbutton" value="sell">продать</button>
+    <button type="submit" name="buybutton" value="buy">${buy}</button>
+    <button type="submit" name="sellbutton" value="sell">${sell}</button>
 </FORM>
 
 <hr>
@@ -76,8 +77,8 @@ ${executemarketordermessage}
     <LABEL for="amountm">Количество</LABEL>
     <INPUT type="text" id="amountm" name="amount">
 
-    <button type="submit" name="buybutton" value="buy">купить</button>
-    <button type="submit" name="sellbutton" value="sell">продать</button>
+    <button type="submit" name="buybutton" value="buy">${buy}</button>
+    <button type="submit" name="sellbutton" value="sell">${sell}</button>
 </FORM>
 
 

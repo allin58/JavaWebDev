@@ -23,7 +23,7 @@
 
 
 
-        <BUTTON type="submit">зарегистрироваться</BUTTON>
+        <BUTTON type="submit">${approve}</BUTTON>
     </FORM>
 
 

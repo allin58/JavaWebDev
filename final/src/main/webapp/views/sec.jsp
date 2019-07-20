@@ -15,26 +15,26 @@
 
     <c:if test = "${user.role != 'user'}">
         <FORM action="${tocabinet}" method="post">
-            <BUTTON type="submit">в кабинет</BUTTON>
+            <BUTTON type="submit">${cabinet}</BUTTON>
         </FORM>
     </c:if>
 
     <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">торговать</BUTTON>
+        <BUTTON type="submit">${market}</BUTTON>
     </FORM>
 
 
 
     <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">выйти</BUTTON>
+        <BUTTON type="submit">${logout}</BUTTON>
     </FORM>
 
     <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">кошелёк</BUTTON>
+        <BUTTON type="submit">${mywallet}</BUTTON>
     </FORM>
 
     <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">мои заявки</BUTTON>
+        <BUTTON type="submit">${myorders}</BUTTON>
     </FORM>
 
 
@@ -43,7 +43,7 @@
         <tr> <td>${pair.identity}</td> <td>${pair.pair}</td> <td>${pair.active}</td>
             <td>
             <FORM action="${toggleUrl}+${pair.identity}" method="post">
-                <BUTTON type="submit">переключить</BUTTON>
+                <BUTTON type="submit">${toggle}</BUTTON>
             </FORM>
             </td>
 

@@ -3,7 +3,7 @@
 
 <html title="Вход в систему">
     <H2>Administrator</H2>
-    ${user.role}
+    ${user.userName}
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>
@@ -16,7 +16,7 @@
 
 
     <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">выйти</BUTTON>
+        <BUTTON type="submit">${logout} </BUTTON>
     </FORM>
 
 
@@ -51,13 +51,13 @@
             <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td>
                 <td>
                     <FORM action="${approvteransactionUrl}+${transaction.identity}" method="post">
-                        <BUTTON type="submit">подтвердить</BUTTON>
+                        <BUTTON type="submit">${approve}</BUTTON>
                     </FORM>
                 </td>
 
                 <td>
                     <FORM action="${rejectransactionUrl}+${transaction.identity}+&from=admin" method="post">
-                        <BUTTON type="submit">отклонить</BUTTON>
+                        <BUTTON type="submit">${reject}</BUTTON>
                     </FORM>
                 </td>
 

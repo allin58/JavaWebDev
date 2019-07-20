@@ -28,6 +28,7 @@ public class CommandFactory {
        commands.put("rejectorder", new RejectOrderCommand());
        commands.put("setlimitorder", new SetLimitOrderCommand());
        commands.put("executemarketorder", new ExecuteMarketOrderCommand());
+       commands.put("changelanguage", new ChangeLanguageCommand());
 
 
   /*      commands.put("setLanguage", new SetLanguageCommand());
