@@ -9,6 +9,7 @@ import service.WalletService;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import java.util.List;
 
 public class SetLimitOrderCommand implements Command {
 
@@ -85,6 +86,14 @@ String typeOfOrder = null;
 
                 break;
         }
+
+
+        OrderService orderService = new OrderService();
+        List askList = orderService.getAskOrdersByPair(pair.trim());
+        request.getSession().setAttribute("asklist",askList);
+
+        List bidList = orderService.getBidOrdersByPair(pair.trim());
+        request.getSession().setAttribute("bidlist",bidList);
 
         request.getSession().setAttribute("setlimitordermessage","ваш ордер принят");
 

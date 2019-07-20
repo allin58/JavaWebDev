@@ -89,9 +89,27 @@ public class ExecuteMarketOrderCommand implements Command {
                     request.getSession().setAttribute("executemarketordermessage","недостаточно средств");
                     return "views/market.jsp";
                 }
+                Double resultAmountB = 0.0;
+
+                for (Order order : orderList) {
+                    if (resultAmountB < amount) {
+                        if (order.getAmount() > amount - resultAmountB) {
 
 
-                // если хватает secondCurrency
+                            orderServiceB.executePartlyOrder(order,user, amount - resultAmountB );
+                            resultAmountB = amount;
+                        } else {
+                            orderServiceB.executeOrder(order,user);
+                            resultAmountB = resultAmountB + order.getAmount();
+                        }
+
+
+
+
+                    } else {
+                        break;
+                    }
+                }
 
 
 
@@ -116,10 +134,7 @@ public class ExecuteMarketOrderCommand implements Command {
                            resultAmount = amount;
                        } else {
 
-
                            orderService.executeOrder(order,user);
-
-
                            resultAmount = resultAmount + order.getAmount();
                        }
 
@@ -134,6 +149,15 @@ public class ExecuteMarketOrderCommand implements Command {
 
                 break;
         }
+
+        OrderService orderService = new OrderService();
+        List askList = orderService.getAskOrdersByPair(pair.trim());
+        request.getSession().setAttribute("asklist",askList);
+
+        List bidList = orderService.getBidOrdersByPair(pair.trim());
+        request.getSession().setAttribute("bidlist",bidList);
+
+
 
         request.getSession().setAttribute("executemarketordermessage","ваша заявка выполнена");
 

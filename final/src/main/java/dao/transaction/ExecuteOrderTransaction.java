@@ -51,7 +51,7 @@ private Double amount;
     @Override
     public void commit() throws PersistentException {
 
-        if ("Bid".equals(order.getType())) {
+
             try{
                 WalletDaoImpl walletDao = new WalletDaoImpl();
                 walletDao.setConnection(connection);
@@ -66,25 +66,61 @@ private Double amount;
 
                 WalletQualifier walletQualifier = new WalletQualifier();
 
+             
                 if (amount == null) {
-                    walletQualifier.reduceCurrency(order.getAmount(),firstCurrency,wallet1);
-                    walletQualifier.increaseCurrency(order.getAmount(),firstCurrency,wallet2);
-                    walletQualifier.increaseCurrency(order.getAmount() * order.getPrice(),secondCurrency,wallet1);
+
+
+                    if ("Bid".equals(order.getType())) {
+
+                        walletQualifier.reduceCurrency(order.getAmount(), firstCurrency, wallet1);
+                        walletQualifier.increaseCurrency(order.getAmount(), firstCurrency, wallet2);
+                        walletQualifier.increaseCurrency(order.getAmount() * order.getPrice(), secondCurrency, wallet1);
+                    }
+
+                    if ("Ask".equals(order.getType())) {
+
+                        walletQualifier.reduceCurrency(order.getAmount() * order.getPrice(), secondCurrency, wallet1);
+                        walletQualifier.increaseCurrency(order.getAmount() * order.getPrice(), secondCurrency, wallet2);
+                        walletQualifier.increaseCurrency(order.getAmount(), firstCurrency, wallet1);
+                    }
+
+
+
                 }else {
-                    walletQualifier.reduceCurrency(amount,firstCurrency,wallet1);
-                    walletQualifier.increaseCurrency(amount,firstCurrency,wallet2);
 
-                    walletQualifier.increaseCurrency(amount * order.getPrice(), secondCurrency,wallet1);
+                    if ("Bid".equals(order.getType())) {
+
+                        walletQualifier.reduceCurrency(amount,firstCurrency,wallet1);
+                        walletQualifier.increaseCurrency(amount,firstCurrency,wallet2);
+                        walletQualifier.increaseCurrency(amount * order.getPrice(), secondCurrency,wallet1);
+
+                        Order newOrder = new Order();
+                        newOrder.setState(order.getState());
+                        newOrder.setAmount(order.getAmount() - amount);
+                        newOrder.setPrice(order.getPrice());
+                        newOrder.setPair(order.getPair());
+                        newOrder.setUserId(order.getUserId());
+                        newOrder.setType(order.getType());
+                        orderDao.create(newOrder);
+                    }
+                    if ("Ask".equals(order.getType())) {
+                        System.out.println("ask partly");
+                        walletQualifier.reduceCurrency(amount * order.getPrice(),secondCurrency,wallet1);
+                        walletQualifier.increaseCurrency(amount * order.getPrice(),secondCurrency,wallet2);
+                        walletQualifier.increaseCurrency(amount , firstCurrency,wallet1);
+
+                        Order newOrder = new Order();
+                        newOrder.setState(order.getState());
+                        newOrder.setAmount(order.getAmount() - amount);
+                        newOrder.setPrice(order.getPrice());
+                        newOrder.setPair(order.getPair());
+                        newOrder.setUserId(order.getUserId());
+                        newOrder.setType(order.getType());
+                        orderDao.create(newOrder);
+                    }
 
 
-                    Order newOrder = new Order();
-                    newOrder.setState(order.getState());
-                    newOrder.setAmount(order.getAmount() - amount);
-                    newOrder.setPrice(order.getPrice());
-                    newOrder.setPair(order.getPair());
-                    newOrder.setUserId(order.getUserId());
-                    newOrder.setType(order.getType());
-                    orderDao.create(newOrder);
+
                 }
 
                 order.setState("executed");
@@ -98,7 +134,14 @@ private Double amount;
                 rollback();
                 throw new PersistentException();
             }
-        }
+
+
+
+
+
+
+
+
     }
 
     @Override
