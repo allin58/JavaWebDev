@@ -1,14 +1,12 @@
 package service;
 
-import dao.CoinDao;
 import dao.connectionpool.BasicConnectionPool;
 import dao.sql.CoinDaoImpl;
 import dao.sql.TransactionDaoImpl;
 import dao.sql.UserDaoImpl;
-import dao.sql.WalletDaoImpl;
 import dao.transaction.ApproveRequestTransaction;
 import dao.transaction.RejectRequestTransaction;
-import dao.transaction.WithdrowTransaction;
+import dao.transaction.WithdrawTransaction;
 import entity.Coin;
 import entity.Transaction;
 import entity.mapping.MappingTransaction;
@@ -162,7 +160,7 @@ public class TransactionService {
     }
 
 
-    public void setWithdrowTransaction(Integer userId,Double amount, String coin) throws  Exception{
+    public void setWithdrawTransaction(Integer userId,Double amount, String coin) throws  Exception{
         Connection connection = null;
         try {
             connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
@@ -178,12 +176,12 @@ public class TransactionService {
             Transaction transaction = new Transaction();
             transaction.setCoinId(coinId);
             transaction.setStatus("pending");
-            transaction.setType("withdrow");
+            transaction.setType("withdraw");
             transaction.setUserId(userId);
             transaction.setAmount(amount);
-            WithdrowTransaction withdrowTransaction = new WithdrowTransaction(connection);
-            withdrowTransaction.setTransaction(transaction);
-            withdrowTransaction.commit();
+            WithdrawTransaction withdrawTransaction = new WithdrawTransaction(connection);
+            withdrawTransaction.setTransaction(transaction);
+            withdrawTransaction.commit();
 
 
 

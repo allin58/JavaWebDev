@@ -60,8 +60,10 @@ public class ApproveRequestTransaction extends DataBaseTransaction {
             transactionDao.update(transaction);
             connection.commit();
             connection.setAutoCommit(true);
+            LOGGER.info("Transaction " + idTransaction + " is approve");
         } catch (Exception e) {
             rollback();
+            LOGGER.info("PersistentException in ApproveRequestTransaction, method commit()");
             throw new PersistentException();
         }
     }
@@ -71,6 +73,7 @@ public class ApproveRequestTransaction extends DataBaseTransaction {
         try {
             connection.rollback();
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in ApproveRequestTransaction, method rollback()");
             throw new PersistentException();
         }
     }

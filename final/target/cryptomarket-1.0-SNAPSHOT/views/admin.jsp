@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html title="Вход в систему">
-    <H2>Administrator</H2>
+    <H2>${administrator}</H2>
     ${user.userName}
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
@@ -48,7 +48,11 @@
 
     <table>
         <c:forEach var="transaction" items="${transactionData}" >
-            <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td>
+
+            <c:set var="type">${transaction.type}</c:set>
+            <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transactionType[type]}</td>
+        <%--    <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td>--%>
+
                 <td>
                     <FORM action="${approvteransactionUrl}+${transaction.identity}" method="post">
                         <BUTTON type="submit">${approve}</BUTTON>

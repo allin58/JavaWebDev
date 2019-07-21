@@ -34,6 +34,10 @@
         <BUTTON type="submit">${mywallet}</BUTTON>
     </FORM>
 
+    <FORM action="${toorderUrl}" method="post">
+        <BUTTON type="submit">${myorders}</BUTTON>
+    </FORM>
+
 
 <hr>
     <FORM action="${depositUrl}" method="post">
@@ -42,6 +46,10 @@
 
         <BUTTON type="submit">${deposit} ${coin} </BUTTON>
     </FORM>
+
+
+
+
     ${depositerror}
 
 </html>

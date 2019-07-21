@@ -47,14 +47,19 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
 
             return arrayList;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CryptoPairDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CryptoPairDaoImpl, method read()");
+            }
         }
     }
 
@@ -77,14 +82,19 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             return cryptoPair.getIdentity();
 
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CryptoPairDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method create()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CryptoPairDaoImpl, method create()");
+            }
         }
 
 
@@ -113,14 +123,19 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             }
             return cryptoPair;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CryptoPairDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CryptoPairDaoImpl, method read()");
+            }
         }
     }
 
@@ -138,11 +153,14 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
 
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CryptoPairDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CryptoPairDaoImpl, method update()");
+            }
         }
 
     }
@@ -155,11 +173,14 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             statement.setInt(1, identity);
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CryptoPairDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CryptoPairDaoImpl, method delete()");
+            }
         }
 
     }

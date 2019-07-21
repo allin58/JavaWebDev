@@ -7,6 +7,8 @@ import dao.connectionpool.BasicConnectionPool;
 import dao.connectionpool.ConnectionPool;
 import entity.User;
 import exception.PersistentException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import service.UserService;
 
 import javax.servlet.RequestDispatcher;
@@ -75,6 +77,11 @@ public class MarketServlet extends HttpServlet {
 
    /*     RequestDispatcher rd = request.getRequestDispatcher(path);
         rd.forward(request, response);*/
+
+/*
+        Logger LOGGER = LogManager.getLogger("by.training.final.ServletLogger");
+        LOGGER.info(path);*/
+
 
            response.sendRedirect(response.encodeRedirectURL(path));
             //response.sendRedirect(path);

@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html title="Вход в систему">
-    <H2>Вход в систему</H2>
+   <%-- <H2>Вход в систему</H2>--%>
 
     <c:url value="/login.html?command=login" var="loginUrl"/>
     <c:url value="/login.html?command=toregistration" var="regUrl"/>
@@ -23,9 +23,9 @@
 
 
     <FORM action="${loginUrl}" method="post">
-         <LABEL for="username">Имя пользователя:</LABEL>
+         <LABEL for="username">${username}</LABEL>
         <INPUT type="text" id="username" name="username">
-        <LABEL for="password">Пароль:</LABEL>
+        <LABEL for="password">${password}</LABEL>
         <INPUT type="password" id="password" name="password">
         <BUTTON type="submit">${login}</BUTTON>
     </FORM>

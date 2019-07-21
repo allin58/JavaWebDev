@@ -41,7 +41,15 @@
     <table>
 <c:forEach var="order" items ="${orders}"    >
 
-    <tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td>${order.state}</td>
+   <%-- <tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td>${order.state}</td>
+--%>
+
+
+    <c:set var="state">${order.state}</c:set>
+    <%--<tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td><c:out value="${orderState[state]}"/></td>--%>
+
+    <tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td>${orderState[state]}</td>
+
         <c:if test = "${order.state == 'active'}">
         <td>
             <FORM action="${rejectorderUrl}+${order.identity}" method="post">

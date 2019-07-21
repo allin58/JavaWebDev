@@ -21,7 +21,9 @@
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-
+    <listener>
+        <listener-class>controller.listener.MarketServletListener</listener-class>
+    </listener>
 
 
     <filter>

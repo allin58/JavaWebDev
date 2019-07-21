@@ -55,14 +55,19 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
             return arrayList;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in TransactionDaoImpl, method read()");
+            }
         }
     }
 
@@ -86,7 +91,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             if(resultSet.next()) {
                 return resultSet.getInt(1);
             } else {
-                //  logger.error("There is no autoincremented index after trying to add record into table `authors`");
+                LOGGER.info("PersistentException in TransactionDaoImpl, method create()");
                 throw new PersistentException();
             }
         } catch(SQLException e) {
@@ -94,10 +99,14 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method create()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in TransactionDaoImpl, method create()");
+            }
         }
 
     }
@@ -124,14 +133,19 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             }
             return transaction;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
+            }
         }
     }
 
@@ -153,11 +167,14 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in TransactionDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method update()");
+            }
         }
 
     }
@@ -172,11 +189,14 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             statement.setInt(1, identity);
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in TransactionDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in TransactionDaoImpl, method delete()");
+            }
         }
 
     }

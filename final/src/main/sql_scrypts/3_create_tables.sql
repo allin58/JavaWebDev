@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
   `user_id` INTEGER NOT NULL,
   `coin_id` INTEGER NOT NULL,
   `amount`  decimal(12, 6) UNSIGNED NOT NULL,
-  `type`  ENUM('deposit', 'withdrow') NOT NULL,
+  `type`  ENUM('deposit', 'withdraw') NOT NULL,
   `date` TIMESTAMP,
   `status`  ENUM('pending', 'approved','rejected') NOT NULL,
 

@@ -55,14 +55,19 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
             return arrayList;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in OrderDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in OrderDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in OrderDaoImpl, method read()");
+            }
         }
     }
 
@@ -88,7 +93,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             if(resultSet.next()) {
                 return resultSet.getInt(1);
             } else {
-                //  logger.error("There is no autoincremented index after trying to add record into table `authors`");
+                LOGGER.info("PersistentException in OrderDaoImpl, method create()");
                 throw new PersistentException();
             }
         } catch(SQLException e) {
@@ -96,10 +101,14 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in OrderDaoImpl, method create()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in OrderDaoImpl, method create()");
+            }
         }
 
 
@@ -130,14 +139,19 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             }
             return order;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in OrderDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in OrderDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in OrderDaoImpl, method read()");
+            }
         }
     }
 
@@ -162,11 +176,14 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in OrderDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in OrderDaoImpl, method update()");
+            }
         }
 
     }
@@ -180,11 +197,14 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             statement.setInt(1, identity);
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in OrderDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in OrderDaoImpl, method delete()");
+            }
         }
     }
 }

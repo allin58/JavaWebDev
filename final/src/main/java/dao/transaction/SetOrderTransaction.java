@@ -67,8 +67,10 @@ public class SetOrderTransaction extends DataBaseTransaction {
             connection.commit();
             connection.setAutoCommit(true);
 
+            LOGGER.info("Order " + order.getIdentity() + " is set");
 
         } catch (Exception e) {
+            LOGGER.info("PersistentException in SetOrderTransaction, method commit()");
             rollback();
             throw new PersistentException();
         }
@@ -80,6 +82,7 @@ public class SetOrderTransaction extends DataBaseTransaction {
         try {
             connection.rollback();
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in SetOrderTransaction, method rollback()");
             throw new PersistentException();
         }
     }

@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.Locale;
 import java.util.ResourceBundle;
 
@@ -57,6 +58,35 @@ public class LoginFilter implements Filter {
             httpRequest.getSession().setAttribute("cancel", resourceBundle.getString("button.cancel"));
             httpRequest.getSession().setAttribute("deposit", resourceBundle.getString("button.deposit"));
             httpRequest.getSession().setAttribute("withdraw", resourceBundle.getString("button.withdraw"));
+
+            httpRequest.getSession().setAttribute("username", resourceBundle.getString("text.username"));
+            httpRequest.getSession().setAttribute("name", resourceBundle.getString("text.name"));
+            httpRequest.getSession().setAttribute("surname", resourceBundle.getString("text.surname"));
+            httpRequest.getSession().setAttribute("password", resourceBundle.getString("text.password"));
+
+            httpRequest.getSession().setAttribute("administrator", resourceBundle.getString("text.administrator"));
+
+            httpRequest.getSession().setAttribute("sec", resourceBundle.getString("text.sec"));
+
+            HashMap<String,String> orderState = new HashMap<>();
+            orderState.put("executed",resourceBundle.getString("text.executed"));
+            orderState.put("canceled",resourceBundle.getString("text.canceled"));
+            orderState.put("active",resourceBundle.getString("text.active"));
+
+            HashMap<String,String> transactionType = new HashMap<>();
+            transactionType.put("withdraw",resourceBundle.getString("button.withdraw"));
+            transactionType.put("deposit",resourceBundle.getString("button.deposit"));
+
+            HashMap<String,String> transactionStatus = new HashMap<>();
+            transactionStatus.put("pending",resourceBundle.getString("text.pending"));
+            transactionStatus.put("approved",resourceBundle.getString("text.approved"));
+            transactionStatus.put("rejected",resourceBundle.getString("text.rejected"));
+
+
+
+            httpRequest.getSession().setAttribute("orderState", orderState);
+            httpRequest.getSession().setAttribute("transactionType", transactionType);
+            httpRequest.getSession().setAttribute("transactionStatus", transactionStatus);
 
 
         }

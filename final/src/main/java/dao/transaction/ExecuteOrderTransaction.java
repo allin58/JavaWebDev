@@ -104,7 +104,7 @@ private Double amount;
                         orderDao.create(newOrder);
                     }
                     if ("Ask".equals(order.getType())) {
-                        System.out.println("ask partly");
+
                         walletQualifier.reduceCurrency(amount * order.getPrice(),secondCurrency,wallet1);
                         walletQualifier.increaseCurrency(amount * order.getPrice(),secondCurrency,wallet2);
                         walletQualifier.increaseCurrency(amount , firstCurrency,wallet1);
@@ -129,8 +129,9 @@ private Double amount;
                 walletDao.update(wallet2);
                 connection.commit();
                 connection.setAutoCommit(true);
-
+                LOGGER.info("Order " + order.getIdentity() + " is executed");
             } catch (Exception e) {
+                LOGGER.info("PersistentException in ExecuteOrderTransaction, method commit()");
                 rollback();
                 throw new PersistentException();
             }
@@ -149,6 +150,7 @@ private Double amount;
         try {
             connection.rollback();
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in ExecuteOrderTransaction, method rollback()");
             throw new PersistentException();
         }
     }

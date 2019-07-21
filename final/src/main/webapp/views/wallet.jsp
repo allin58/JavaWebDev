@@ -11,7 +11,7 @@
     <c:url value="/login.html?command=tocabinet" var="tocabinet"/>
     <c:url value="/login.html?command=tomarket" var="marketUrl"/>
     <c:url value="/login.html?command=todeposit" var="todepositUrl"/>
-    <c:url value="/login.html?command=towithdrow" var="towithdrowUrl"/>
+    <c:url value="/login.html?command=towithdraw" var="towithdrawUrl"/>
     <c:url value="/login.html?command=rejectransaction&identity=" var="rejectransactionUrl"/>
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
@@ -51,7 +51,7 @@
                 </td>
 
                 <td>
-                    <FORM action="${towithdrowUrl}+&coin=BTC" method="post">
+                    <FORM action="${towithdrawUrl}+&coin=BTC" method="post">
                         <BUTTON type="submit">${withdraw}</BUTTON>
                     </FORM>
                 </td>
@@ -71,7 +71,7 @@
                 </td>
 
                 <td>
-                    <FORM action="${towithdrowUrl}+&coin=ETH" method="post">
+                    <FORM action="${towithdrawUrl}+&coin=ETH" method="post">
                         <BUTTON type="submit">${withdraw}</BUTTON>
                     </FORM>
                 </td>
@@ -86,7 +86,7 @@
                 </td>
 
                 <td>
-                    <FORM action="${towithdrowUrl}+&coin=USDT" method="post">
+                    <FORM action="${towithdrawUrl}+&coin=USDT" method="post">
                         <BUTTON type="submit">${withdraw}</BUTTON>
                     </FORM>
                 </td>
@@ -100,7 +100,11 @@
 
     <table>
         <c:forEach var="transaction" items="${transactions}" >
-            <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td> <td>${transaction.status}</td>
+
+            <c:set var="status">${transaction.status}</c:set>
+
+            <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td> <td>${transactionStatus[status]}</td>
+           <%-- <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td> <td>${transaction.status}</td>--%>
 
                 <c:if test = "${transaction.status == 'pending'}">
                 <td>

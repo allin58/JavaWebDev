@@ -1,6 +1,8 @@
 package dao.connectionpool;
 
 import exception.PersistentException;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,6 +13,8 @@ import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.locks.ReentrantLock;
 
 public class BasicConnectionPool  implements ConnectionPool {
+
+    final static Logger LOGGER = LogManager.getLogger("by.training.final.DataBaseLogger");
 
     private String url;
     private String user;
@@ -40,6 +44,8 @@ public class BasicConnectionPool  implements ConnectionPool {
             //basicConnectionPool.usedConnections = new ArrayList<>(INITIAL_POOL_SIZE);
 
         }
+        LOGGER.info("connection pool is created");
+
     }
 
     public static BasicConnectionPool getBasicConnectionPool() {
@@ -67,6 +73,7 @@ public class BasicConnectionPool  implements ConnectionPool {
 
         usedConnections.add(connection);
 
+        LOGGER.info("connection given");
         return connection;
     }
 
@@ -74,7 +81,7 @@ public class BasicConnectionPool  implements ConnectionPool {
     public boolean releaseConnection(Connection connection) {
 
         connectionPool.add(connection);
-
+        LOGGER.info("connection released");
         return usedConnections.remove(connection);
     }
 
@@ -98,7 +105,7 @@ public class BasicConnectionPool  implements ConnectionPool {
             c.close();
         }
         connectionPool.clear();
-
+        LOGGER.info("connection pool is shutdown");
     }
 
 

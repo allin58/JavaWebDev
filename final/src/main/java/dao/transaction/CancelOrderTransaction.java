@@ -54,8 +54,9 @@ public class CancelOrderTransaction extends DataBaseTransaction {
             connection.commit();
             connection.setAutoCommit(true);
 
-
+            LOGGER.info("Order " + order.getIdentity() + " is canceled");
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in CancelOrderTransaction, method commit()");
             throw new PersistentException();
         }
 
@@ -67,6 +68,7 @@ public class CancelOrderTransaction extends DataBaseTransaction {
         try {
             connection.rollback();
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in CancelOrderTransaction, method rollback()");
             throw new PersistentException();
         }
     }

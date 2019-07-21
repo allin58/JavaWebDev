@@ -16,12 +16,12 @@ ${user.role}
     <c:url value="/login.html?command=executemarketorder" var="executemarketorderUrl"/>
 
 
-
+<%--
     <c:if test = "${user.role != 'user'}">
         <FORM action="${tocabinet}" method="post">
             <BUTTON type="submit">${cabinet}</BUTTON>
         </FORM>
-    </c:if>
+    </c:if>--%>
 
     <FORM action="${marketUrl}" method="post">
         <BUTTON type="submit">${market}</BUTTON>

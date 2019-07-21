@@ -48,14 +48,19 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
 
             return arrayList;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in WalletDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in WalletDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in WalletDaoImpl, method read()");
+            }
         }
     }
 
@@ -78,14 +83,19 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
 
             return wallet.getIdentity();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in WalletDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in WalletDaoImpl, method create()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in WalletDaoImpl, method create()");
+            }
         }
     }
 
@@ -108,14 +118,19 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             }
             return wallet;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in WalletDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in WalletDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in WalletDaoImpl, method read()");
+            }
         }
     }
 
@@ -131,11 +146,14 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             statement.setBigDecimal(3, new BigDecimal(wallet.getUsdt()));
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in WalletDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in WalletDaoImpl, method update()");
+            }
         }
 
 
@@ -150,11 +168,14 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             statement.setInt(1, identity);
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in WalletDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in WalletDaoImpl, method delete()");
+            }
         }
 
 

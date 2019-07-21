@@ -9,16 +9,16 @@
     <H2>${error}</H2>
 
     <FORM action="${regUrl}" method="post">
-         <LABEL for="username">UserName</LABEL>
+         <LABEL for="username">${username}</LABEL>
         <INPUT type="text" id="username" name="username">
 
-        <LABEL for="name">Name</LABEL>
+        <LABEL for="name">${name}</LABEL>
         <INPUT type="text" id="name" name="name">
 
-        <LABEL for="surname">Surname</LABEL>
+        <LABEL for="surname">${surname}</LABEL>
         <INPUT type="text" id="surname" name="surname">
 
-        <LABEL for="password">Password</LABEL>
+        <LABEL for="password">${password}</LABEL>
         <INPUT type="text" id="password" name="password">
 
 

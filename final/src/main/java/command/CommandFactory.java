@@ -1,5 +1,11 @@
 package command;
 
+import command.admin.ApproveTransactionCommand;
+import command.admin.RejectTransactionCommand;
+import command.general.*;
+import command.sec.TogglePairCommand;
+import command.user.*;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -22,8 +28,8 @@ public class CommandFactory {
        commands.put("rejectransaction", new RejectTransactionCommand());
        commands.put("deposit", new DepositCommand());
        commands.put("todeposit", new ToDepositCommand());
-       commands.put("towithdrow", new ToWithdrowCommand());
-       commands.put("withdrow", new WithdrowCommand());
+       commands.put("towithdraw", new ToWithdrawCommand());
+       commands.put("withdraw", new WithdrawCommand());
        commands.put("toorders", new ToMyOrdersCommand());
        commands.put("rejectorder", new RejectOrderCommand());
        commands.put("setlimitorder", new SetLimitOrderCommand());

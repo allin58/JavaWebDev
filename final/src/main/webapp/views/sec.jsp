@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html title="Вход в систему">
-    <H2>Security Exchange Commission </H2>
+    <H2>${sec}</H2>
     ${user.role}
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
@@ -13,29 +13,33 @@
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
-    <c:if test = "${user.role != 'user'}">
+  <%--  <c:if test = "${user.role != 'user'}">
         <FORM action="${tocabinet}" method="post">
             <BUTTON type="submit">${cabinet}</BUTTON>
         </FORM>
     </c:if>
 
+
+    <FORM action="${toorderUrl}" method="post">
+        <BUTTON type="submit">${myorders}</BUTTON>
+    </FORM>
+
     <FORM action="${marketUrl}" method="post">
         <BUTTON type="submit">${market}</BUTTON>
     </FORM>
 
+    <FORM action="${walletUrl}" method="post">
+        <BUTTON type="submit">${mywallet}</BUTTON>
+    </FORM>
+--%>
 
 
     <FORM action="${logoutUrl}" method="post">
         <BUTTON type="submit">${logout}</BUTTON>
     </FORM>
 
-    <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">${mywallet}</BUTTON>
-    </FORM>
 
-    <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">${myorders}</BUTTON>
-    </FORM>
+
 
 
     <table>

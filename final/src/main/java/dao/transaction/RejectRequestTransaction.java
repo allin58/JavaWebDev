@@ -48,7 +48,7 @@ public class RejectRequestTransaction extends DataBaseTransaction {
             Wallet wallet = walletDao.read(transaction.getUserId());
             connection.setAutoCommit(false);
 
-            if ("withdrow".equals(transaction.getType())) {
+            if ("withdraw".equals(transaction.getType())) {
                 WalletQualifier walletQualifier = new WalletQualifier();
                 walletQualifier.increaseCurrency(transaction.getAmount(),coin.getTicker(),wallet);
                 walletDao.update(wallet);
@@ -60,8 +60,9 @@ public class RejectRequestTransaction extends DataBaseTransaction {
             transactionDao.update(transaction);
             connection.commit();
             connection.setAutoCommit(true);
-
+            LOGGER.info("Transaction " + idTransaction + " is rejected");
         } catch (Exception e) {
+            LOGGER.info("PersistentException in RejectRequestTransaction, method commit()");
             rollback();
             throw new PersistentException();
         }
@@ -74,6 +75,7 @@ public class RejectRequestTransaction extends DataBaseTransaction {
         try {
             connection.rollback();
         } catch (SQLException e) {
+            LOGGER.info("PersistentException in RejectRequestTransaction, method rollback()");
             throw new PersistentException();
         }
     }

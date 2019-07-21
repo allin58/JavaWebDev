@@ -57,11 +57,24 @@ public class AccessFilter implements Filter {
         String servletPath= httpRequest.getServletPath();
 
 
-
-        if("admin".equals(role) && (!servletPath.contains("admin")) && !"logout".equals(httpRequest.getParameter("command"))) {
+        if("admin".equals(role) &&
+                (!servletPath.contains("admin")) &&
+                !( "logout".equals(httpRequest.getParameter("command")) ||
+                 "approvetransaction".equals(httpRequest.getParameter("command")) ||
+                  "rejectransaction".equals(httpRequest.getParameter("command")))) {
 
             return false;
         }
+
+
+        if("sec".equals(role) &&
+                (!servletPath.contains("sec")) &&
+                !( "logout".equals(httpRequest.getParameter("command")) ||
+                    "togglepair".equals(httpRequest.getParameter("command")))) {
+
+            return false;
+        }
+
 
         if("/views/registration.jsp".equals(servletPath.trim()) || "/views/login.jsp".equals(servletPath.trim())) {
             return false;
@@ -71,13 +84,6 @@ if("user".equals(role) && (servletPath.contains("sec") || servletPath.contains("
     return false;
 }
 
-if("admin".equals(role) && servletPath.contains("sec") ) {
-    return false;
-}
-
-        if("sec".equals(role) && servletPath.contains("admin") ) {
-            return false;
-        }
 
 
 

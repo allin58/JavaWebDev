@@ -45,14 +45,19 @@ public class CoinDaoImpl extends BaseDao implements CoinDao {
 
             return arrayList;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CoinDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CoinDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CoinDaoImpl, method read()");
+            }
         }
     }
 
@@ -74,14 +79,19 @@ public class CoinDaoImpl extends BaseDao implements CoinDao {
             return coin.getIdentity();
 
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CoinDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CoinDaoImpl, method create()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CoinDaoImpl, method create()");
+            }
         }
 
 
@@ -106,14 +116,19 @@ public class CoinDaoImpl extends BaseDao implements CoinDao {
             }
             return coin;
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CoinDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in CoinDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CoinDaoImpl, method read()");
+            }
         }
     }
 
@@ -127,11 +142,14 @@ public class CoinDaoImpl extends BaseDao implements CoinDao {
             statement.setInt(3, coin.getIdentity());
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CoinDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CoinDaoImpl, method update()");
+            }
         }
 
     }
@@ -145,11 +163,14 @@ public class CoinDaoImpl extends BaseDao implements CoinDao {
             statement.setInt(1, identity);
             statement.executeUpdate();
         } catch(SQLException e) {
+            LOGGER.info("PersistentException in CoinDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch(SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in CoinDaoImpl, method delete()");
+            }
         }
 
 
