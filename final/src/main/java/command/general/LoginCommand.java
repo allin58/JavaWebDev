@@ -24,7 +24,7 @@ public class LoginCommand implements Command {
             String username = request.getParameter("username");
             String password = request.getParameter("password");
 
-        request.getSession().setAttribute("message",null);
+        request.getSession().setAttribute("loginmessage",null);
             if (username != null && password != null) {
                 UserService userService = new UserService();
 
@@ -66,7 +66,7 @@ public class LoginCommand implements Command {
             }
 
 
-        request.getSession().setAttribute("message","ошибка входа");
+        request.getSession().setAttribute("loginmessage","loginfailed");
 
         return "login.jsp";
 

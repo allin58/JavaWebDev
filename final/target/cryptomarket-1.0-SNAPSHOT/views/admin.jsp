@@ -1,9 +1,21 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html title="Вход в систему">
-    <H2>${administrator}</H2>
-    ${user.userName}
+<html>
+
+<head>
+
+
+    <style>
+        <%@ include file="/css/style.css" %>
+    </style>
+
+
+</head>
+
+<body>
+    <H2>${administrator} ${user.userName}</H2>
+
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>
@@ -14,38 +26,16 @@
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
 
+    <div class="container"  style="background-color:#f1f1f1; position: fixed; width: 100%; background: white;
+    top: 5%;  left: 0%;">
 
     <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">${logout} </BUTTON>
+        <BUTTON type="submit" style="width: 10%;">${logout} </BUTTON>
     </FORM>
 
+      </div>
 
-  <%--  <c:if test = "${user.role != 'user'}">
-        <FORM action="${tocabinet}" method="post">
-            <BUTTON type="submit">в кабинет</BUTTON>
-        </FORM>
-    </c:if>
-
-    <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">торговать</BUTTON>
-    </FORM>
-
-
-
-    <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">выйти</BUTTON>
-    </FORM>
-
-    <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">кошелёк</BUTTON>
-    </FORM>
-
-    <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">мои заявки</BUTTON>
-    </FORM>
---%>
-
-
+    <div class="container"  style="background-color:#f1f1f1">
     <table>
         <c:forEach var="transaction" items="${transactionData}" >
 
@@ -68,5 +58,7 @@
             </tr>
         </c:forEach>
     </table>
+    </div>
 
+    </body>
 </html>

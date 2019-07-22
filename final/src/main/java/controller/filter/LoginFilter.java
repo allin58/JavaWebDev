@@ -33,6 +33,7 @@ public class LoginFilter implements Filter {
         String uri = httpRequest.getRequestURI();
 
 
+
         if ((session != null && session.getAttribute("language") == null) ){
             httpRequest.getSession().setAttribute("language","en");
                 }
@@ -82,11 +83,18 @@ public class LoginFilter implements Filter {
             transactionStatus.put("approved",resourceBundle.getString("text.approved"));
             transactionStatus.put("rejected",resourceBundle.getString("text.rejected"));
 
+            HashMap<String,String> loginFailed = new HashMap<>();
+            loginFailed.put("loginfailed",resourceBundle.getString("text.loginfailed"));
+            loginFailed.put("protection",resourceBundle.getString("text.protection"));
+            loginFailed.put("allfield",resourceBundle.getString("text.allfield"));
+            loginFailed.put("useralredyexist",resourceBundle.getString("text.useralredyexist"));
+            loginFailed.put("successful",resourceBundle.getString("text.successful"));
 
 
             httpRequest.getSession().setAttribute("orderState", orderState);
             httpRequest.getSession().setAttribute("transactionType", transactionType);
             httpRequest.getSession().setAttribute("transactionStatus", transactionStatus);
+            httpRequest.getSession().setAttribute("loginFailed", loginFailed);
 
 
         }

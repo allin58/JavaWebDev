@@ -9,6 +9,7 @@ public class ChangeLanguageCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         request.getSession().setAttribute("language",request.getParameter("language"));
+        request.getSession().setAttribute("loginmessage",null);
         return "login.jsp";
     }
 }

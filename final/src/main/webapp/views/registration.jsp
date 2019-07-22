@@ -1,13 +1,23 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html title="Вход в систему">
+<html>
+
+<head>
+
+    <%--  <link rel="stylesheet" type="text/css" href="css/style.css">--%>
+
+    <style>
+        <%@ include file="/css/style.css" %>
+    </style>
 
 
+</head>
 
+<body>
     <c:url value="/login.html?command=registration" var="regUrl"/>
-    <H2>${error}</H2>
 
+    <div class="container"  style="background-color:#f1f1f1">
     <FORM action="${regUrl}" method="post">
          <LABEL for="username">${username}</LABEL>
         <INPUT type="text" id="username" name="username">
@@ -26,6 +36,10 @@
         <BUTTON type="submit">${approve}</BUTTON>
     </FORM>
 
+        <c:set var="message">${loginmessage}</c:set>
+        <H2>${loginFailed[message]}</H2>
 
+    </div>
+</body>
 
 </html>

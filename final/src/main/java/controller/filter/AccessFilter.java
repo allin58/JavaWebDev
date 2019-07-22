@@ -22,12 +22,13 @@ public class AccessFilter implements Filter {
         HttpSession session = httpRequest.getSession();
 
 
+
         if (session != null && session.getAttribute("user") != null) {
             if (checkRequest(httpRequest)) {
 
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                session.setAttribute("message","сработала защита от несанкционированного доступа ");
+                session.setAttribute("loginmessage","protection");
                 session.setAttribute("user", null);
                 RequestDispatcher rd = servletRequest.getRequestDispatcher("login.jsp");
                 rd.forward(httpRequest, httpResponse);

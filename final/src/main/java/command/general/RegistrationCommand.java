@@ -19,13 +19,13 @@ public class RegistrationCommand implements Command {
         String surname = request.getParameter("surname");
         String password = request.getParameter("password");
 
-
+        request.getSession().setAttribute("loginmessage",null);
 
         if (!"".equals(username) && !"".equals(name)  && !"".equals(surname)  &&!"".equals(password)) {
             UserService userService = new UserService();
             if (userService.userIsExist(username)) {
 
-                request.getSession().setAttribute("error","пользователь с таким именем уже существует");
+                request.getSession().setAttribute("loginmessage","useralredyexist");
                 return "views/registration.jsp";
             } else {
 
@@ -50,14 +50,14 @@ public class RegistrationCommand implements Command {
 
 
 
-                request.getSession().setAttribute("message","регистрация прошла успешно");
+                request.getSession().setAttribute("loginmessage","successful");
                 return "login.jsp";
 
             }
 
         } else {
 
-            request.getSession().setAttribute("error","все поля должны быть заполненны");
+            request.getSession().setAttribute("loginmessage","allfield");
             return "views/registration.jsp";
 
         }
