@@ -44,23 +44,29 @@ public class RejectRequestTransaction extends DataBaseTransaction {
 
 
             Transaction transaction = transactionDao.read(idTransaction);
-            Coin coin = coinDao.read(transaction.getCoinId());
-            Wallet wallet = walletDao.read(transaction.getUserId());
-            connection.setAutoCommit(false);
 
-            if ("withdraw".equals(transaction.getType())) {
-                WalletQualifier walletQualifier = new WalletQualifier();
-                walletQualifier.increaseCurrency(transaction.getAmount(),coin.getTicker(),wallet);
-                walletDao.update(wallet);
+
+            if ("pending".equals(transaction.getStatus())) {
+                Coin coin = coinDao.read(transaction.getCoinId());
+                Wallet wallet = walletDao.read(transaction.getUserId());
+                connection.setAutoCommit(false);
+
+                if ("withdraw".equals(transaction.getType())) {
+                    WalletQualifier walletQualifier = new WalletQualifier();
+                    walletQualifier.increaseCurrency(transaction.getAmount(),coin.getTicker(),wallet);
+                    walletDao.update(wallet);
+                }
+
+                transaction.setStatus("rejected");
+                Date date = new Date();
+                transaction.setTimestamp(new Timestamp(date.getTime()));
+                transactionDao.update(transaction);
+                connection.commit();
+                connection.setAutoCommit(true);
+                LOGGER.info("Transaction " + idTransaction + " is rejected");
             }
 
-            transaction.setStatus("rejected");
-            Date date = new Date();
-            transaction.setTimestamp(new Timestamp(date.getTime()));
-            transactionDao.update(transaction);
-            connection.commit();
-            connection.setAutoCommit(true);
-            LOGGER.info("Transaction " + idTransaction + " is rejected");
+
         } catch (Exception e) {
             LOGGER.info("PersistentException in RejectRequestTransaction, method commit()");
             rollback();

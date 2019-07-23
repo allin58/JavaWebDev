@@ -17,8 +17,9 @@ public class SetLimitOrderCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
 String typeOfOrder = null;
-        request.getSession().setAttribute("setlimitordermessage",null);
-        request.getSession().setAttribute("executemarketordermessage",null);
+       /* request.getSession().setAttribute("setlimitordermessage",null);
+        request.getSession().setAttribute("executemarketordermessage",null);*/
+        request.getSession().setAttribute("ordermessage",null);
 
         if (request.getParameter("buybutton") != null) {
          typeOfOrder = request.getParameter("buybutton").trim();
@@ -40,7 +41,7 @@ String typeOfOrder = null;
             }
 
         } catch (Exception e) {
-            request.getSession().setAttribute("setlimitordermessage","введены неверные данные");
+            request.getSession().setAttribute("ordermessage","incorrectamount");
             return "views/market.jsp";
         }
 
@@ -53,7 +54,7 @@ String typeOfOrder = null;
             case "buy" :
                 Double sum = amount * price;
                 if (walletQualifier.getAmountByTicker(wallet,secondCoin) < sum) {
-                    request.getSession().setAttribute("setlimitordermessage","недостаточно средств");
+                    request.getSession().setAttribute("ordermessage","insufficientfunds");
                     return "views/market.jsp";
                 }
 
@@ -71,7 +72,7 @@ String typeOfOrder = null;
             case "sell" :
 
                 if (walletQualifier.getAmountByTicker(wallet,firstCoin) < amount) {
-                    request.getSession().setAttribute("setlimitordermessage","недостаточно средств");
+                    request.getSession().setAttribute("ordermessage","insufficientfunds");
                     return "views/market.jsp";
                 }
 
@@ -96,7 +97,7 @@ String typeOfOrder = null;
         List bidList = orderService.getBidOrdersByPair(pair.trim());
         request.getSession().setAttribute("bidlist",bidList);
 
-        request.getSession().setAttribute("setlimitordermessage","ваш ордер принят");
+        request.getSession().setAttribute("ordermessage","yourorderisaccepted");
 
         return "views/market.jsp";
     }

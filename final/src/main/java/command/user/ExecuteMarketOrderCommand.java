@@ -20,9 +20,10 @@ public class ExecuteMarketOrderCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().setAttribute("setlimitordermessage",null);
+       /* request.getSession().setAttribute("setlimitordermessage",null);
         request.getSession().setAttribute("executemarketordermessage",null);
-
+*/
+        request.getSession().setAttribute("ordermessage",null);
         String typeOfOrder = null;
         if (request.getParameter("buybutton") != null) {
             typeOfOrder = request.getParameter("buybutton").trim();
@@ -47,7 +48,7 @@ public class ExecuteMarketOrderCommand implements Command {
             }
 
         } catch (Exception e) {
-            request.getSession().setAttribute("executemarketordermessage","введены неверные данные");
+            request.getSession().setAttribute("ordermessage","incorrectamount");
             return "views/market.jsp";
         }
 
@@ -69,7 +70,7 @@ public class ExecuteMarketOrderCommand implements Command {
                     Order order = orderList.get(i);
                      if (amount < order.getAmount()) {
                         if (realAmountOfSecondCurrency < amount * order.getPrice() ) {
-                            request.getSession().setAttribute("executemarketordermessage","недостаточно средств");
+                            request.getSession().setAttribute("ordermessage","insufficientfunds");
                             return "views/market.jsp";
                         }
                         break;
@@ -87,7 +88,7 @@ public class ExecuteMarketOrderCommand implements Command {
                 }
 
                 if (expectedAmountOfSecondCurrency > realAmountOfSecondCurrency) {
-                    request.getSession().setAttribute("executemarketordermessage","недостаточно средств");
+                    request.getSession().setAttribute("ordermessage","insufficientfunds");
                     return "views/market.jsp";
                 }
                 Double resultAmountB = 0.0;
@@ -119,7 +120,7 @@ public class ExecuteMarketOrderCommand implements Command {
             case "sell" :
 
               if (walletQualifier.getAmountByTicker(wallet,firstCoin) < amount) {
-                  request.getSession().setAttribute("executemarketordermessage","недостаточно средств");
+                  request.getSession().setAttribute("ordermessage","insufficientfunds");
                   return "views/market.jsp";
                  }
               OrderService orderService = new OrderService();
@@ -160,7 +161,7 @@ public class ExecuteMarketOrderCommand implements Command {
 
 
 
-        request.getSession().setAttribute("executemarketordermessage","ваша заявка выполнена");
+        request.getSession().setAttribute("ordermessage","yourapplicationiscompleted");
 
 
         return "views/market.jsp";

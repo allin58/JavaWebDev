@@ -1,9 +1,9 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html title="Вход в систему">
+<html>
 
-    ${user.role}
+
 
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
@@ -15,32 +15,48 @@
     <c:url value="/login.html?command=rejectransaction&identity=" var="rejectransactionUrl"/>
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
+    <head>
 
-    <c:if test = "${user.role != 'user'}">
-    <FORM action="${tocabinet}" method="post">
-        <BUTTON type="submit">${cabinet}</BUTTON>
-    </FORM>
-    </c:if>
+        <style>
+            <%@ include file="/css/style.css" %>
+        </style>
 
-    <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">${market}</BUTTON>
-    </FORM>
+    </head>
+    <body>
 
 
 
-    <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">${logout}</BUTTON>
-    </FORM>
 
-    <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">${mywallet}</BUTTON>
-    </FORM>
+   <H2>${usertext} ${user.userName}</H2>
 
 
-    <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">${myorders}</BUTTON>
-    </FORM>
 
+
+
+   <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">
+
+
+       <FORM action="${marketUrl}" method="post" style="float: left; padding: 12px 20px; ">
+           <BUTTON type="submit">${market}</BUTTON>
+       </FORM>
+
+
+       <FORM action="${walletUrl}" method="post" style="float: left;  padding: 12px 20px;"  >
+           <BUTTON type="submit">${mywallet}</BUTTON>
+       </FORM>
+
+       <FORM action="${toorderUrl}" method="post" style="float: left;padding: 12px 20px; ">
+           <BUTTON type="submit" >${myorders}</BUTTON>
+       </FORM>
+
+       <FORM action="${logoutUrl}" method="post" style="float: left; padding: 12px 20px; ">
+           <BUTTON type="submit">${logout}</BUTTON>
+       </FORM>
+
+
+   </div>
+
+   <div class="container"  style="background-color:#f1f1f1;  left: 20%;">
     <table>
 
             <tr> <td>Bitcoin</td> <td>${wallet.btc}</td>
@@ -57,11 +73,6 @@
                 </td>
 
             </tr>
-
-
-
-
-
 
             <tr> <td>Ethereum</td> <td>${wallet.eth}</td>
                 <td>
@@ -94,32 +105,35 @@
             </tr>
 
     </table>
+   </div>
 
-    <hr>
 
-
+   <div class="container"  style="background-color:#f1f1f1 ;  left: 60%;">
     <table>
         <c:forEach var="transaction" items="${transactions}" >
 
             <c:set var="status">${transaction.status}</c:set>
+            <c:set var="type">${transaction.type}</c:set>
 
-            <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td> <td>${transactionStatus[status]}</td>
+            <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transactionType[type]}</td> <td>${transactionStatus[status]}</td>
            <%-- <tr> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td> <td>${transaction.status}</td>--%>
 
                 <c:if test = "${transaction.status == 'pending'}">
-                <td>
+
+                <td >
                     <FORM action="${rejectransactionUrl}+${transaction.identity}+&from=wallet" method="post">
-                        <BUTTON type="submit">${cancel}</BUTTON>
+                        <BUTTON type="submit" >${cancel}</BUTTON>
                     </FORM>
                 </td>
+
                 </c:if>
 
             </tr>
         </c:forEach>
     </table>
+   </div>>
 
-
-
+    </body>
 
 
 

@@ -15,10 +15,23 @@ public class WithdrawCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().setAttribute("withdrawerror",null);
+        request.getSession().setAttribute("transactionerror",null);
 
         try {
-            Double amount = Double.valueOf(request.getParameter("amount"));
+
+
+            Double amount = null;
+            try {
+                amount = Double.valueOf(request.getParameter("amount"));
+                if (amount <= 0) {
+                    throw new Exception();
+                }
+            } catch (Exception e) {
+                request.getSession().setAttribute("transactionerror","incorrectamount");
+                return "views/withdraw.jsp";
+            }
+
+
             String coin = (String) request.getSession().getAttribute("coin");
             Integer userId = ((User)request.getSession().getAttribute("user")).getIdentity();
 
@@ -36,8 +49,8 @@ public class WithdrawCommand implements Command {
 
             return "views/wallet.jsp";
         } catch (Exception e) {
-            e.printStackTrace();
-            request.getSession().setAttribute("withdrawerror","введена некорректная сумма");
+
+            request.getSession().setAttribute("transactionerror","insufficientfunds");
             return "views/withdraw.jsp";
 
         }

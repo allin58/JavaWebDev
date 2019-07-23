@@ -2,6 +2,7 @@ package command.user;
 
 import command.Command;
 import entity.CryptoPair;
+import entity.mapping.TraidingCouple;
 import service.CryptoPairService;
 import service.OrderService;
 
@@ -16,13 +17,34 @@ public class ToMarketCommand implements Command {
 
 
 
-
-        request.getSession().setAttribute("setlimitordermessage",null);
+        request.getSession().setAttribute("marketerror",null);
+        request.getSession().setAttribute("ordermessage",null);
+        request.getSession().setAttribute("typeoforder","limit");
        String pair = request.getParameter("pair");
 
-       if (pair == null) {
-           pair = "BTC-USDT";
+       if (pair == null || "".equals(pair)) {
+
+
+           CryptoPairService cryptoPairService = new CryptoPairService();
+           List<TraidingCouple> activePairs = cryptoPairService.getActivePairs();
+if (activePairs.size() > 0) {
+
+    pair = activePairs.get(0).getPair();
+
+} else {
+
+    request.getSession().setAttribute("activepairs",null);
+    request.getSession().setAttribute("pair",null);
+    request.getSession().setAttribute("marketerror","marketerror");
+    return "views/market.jsp";
+}
+
+
+
        }
+
+
+
 
         request.getSession().setAttribute("pair",pair);
         OrderService orderService = new OrderService();

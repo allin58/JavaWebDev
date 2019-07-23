@@ -9,7 +9,7 @@ public class ToRegistrationCommand implements Command {
 
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().setAttribute("loginmessage",null);
+        request.getSession().setAttribute("registrationmessage",null);
         return "views/registration.jsp";
     }
 }

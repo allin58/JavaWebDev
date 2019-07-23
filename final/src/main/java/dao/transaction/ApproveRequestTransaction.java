@@ -43,24 +43,29 @@ public class ApproveRequestTransaction extends DataBaseTransaction {
 
 
             Transaction transaction = transactionDao.read(idTransaction);
-            Coin coin = coinDao.read(transaction.getCoinId());
-            Wallet wallet = walletDao.read(transaction.getUserId());
-            connection.setAutoCommit(false);
 
-            if ("deposit".equals(transaction.getType())) {
-                WalletQualifier walletQualifier = new WalletQualifier();
-                walletQualifier.increaseCurrency(transaction.getAmount(),coin.getTicker(),wallet);
-                walletDao.update(wallet);
+
+            if ("pending".equals(transaction.getStatus())) {
+                Coin coin = coinDao.read(transaction.getCoinId());
+                Wallet wallet = walletDao.read(transaction.getUserId());
+                connection.setAutoCommit(false);
+
+                if ("deposit".equals(transaction.getType())) {
+                    WalletQualifier walletQualifier = new WalletQualifier();
+                    walletQualifier.increaseCurrency(transaction.getAmount(),coin.getTicker(),wallet);
+                    walletDao.update(wallet);
+                }
+
+
+                transaction.setStatus("approved");
+                Date date = new Date();
+                transaction.setTimestamp(new Timestamp(date.getTime()));
+                transactionDao.update(transaction);
+                connection.commit();
+                connection.setAutoCommit(true);
+                LOGGER.info("Transaction " + idTransaction + " is approve");
             }
 
-
-            transaction.setStatus("approved");
-            Date date = new Date();
-            transaction.setTimestamp(new Timestamp(date.getTime()));
-            transactionDao.update(transaction);
-            connection.commit();
-            connection.setAutoCommit(true);
-            LOGGER.info("Transaction " + idTransaction + " is approve");
         } catch (Exception e) {
             rollback();
             LOGGER.info("PersistentException in ApproveRequestTransaction, method commit()");

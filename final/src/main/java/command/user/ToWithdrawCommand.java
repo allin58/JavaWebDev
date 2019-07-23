@@ -11,7 +11,7 @@ public class ToWithdrawCommand implements Command {
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
         String coin = request.getParameter("coin");
         request.getSession().setAttribute("coin",coin);
-        request.getSession().setAttribute("withdrawerror",null);
+        request.getSession().setAttribute("transactionerror",null);
         return "views/withdraw.jsp";
     }
 }

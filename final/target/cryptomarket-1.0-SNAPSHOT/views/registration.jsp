@@ -36,10 +36,11 @@
         <BUTTON type="submit">${approve}</BUTTON>
     </FORM>
 
-        <c:set var="message">${loginmessage}</c:set>
-        <H2>${loginFailed[message]}</H2>
 
+        <c:set var="message">${registrationmessage}</c:set>
+        <H2 style="color: #222222">${registrationFailed[message]}</H2>
     </div>
+
 </body>
 
 </html>

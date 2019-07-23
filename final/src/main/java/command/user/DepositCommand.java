@@ -12,7 +12,7 @@ import java.util.List;
 public class DepositCommand implements Command {
     @Override
     public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        request.getSession().setAttribute("depositerror",null);
+        request.getSession().setAttribute("transactionerror",null);
         try {
            Double amount = Double.valueOf(request.getParameter("amount"));
            if(amount < 0){
@@ -33,7 +33,7 @@ public class DepositCommand implements Command {
             return "views/wallet.jsp";
         } catch (Exception e) {
 
-            request.getSession().setAttribute("depositerror","введена некорректная сумма");
+            request.getSession().setAttribute("transactionerror","incorrectamount");
             return "views/deposit.jsp";
 
         }

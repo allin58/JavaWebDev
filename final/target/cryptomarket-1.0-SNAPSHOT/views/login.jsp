@@ -33,6 +33,7 @@
        <BUTTON type="submit">change</BUTTON>
 
    </FORM>--%>
+
    <div class="container"  style="background-color:#f1f1f1">
 
 
@@ -59,14 +60,18 @@
         <INPUT type="text" id="username" name="username" placeholder=${username}>
         <INPUT type="password" id="password" name="password" placeholder=${password}>
         <BUTTON type="submit">${login}</BUTTON>
+
         </FORM>
 
    <FORM action="${regUrl}" method="post">
        <BUTTON type="submit">${registration}</BUTTON>
    </FORM>
        <c:set var="message">${loginmessage}</c:set>
-       <H2>${loginFailed[message]}</H2>
+       <H2 style="color: #222222">${loginFailed[message]}</H2>
    </div>
+
+
+
 
    </body>
 

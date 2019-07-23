@@ -2,6 +2,7 @@ package command.general;
 
 import command.Command;
 import entity.User;
+import entity.mapping.TraidingCouple;
 import service.CryptoPairService;
 import service.OrderService;
 import service.TransactionService;
@@ -44,10 +45,21 @@ public class LoginCommand implements Command {
 
                       case "user" :
                           String pair = request.getParameter("pair");
-                          if (pair == null) {
-                              pair = "BTC-USDT";
+                          if (pair == null || "".equals(pair)) {
+                              CryptoPairService cryptoPairService = new CryptoPairService();
+                              List<TraidingCouple> activePairs = cryptoPairService.getActivePairs();
+                              if (activePairs.size() > 0) {
+
+                                  pair = activePairs.get(0).getPair();
+                              } else {
+                                  request.getSession().setAttribute("activepairs",null);
+                                  request.getSession().setAttribute("pair",null);
+                                  request.getSession().setAttribute("marketerror","marketerror");
+                                  return "views/market.jsp";
+                              }
                           }
                           request.getSession().setAttribute("pair",pair);
+                          request.getSession().setAttribute("typeoforder","limit");
 
                           CryptoPairService cryptoPairService = new CryptoPairService();
                           List activePairs = cryptoPairService.getActivePairs();

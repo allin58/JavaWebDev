@@ -114,8 +114,6 @@ public class TransactionService {
 
         Connection transactionConnection = null;
 
-
-
         try {
             transactionConnection = BasicConnectionPool.getBasicConnectionPool().getConnection();
             RejectRequestTransaction rejectRequestTransaction = new RejectRequestTransaction(transactionConnection);

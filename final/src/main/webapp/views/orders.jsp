@@ -1,9 +1,8 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html title="Вход в систему">
-    <H2>заявки</H2>
-    ${user.role}
+<html>
+<H2>${usertext} ${user.userName}</H2>
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>
@@ -11,42 +10,50 @@
     <c:url value="/login.html?command=tomarket" var="marketUrl"/>
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
     <c:url value="/login.html?command=rejectorder&orderid=" var="rejectorderUrl"/>
+    <head>
+
+        <style>
+            <%@ include file="/css/style.css" %>
+        </style>
+
+    </head>
 
 
-    <c:if test = "${user.role != 'user'}">
-        <FORM action="${tocabinet}" method="post">
-            <BUTTON type="submit">${cabinet}</BUTTON>
+
+    <body>
+
+    <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">
+
+
+        <FORM action="${marketUrl}" method="post" style="float: left; padding: 12px 20px; ">
+            <BUTTON type="submit">${market}</BUTTON>
         </FORM>
-    </c:if>
-
-    <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">${market}</BUTTON>
-    </FORM>
 
 
+        <FORM action="${walletUrl}" method="post" style="float: left;  padding: 12px 20px;"  >
+            <BUTTON type="submit">${mywallet}</BUTTON>
+        </FORM>
 
-    <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">${logout}</BUTTON>
-    </FORM>
+        <FORM action="${toorderUrl}" method="post" style="float: left;padding: 12px 20px; ">
+            <BUTTON type="submit" >${myorders}</BUTTON>
+        </FORM>
 
-    <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">${mywallet}</BUTTON>
-    </FORM>
-
-    <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">${myorders}</BUTTON>
-    </FORM>
+        <FORM action="${logoutUrl}" method="post" style="float: left; padding: 12px 20px; ">
+            <BUTTON type="submit">${logout}</BUTTON>
+        </FORM>
 
 
-    <table>
+    </div>
+
+
+    <div class="container"  style="background-color:#f1f1f1;  left: 35%; overflow: auto;">
+    <table >
 <c:forEach var="order" items ="${orders}"    >
 
-   <%-- <tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td>${order.state}</td>
---%>
 
 
     <c:set var="state">${order.state}</c:set>
-    <%--<tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td><c:out value="${orderState[state]}"/></td>--%>
+
 
     <tr> <td>${order.pair}</td> <td>${order.amount}</td> <td>${order.price}</td> <td>${order.type}</td> <td>${orderState[state]}</td>
 
@@ -66,5 +73,12 @@
 
 </c:forEach>
     </table>
+
+
+        </div>
+    </body>
+
+
+
 
 </html>

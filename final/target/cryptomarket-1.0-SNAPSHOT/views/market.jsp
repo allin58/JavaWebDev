@@ -1,11 +1,10 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<html title="Вход в систему">
-${user.role}
-    <H2>MARKET</H2>
+<html>
 
-    ${pair}
+
+    <%--${pair}--%>
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>
@@ -14,102 +13,162 @@ ${user.role}
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
     <c:url value="/login.html?command=setlimitorder" var="setlimitorderUrl"/>
     <c:url value="/login.html?command=executemarketorder" var="executemarketorderUrl"/>
+    <c:url value="/login.html?command=settypeoforder" var="settypeoforderUrl"/>
+
+    <head>
+
+        <style>
+            <%@ include file="/css/style.css" %>
+        </style>
+
+    </head>
+    <body>
 
 
-<%--
-    <c:if test = "${user.role != 'user'}">
-        <FORM action="${tocabinet}" method="post">
-            <BUTTON type="submit">${cabinet}</BUTTON>
+
+
+    <H2>${usertext} ${user.userName}</H2>
+
+    <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">
+
+
+        <FORM action="${marketUrl}" method="post" style="float: left; padding: 12px 20px; ">
+            <BUTTON type="submit">${market}</BUTTON>
         </FORM>
-    </c:if>--%>
-
-    <FORM action="${marketUrl}" method="post">
-        <BUTTON type="submit">${market}</BUTTON>
-    </FORM>
 
 
+        <FORM action="${walletUrl}" method="post" style="float: left;  padding: 12px 20px;"  >
+            <BUTTON type="submit">${mywallet}</BUTTON>
+        </FORM>
 
-    <FORM action="${logoutUrl}" method="post">
-        <BUTTON type="submit">${logout}</BUTTON>
-    </FORM>
+        <FORM action="${toorderUrl}" method="post" style="float: left;padding: 12px 20px; ">
+            <BUTTON type="submit" >${myorders}</BUTTON>
+        </FORM>
 
-    <FORM action="${walletUrl}" method="post">
-        <BUTTON type="submit">${mywallet}</BUTTON>
-    </FORM>
+        <FORM action="${logoutUrl}" method="post" style="float: left; padding: 12px 20px; ">
+            <BUTTON type="submit">${logout}</BUTTON>
+        </FORM>
 
 
-    <FORM action="${toorderUrl}" method="post">
-        <BUTTON type="submit">${myorders}</BUTTON>
-    </FORM>
+    </div>
 
-<hr>
+    <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 25%; left: 0%;">
+
+
+        <c:set var="messagemarketerror">${marketerror}</c:set>
+        ${marketError[messagemarketerror]}
+
 
 
 <c:forEach var = "pair" items = "${activepairs}">
-     <FORM action="${marketUrl}+${pair.pair}" method="post">
+     <FORM action="${marketUrl}+${pair.pair}" method="post" style="float: left; padding: 12px 20px;">
          <BUTTON type="submit">${pair.pair}</BUTTON>
      </FORM>
 
 
 </c:forEach>
-<hr>
-
-
-<H2>лимитный ордер</H2>
-${setlimitordermessage}
-<FORM action="${setlimitorderUrl}" method="post">
-    <LABEL for="price">Цена</LABEL>
-    <INPUT type="text" id="price" name="price">
-
-    <LABEL for="amount">Количество</LABEL>
-    <INPUT type="text" id="amount" name="amount">
-
-    <button type="submit" name="buybutton" value="buy">${buy}</button>
-    <button type="submit" name="sellbutton" value="sell">${sell}</button>
-</FORM>
-
-<hr>
-<H2>рыночный ордер</H2>
-${executemarketordermessage}
-<FORM action="${executemarketorderUrl}" method="post">
-
-
-    <LABEL for="amountm">Количество</LABEL>
-    <INPUT type="text" id="amountm" name="amount">
-
-    <button type="submit" name="buybutton" value="buy">${buy}</button>
-    <button type="submit" name="sellbutton" value="sell">${sell}</button>
-</FORM>
+    </div>
 
 
 
-
-<hr>
-<h1>Ask</h1>
-    <table>
-        <tr> <td>цена</td> <td>объём</td> </tr>
-    <c:forEach var = "ask" items = "${asklist}">
-        <tr> <td>${ask.price}</td> <td>${ask.amount}</td> </tr>
-      </c:forEach>
-    </table>
-
-    <hr>
-    <h1>Bib</h1>
-    <table>
-        <tr> <td>цена</td> <td>объём</td> </tr>
-    <c:forEach var = "bid" items = "${bidlist}">
-    <tr> <td>${bid.price}</td> <td>${bid.amount}</td> </tr>
-        </c:forEach>
-    </table>
-    <hr>
+    <c:if test="${pair != null}">
+    <div class="container"  style="background-color:#f1f1f1 ;  left: 3%; top: 45%">
 
 
 
 
 
+    ${pair}
+    <c:set var="ordermes">${ordermessage}</c:set>
+    ${transactionError[ordermes]}
 
 
 
+
+        <c:if test="${typeoforder == 'limit'}">
+        <FORM action="${settypeoforderUrl}" method="post">
+
+        <select name="typeoforder" onchange="this.form.submit()">
+            <option value="limit" selected>limit</option>
+            <option value="market">market</option>
+        </select>
+        </FORM>
+
+    <FORM action="${setlimitorderUrl}" method="post">
+
+         <INPUT type="text" id="price" name="price" placeholder=${price}>
+         <INPUT type="text" id="amount" name="amount" placeholder=${amount}>
+
+        <button type="submit" name="buybutton" value="buy">${buy}</button>
+        <button type="submit" name="sellbutton" value="sell">${sell}</button>
+    </FORM>
+
+        </c:if>
+
+
+
+        <c:if test="${typeoforder == 'market'}">
+            <FORM action="${settypeoforderUrl}" method="post">
+
+                <select name="typeoforder" onchange="this.form.submit()">
+                    <option value="limit" >limit</option>
+                    <option value="market" selected>market</option>
+                </select>
+            </FORM>
+
+
+            <FORM action="${executemarketorderUrl}" method="post">
+                <INPUT type="text" id="amountm" name="amount" placeholder=${amount}>
+                <button type="submit" name="buybutton" value="buy">${buy}</button>
+                <button type="submit" name="sellbutton" value="sell">${sell}</button>
+            </FORM>
+
+
+        </c:if>
+
+
+
+
+
+    </div>
+
+
+
+    <div class="container"  style="background-color:#f1f1f1 ;  left: 40%; top: 45%; width: 10%">
+        <h1>${ask}</h1>
+        <hr>
+        <table>
+            <tr> <td>${price}</td> <td>${volume}</td> </tr>
+            <c:forEach var = "ask" items = "${asklist}">
+                <tr> <td>${ask.price}</td> <td>${ask.amount}</td> </tr>
+            </c:forEach>
+        </table>
+
+    </div>
+
+
+    <div class="container"  style="background-color:#f1f1f1 ;  left: 60%; top: 45%; width: 10%">
+        <h1>${bid}</h1>
+        <hr>
+        <table>
+            <tr> <td>${price}</td> <td>${volume}</td> </tr>
+            <c:forEach var = "bid" items = "${bidlist}">
+                <tr> <td>${bid.price}</td> <td>${bid.amount}</td> </tr>
+            </c:forEach>
+        </table>
+
+    </div>
+
+
+
+
+   </c:if>
+
+
+
+
+
+</body>
 
 
 
