@@ -1,12 +1,13 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%--<%@ include file="/css/style.css" %>--%>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/time.tld" %>
+
 
 <html>
 
 
    <head>
-
+       <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
          <style>
              <%@ include file="/css/style.css" %>

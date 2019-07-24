@@ -13,7 +13,7 @@
     <c:url value="/login.html?command=deposit" var="depositUrl"/>
 
 <head>
-
+    <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <style>
         <%@ include file="/css/style.css" %>
     </style>

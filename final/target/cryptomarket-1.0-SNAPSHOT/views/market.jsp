@@ -1,10 +1,11 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="ctg" uri="/WEB-INF/tld/time.tld" %>
 
 <html>
 
 
-    <%--${pair}--%>
+
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>
@@ -16,7 +17,7 @@
     <c:url value="/login.html?command=settypeoforder" var="settypeoforderUrl"/>
 
     <head>
-
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             <%@ include file="/css/style.css" %>
         </style>
@@ -27,7 +28,8 @@
 
 
 
-    <H2>${usertext} ${user.userName}</H2>
+    <H2>${usertext} ${user.userName} </H2>
+
 
     <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">
 
@@ -79,6 +81,7 @@
 
 
     ${pair}
+        <ctg:info-time/>
     <c:set var="ordermes">${ordermessage}</c:set>
     ${transactionError[ordermes]}
 
@@ -138,10 +141,12 @@
         <h1>${ask}</h1>
         <hr>
         <table>
+            <tbody class="scrollable">
             <tr> <td>${price}</td> <td>${volume}</td> </tr>
             <c:forEach var = "ask" items = "${asklist}">
                 <tr> <td>${ask.price}</td> <td>${ask.amount}</td> </tr>
             </c:forEach>
+            </tbody>
         </table>
 
     </div>
@@ -151,10 +156,12 @@
         <h1>${bid}</h1>
         <hr>
         <table>
+            <tbody class="scrollable">
             <tr> <td>${price}</td> <td>${volume}</td> </tr>
             <c:forEach var = "bid" items = "${bidlist}">
                 <tr> <td>${bid.price}</td> <td>${bid.amount}</td> </tr>
             </c:forEach>
+            </tbody>
         </table>
 
     </div>

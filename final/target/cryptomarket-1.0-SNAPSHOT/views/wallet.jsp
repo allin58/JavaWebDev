@@ -16,7 +16,7 @@
     <c:url value="/login.html?command=toorders" var="toorderUrl"/>
 
     <head>
-
+        <META http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style>
             <%@ include file="/css/style.css" %>
         </style>
@@ -110,6 +110,8 @@
 
    <div class="container"  style="background-color:#f1f1f1 ;  left: 60%;">
     <table>
+        <tbody class="scrollable">
+
         <c:forEach var="transaction" items="${transactions}" >
 
             <c:set var="status">${transaction.status}</c:set>
@@ -130,6 +132,9 @@
 
             </tr>
         </c:forEach>
+
+
+       </tbody>
     </table>
    </div>>
 
