@@ -13,7 +13,7 @@
 
     <servlet>
         <servlet-name>Market</servlet-name>
-        <servlet-class>controller.MarketServlet</servlet-class>
+        <servlet-class>by.taining.cryptomarket.controller.MarketServlet</servlet-class>
     </servlet>
 
     <servlet-mapping>
@@ -22,13 +22,13 @@
     </servlet-mapping>
 
     <listener>
-        <listener-class>controller.listener.MarketServletListener</listener-class>
+        <listener-class>by.taining.cryptomarket.controller.listener.MarketServletListener</listener-class>
     </listener>
 
 
     <filter>
         <filter-name>EncodingFilter</filter-name>
-        <filter-class>controller.filter.EncodingFilter</filter-class>
+        <filter-class>by.taining.cryptomarket.controller.filter.EncodingFilter</filter-class>
     </filter>
     <filter-mapping>
         <filter-name>EncodingFilter</filter-name>
@@ -40,7 +40,7 @@
 
     <filter>
         <filter-name>LanguageFilter</filter-name>
-        <filter-class>controller.filter.LanguageFilter</filter-class>
+        <filter-class>by.taining.cryptomarket.controller.filter.LanguageFilter</filter-class>
 
     </filter>
 
@@ -53,7 +53,7 @@
 
     <filter>
         <filter-name>AuthFilter</filter-name>
-        <filter-class>controller.filter.LoginFilter</filter-class>
+        <filter-class>by.taining.cryptomarket.controller.filter.LoginFilter</filter-class>
 
     </filter>
 
@@ -65,7 +65,7 @@
 
     <filter>
         <filter-name>AccessFilter</filter-name>
-        <filter-class>controller.filter.AccessFilter</filter-class>
+        <filter-class>by.taining.cryptomarket.controller.filter.AccessFilter</filter-class>
 
     </filter>
 

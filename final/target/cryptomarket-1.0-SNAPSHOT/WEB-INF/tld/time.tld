@@ -8,7 +8,7 @@
     <uri>customtags</uri>
     <tag>
         <name>info-time</name>
-        <tag-class>markettag.TimeTag</tag-class>
+        <tag-class>by.taining.cryptomarket.markettag.TimeTag</tag-class>
         <body-content>empty</body-content>
     </tag>
 </taglib>
