@@ -29,6 +29,8 @@
     <div class="container"  style="background-color:#f1f1f1; position: fixed; width: 100%; background: white;
     top: 5%;  left: 0%;">
 
+
+
     <FORM action="${logoutUrl}" method="post">
         <BUTTON type="submit" style="width: 10%;">${logout} </BUTTON>
     </FORM>
@@ -36,13 +38,14 @@
       </div>
 
     <div class="container"  style="background-color:#f1f1f1">
+        <H2 style="color: black">${applicationfordw} </H2>
     <table>
         <tbody class="scrollable">
         <c:forEach var="transaction" items="${transactionData}" >
 
             <c:set var="type">${transaction.type}</c:set>
             <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transactionType[type]}</td>
-        <%--    <tr> <td>${transaction.user}</td> <td>${transaction.coin}</td> <td>${transaction.amount}</td> <td>${transaction.type}</td>--%>
+
 
                 <td>
                     <FORM action="${approvteransactionUrl}+${transaction.identity}" method="post">

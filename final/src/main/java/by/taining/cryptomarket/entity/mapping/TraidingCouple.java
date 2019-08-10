@@ -31,9 +31,9 @@ public class TraidingCouple extends Entity {
 
     /**
      * Setter for pair.
-     * @param pair
+     * @param pair pair
      */
-    public void setPair(String pair) {
+    public void setPair(final String pair) {
         this.pair = pair;
     }
 
@@ -47,9 +47,9 @@ public class TraidingCouple extends Entity {
 
     /**
      * Setter for active.
-     * @param active
+     * @param active active
      */
-    public void setActive(Boolean active) {
+    public void setActive(final Boolean active) {
         this.active = active;
     }
 

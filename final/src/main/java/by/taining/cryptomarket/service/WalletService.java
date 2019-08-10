@@ -17,11 +17,11 @@ public class WalletService {
 
     /**
      * The method for getting wallet by identity.
-     * @param identity
+     * @param identity identity
      * @return wallet
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public Wallet getWalletByUserId(Integer identity) throws Exception {
+    public Wallet getWalletByUserId(final Integer identity) throws Exception {
 
 
         Connection connection = null;
@@ -32,8 +32,7 @@ public class WalletService {
             walletDao.setConnection(connection);
             wallet = walletDao.read(identity);
 
-        }
-        finally {
+        } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
 
@@ -43,10 +42,10 @@ public class WalletService {
 
     /**
      * The method for adding new wallet.
-     * @param wallet
-     * @throws Exception
+     * @param wallet wallet
+     * @throws Exception Exception
      */
-    public void addNewWallet(Wallet wallet) throws Exception {
+    public void addNewWallet(final Wallet wallet) throws Exception {
 
 
         Connection connection = null;
@@ -56,15 +55,8 @@ public class WalletService {
             WalletDaoImpl walletDao = new WalletDaoImpl();
             walletDao.setConnection(connection);
             walletDao.create(wallet);
-
-        }
-        finally {
+        } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
-
-
-
     }
-
-
 }

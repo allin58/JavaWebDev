@@ -35,9 +35,9 @@ public class CryptoPair extends  Entity {
 
     /**
      * The setter for firstCurrency.
-     * @param firstCurrency
+     * @param firstCurrency firstCurrency
      */
-    public void setFirstCurrency(Integer firstCurrency) {
+    public void setFirstCurrency(final Integer firstCurrency) {
         this.firstCurrency = firstCurrency;
     }
 
@@ -52,9 +52,9 @@ public class CryptoPair extends  Entity {
 
     /**
      * The setter for secondCurrency.
-     * @param secondCurrency
+     * @param secondCurrency secondCurrency
      */
-    public void setSecondCurrency(Integer secondCurrency) {
+    public void setSecondCurrency(final Integer secondCurrency) {
         this.secondCurrency = secondCurrency;
     }
 
@@ -71,9 +71,9 @@ public class CryptoPair extends  Entity {
 
     /**
      * The setter for active.
-     * @param active
+     * @param active active
      */
-    public void setActive(Boolean active) {
+    public void setActive(final Boolean active) {
         this.active = active;
     }
 }

@@ -1,16 +1,17 @@
 package by.taining.cryptomarket.controller.filter;
 
 
-import by.taining.cryptomarket.utf8control.UTF8Control;
-
-import javax.servlet.*;
+import javax.servlet.Filter;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletResponse;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletException;
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletRequest;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Locale;
-import java.util.ResourceBundle;
 
 /**
  * This filter checks access rights.
@@ -23,11 +24,10 @@ public class LoginFilter implements Filter {
 
     /**
      * The empty method.
-     * @param config
-     * @throws ServletException
+     * @param config config
+     * @throws ServletException ServletException
      */
-    public void init (FilterConfig config) throws ServletException
-    {
+    public void init(final FilterConfig config) throws ServletException {
 
     }
 
@@ -37,22 +37,21 @@ public class LoginFilter implements Filter {
      * @param servletRequest servletRequest
      * @param servletResponse servletResponse
      * @param chain chain
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException IOException
+     * @throws ServletException ServletException
      */
-    public void doFilter (ServletRequest servletRequest, ServletResponse servletResponse,
-                          FilterChain chain) throws IOException, ServletException
-    {
-
-
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain chain) throws IOException, ServletException {
 
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
         HttpSession session = httpRequest.getSession();
-        String uri = httpRequest.getRequestURI();
-        if ((session != null && session.getAttribute("user") != null) ||
-        "/login.html".equals(uri) ||
-        "/views/registration.jsp".equals(uri)) {
+        String servletPath = httpRequest.getServletPath();
+
+        if ((session != null && session.getAttribute("user") != null)
+                || "/login.html".equals(servletPath)
+                || "/views/registration.jsp".equals(servletPath)) {
 
 
 
@@ -60,7 +59,7 @@ public class LoginFilter implements Filter {
 
         }  else {
 
-            RequestDispatcher rd = servletRequest.getRequestDispatcher("views/login.jsp");
+            RequestDispatcher rd = servletRequest.getRequestDispatcher("/views/login.jsp");
             rd.forward(httpRequest, httpResponse);
 
         }
@@ -73,8 +72,7 @@ public class LoginFilter implements Filter {
     /**
      * The empty method.
      */
-    public void destroy()
-    {
+    public void destroy() {
 
     }
 

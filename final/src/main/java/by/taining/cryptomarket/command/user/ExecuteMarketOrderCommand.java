@@ -7,12 +7,8 @@ import by.taining.cryptomarket.entity.Order;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
-import by.taining.cryptomarket.service.OrderService;
-import by.taining.cryptomarket.service.WalletService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -33,9 +29,10 @@ public class ExecuteMarketOrderCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
-        request.getSession().setAttribute("ordermessage",null);
+        request.getSession().setAttribute("ordermessage", null);
         String typeOfOrder = null;
         if (request.getParameter("buybutton") != null) {
             typeOfOrder = request.getParameter("buybutton").trim();
@@ -45,11 +42,11 @@ public class ExecuteMarketOrderCommand implements Command {
         }
 
 
-        String pair = ((String)request.getSession().getAttribute("pair")).trim();
+        String pair = ((String) request.getSession().getAttribute("pair")).trim();
         String firstCoin = pair.split("-")[0];
         String secondCoin = pair.split("-")[1];
         Double amount = 0.0;
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         WalletService walletService = new WalletService();
         Wallet wallet = walletService.getWalletByUserId(user.getIdentity());
 
@@ -60,7 +57,8 @@ public class ExecuteMarketOrderCommand implements Command {
             }
 
         } catch (Exception e) {
-            request.getSession().setAttribute("ordermessage","incorrectamount");
+            request.getSession().setAttribute("ordermessage",
+                    "incorrectamount");
             return "views/market.jsp";
         }
 
@@ -68,27 +66,28 @@ public class ExecuteMarketOrderCommand implements Command {
         WalletQualifier walletQualifier = new WalletQualifier();
 
 
-        switch(typeOfOrder) {
+        switch (typeOfOrder) {
             case "buy" :
 
                 OrderService orderServiceB = new OrderService();
                 List<Order> orderList = orderServiceB.getAskOrdersByPair(pair);
                 Collections.reverse(orderList);
-                Double realAmountOfSecondCurrency = walletQualifier.getAmountByTicker(wallet,secondCoin);
+                Double realAmountOfSecondCurrency = walletQualifier.getAmountByTicker(wallet, secondCoin);
                 Double expectedAmountOfSecondCurrency = 0.0;
                 Double rest = amount;
 
                 for (int i = 0; i < orderList.size(); i++) {
                     Order order = orderList.get(i);
                      if (amount < order.getAmount()) {
-                        if (realAmountOfSecondCurrency < amount * order.getPrice() ) {
-                            request.getSession().setAttribute("ordermessage","insufficientfunds");
+                        if (realAmountOfSecondCurrency < amount * order.getPrice()) {
+                            request.getSession().setAttribute("ordermessage",
+                                    "insufficientfunds");
                             return "views/market.jsp";
                         }
                         break;
                     }
                     if (rest != 0) {
-                        if (rest > order.getAmount()){
+                        if (rest > order.getAmount()) {
                             expectedAmountOfSecondCurrency = expectedAmountOfSecondCurrency + (order.getAmount() * order.getPrice());
                             rest = rest - order.getAmount();
                         } else {
@@ -100,7 +99,7 @@ public class ExecuteMarketOrderCommand implements Command {
                 }
 
                 if (expectedAmountOfSecondCurrency > realAmountOfSecondCurrency) {
-                    request.getSession().setAttribute("ordermessage","insufficientfunds");
+                    request.getSession().setAttribute("ordermessage", "insufficientfunds");
                     return "views/market.jsp";
                 }
                 Double resultAmountB = 0.0;
@@ -110,10 +109,10 @@ public class ExecuteMarketOrderCommand implements Command {
                         if (order.getAmount() > amount - resultAmountB) {
 
 
-                            orderServiceB.executePartlyOrder(order,user, amount - resultAmountB );
+                            orderServiceB.executePartlyOrder(order, user, amount - resultAmountB);
                             resultAmountB = amount;
                         } else {
-                            orderServiceB.executeOrder(order,user);
+                            orderServiceB.executeOrder(order, user);
                             resultAmountB = resultAmountB + order.getAmount();
                         }
 
@@ -131,24 +130,26 @@ public class ExecuteMarketOrderCommand implements Command {
 
             case "sell" :
 
-              if (walletQualifier.getAmountByTicker(wallet,firstCoin) < amount) {
-                  request.getSession().setAttribute("ordermessage","insufficientfunds");
+              if (walletQualifier.getAmountByTicker(wallet, firstCoin) < amount) {
+                  request.getSession().setAttribute("ordermessage",
+                          "insufficientfunds");
                   return "views/market.jsp";
                  }
               OrderService orderService = new OrderService();
               List<Order> orders = orderService.getBidOrdersByPair(pair);
               Double resultAmount = 0.0;
                 for (Order order : orders) {
-                    if(resultAmount < amount) {
+                    if (resultAmount < amount) {
 
                        if (order.getAmount() > amount - resultAmount) {
 
-                           orderService.executePartlyOrder(order,user, amount - resultAmount );
+                           orderService.executePartlyOrder(order, user,
+                                   amount - resultAmount);
 
                            resultAmount = amount;
                        } else {
 
-                           orderService.executeOrder(order,user);
+                           orderService.executeOrder(order, user);
                            resultAmount = resultAmount + order.getAmount();
                        }
 
@@ -156,24 +157,18 @@ public class ExecuteMarketOrderCommand implements Command {
                     } else {
                         break;
                     }
-
-
                 }
-
 
                 break;
         }
 
         OrderService orderService = new OrderService();
         List askList = orderService.getAskOrdersByPair(pair.trim());
-        request.getSession().setAttribute("asklist",askList);
-
+        request.getSession().setAttribute("asklist", askList);
         List bidList = orderService.getBidOrdersByPair(pair.trim());
-        request.getSession().setAttribute("bidlist",bidList);
-
-
-
-        request.getSession().setAttribute("ordermessage","yourapplicationiscompleted");
+        request.getSession().setAttribute("bidlist", bidList);
+        request.getSession().setAttribute("ordermessage",
+                "yourapplicationiscompleted");
 
 
         return "views/market.jsp";

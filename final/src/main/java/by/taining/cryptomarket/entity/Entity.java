@@ -7,7 +7,7 @@ package by.taining.cryptomarket.entity;
  * @author Nikita Karchahin
  * @version 1.0
  */
-abstract public class Entity {
+public abstract class Entity {
     /**
      * The identity of entity.
      */
@@ -23,9 +23,9 @@ abstract public class Entity {
 
     /**
      * The setter of identity.
-     * @param identity
+     * @param identity identity
      */
-    public void setIdentity(Integer identity) {
+    public void setIdentity(final Integer identity) {
         this.identity = identity;
     }
 
@@ -36,10 +36,10 @@ abstract public class Entity {
      */
     @Override
     public boolean equals(Object object) {
-        if(object != null) {
-            if(object != this) {
-                if(object.getClass() == getClass() && identity != null) {
-                    return identity.equals(((Entity)object).identity);
+        if (object != null) {
+            if (object != this) {
+                if (object.getClass() == getClass() && identity != null) {
+                    return identity.equals(((Entity) object).identity);
                 }
                 return false;
             }

@@ -28,12 +28,12 @@ public class TransactionService {
     /**
      * Method for getting collection of transactions.
      * @return all transactions
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public List<MappingTransaction> getAllTransactions() throws Exception{
+    public List<MappingTransaction> getAllTransactions() throws Exception {
         Connection transactionConnection = null;
-        Connection userConnection = null;;
-        Connection coinConnection = null;;
+        Connection userConnection = null;
+        Connection coinConnection = null;
 
         List<Transaction> transactions;
         List<MappingTransaction> mappingTransactions = new ArrayList<>();
@@ -78,11 +78,11 @@ public class TransactionService {
 
     /**
      * Method for getting collection of transactions.
-     * @param userName
+     * @param userName userName
      * @return transactions by userName
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public List<MappingTransaction> getTransactionsByUser(String userName) throws Exception{
+    public List<MappingTransaction> getTransactionsByUser(final String userName) throws Exception {
 
         List<MappingTransaction> mappingTransactions = new ArrayList<>();
         for (MappingTransaction mappingTransaction : getAllTransactions()) {
@@ -97,7 +97,7 @@ public class TransactionService {
     /**
      *  Method for getting collection of transactions.
      * @return pending transactions
-     * @throws Exception
+     * @throws Exception Exception
      */
     public List<MappingTransaction> getPendingTransactions() throws Exception {
         List<MappingTransaction> mappingTransactions = new ArrayList<>();
@@ -113,9 +113,9 @@ public class TransactionService {
     /**
      * Method which approves transaction.
      * @param identity identity
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void approveTransaction(Integer identity) throws Exception {
+    public void approveTransaction(final Integer identity) throws Exception {
 
         Connection transactionConnection = null;
 
@@ -139,9 +139,9 @@ public class TransactionService {
     /**
      * Method which rejects transaction.
      * @param identity identity
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void rejectTransaction(Integer identity) throws Exception {
+    public void rejectTransaction(final Integer identity) throws Exception {
 
         Connection transactionConnection = null;
 
@@ -164,9 +164,11 @@ public class TransactionService {
      * @param userId userId
      * @param amount amount
      * @param coin coin
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void setDepositTransaction(Integer userId,Double amount, String coin) throws  Exception{
+    public void setDepositTransaction(final Integer userId,
+                                      final Double amount,
+                                      final String coin) throws  Exception {
         Connection connection = null;
         try {
             connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
@@ -175,7 +177,7 @@ public class TransactionService {
             List<Coin> coins = coinDao.read();
             Integer coinId = null;
             for (Coin coin1 : coins) {
-               if(coin1.getTicker().equals(coin)) {
+               if (coin1.getTicker().equals(coin)) {
                    coinId = coin1.getIdentity();
                }
             }
@@ -200,9 +202,11 @@ public class TransactionService {
      * @param userId userId
      * @param amount amount
      * @param coin coin
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void setWithdrawTransaction(Integer userId,Double amount, String coin) throws  Exception{
+    public void setWithdrawTransaction(final Integer userId,
+                                       final Double amount,
+                                       final String coin) throws Exception {
         Connection connection = null;
         try {
             connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
@@ -211,7 +215,7 @@ public class TransactionService {
             List<Coin> coins = coinDao.read();
             Integer coinId = null;
             for (Coin coin1 : coins) {
-                if(coin1.getTicker().equals(coin)) {
+                if (coin1.getTicker().equals(coin)) {
                     coinId = coin1.getIdentity();
                 }
             }

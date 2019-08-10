@@ -22,7 +22,7 @@ public class CryptoPairService {
     /**
      * The method for getting all pairs.
      * @return collection of all pairs
-     * @throws Exception
+     * @throws Exception Exception
      */
    public List<TraidingCouple> getAllPairs() throws Exception {
        Connection connection = null;
@@ -33,7 +33,6 @@ public class CryptoPairService {
            CryptoPairDaoImpl cryptoPairDao = new CryptoPairDaoImpl();
            cryptoPairDao.setConnection(connection);
            cryptoPairs = cryptoPairDao.read();
-
            CoinDaoImpl coinDao = new CoinDaoImpl();
            coinDao.setConnection(connection);
 
@@ -51,11 +50,9 @@ public class CryptoPairService {
                traidingCouples.add(traidingCouple);
            }
 
-
        } finally {
            BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
        }
-
 
       return  traidingCouples;
 
@@ -65,7 +62,7 @@ public class CryptoPairService {
     /**
      * The method for getting active pairs.
      * @return collection of active pairs
-     * @throws Exception
+     * @throws Exception Exception
      */
     public List<TraidingCouple> getActivePairs() throws Exception {
         List<TraidingCouple> traidingCouples = new ArrayList<>();
@@ -82,14 +79,10 @@ public class CryptoPairService {
     /**
      * The method for toggling status of pair.
      * @param id id of pair
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void togglePair(String id) throws Exception {
-
-
-    Integer identity=Integer.parseInt(id.trim());
-
-
+    public void togglePair(final String id) throws Exception {
+    Integer identity = Integer.parseInt(id.trim());
     Connection connection = null;
 
     try {
@@ -98,16 +91,13 @@ public class CryptoPairService {
         cryptoPairDao.setConnection(connection);
         CryptoPair cryptoPair = cryptoPairDao.read(identity);
 
-        if (cryptoPair.getActive()){
+        if (cryptoPair.getActive()) {
             cryptoPair.setActive(false);
         } else {
             cryptoPair.setActive(true);
         }
         cryptoPairDao.update(cryptoPair);
-
-    }
-
-    finally {
+    } finally {
         BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
     }
 

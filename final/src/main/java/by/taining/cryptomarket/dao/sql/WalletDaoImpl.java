@@ -3,9 +3,6 @@ package by.taining.cryptomarket.dao.sql;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.WalletDao;
-import by.taining.cryptomarket.entity.Wallet;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -66,7 +63,7 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
 
                 wallet = new Wallet();
                 wallet.setIdentity(Integer.valueOf(resultSet.getString("user_id")));
@@ -78,18 +75,18 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             }
 
             return arrayList;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in WalletDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in WalletDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in WalletDaoImpl, method read()");
             }
         }
@@ -100,10 +97,10 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
      * The method that creates a new record.
      * @param wallet wallet
      * @return number of record
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public Integer create(Wallet wallet) throws PersistentException {
+    public Integer create(final Wallet wallet) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -120,18 +117,18 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             resultSet = statement.getGeneratedKeys();
 
             return wallet.getIdentity();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in WalletDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in WalletDaoImpl, method create()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in WalletDaoImpl, method create()");
             }
         }
@@ -144,7 +141,7 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
      * @throws PersistentException
      */
     @Override
-    public Wallet read(Integer identity) throws PersistentException {
+    public Wallet read(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -152,7 +149,7 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             statement.setInt(1, identity);
             resultSet = statement.executeQuery();
             Wallet wallet = null;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 wallet = new Wallet();
                 wallet.setIdentity(identity);
                 wallet.setBtc(resultSet.getBigDecimal("BTC").doubleValue());
@@ -161,18 +158,18 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
 
             }
             return wallet;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in WalletDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in WalletDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in WalletDaoImpl, method read()");
             }
         }
@@ -185,7 +182,7 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
      * @throws PersistentException
      */
     @Override
-    public void update(Wallet wallet) throws PersistentException {
+    public void update(final Wallet wallet) throws PersistentException {
 
         PreparedStatement statement = null;
         try {
@@ -195,13 +192,13 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
             statement.setBigDecimal(2, new BigDecimal(wallet.getEth()));
             statement.setBigDecimal(3, new BigDecimal(wallet.getUsdt()));
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in WalletDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in WalletDaoImpl, method update()");
             }
         }
@@ -212,23 +209,23 @@ public class WalletDaoImpl extends BaseDao implements WalletDao {
     /**
      *  The method that deletes wallet by id.
      * @param identity identity
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public void delete(Integer identity) throws PersistentException {
+    public void delete(final Integer identity) throws PersistentException {
 
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(deleteSql);
             statement.setInt(1, identity);
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in WalletDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in WalletDaoImpl, method delete()");
             }
         }

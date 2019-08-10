@@ -1,5 +1,11 @@
 package by.taining.cryptomarket.entity;
 
+/**
+ * The user class entity.
+ *
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class User extends Entity {
 
     /**
@@ -38,9 +44,9 @@ public class User extends Entity {
 
     /**
      * The setter for name.
-     * @param name
+     * @param name name
      */
-    public void setName(String name) {
+    public void setName(final String name) {
         this.name = name;
     }
 
@@ -54,9 +60,9 @@ public class User extends Entity {
 
     /**
      * The setter for surname.
-     * @param surname
+     * @param surname surname
      */
-    public void setSurname(String surname) {
+    public void setSurname(final String surname) {
         this.surname = surname;
     }
 
@@ -70,9 +76,9 @@ public class User extends Entity {
 
     /**
      * The setter for userName.
-     * @param userName
+     * @param userName userName
      */
-    public void setUserName(String userName) {
+    public void setUserName(final String userName) {
         this.userName = userName;
     }
 
@@ -86,9 +92,9 @@ public class User extends Entity {
 
     /**
      * The setter for hashOfPassword.
-     * @param hashOfPassword
+     * @param hashOfPassword hashOfPassword
      */
-    public void setHashOfPassword(String hashOfPassword) {
+    public void setHashOfPassword(final String hashOfPassword) {
         this.hashOfPassword = hashOfPassword;
     }
 
@@ -102,9 +108,9 @@ public class User extends Entity {
 
     /**
      * The setter for role.
-     * @param role
+     * @param role role
      */
-    public void setRole(String role) {
+    public void setRole(final String role) {
         this.role = role;
     }
 }

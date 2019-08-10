@@ -7,57 +7,100 @@ import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.sql.OrderDaoImpl;
 import by.taining.cryptomarket.dao.sql.WalletDaoImpl;
-import by.taining.cryptomarket.entity.Order;
-import by.taining.cryptomarket.entity.User;
-import by.taining.cryptomarket.entity.Wallet;
-import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
-import by.taining.cryptomarket.exception.PersistentException;
-
-import java.math.BigDecimal;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
+/**
+ * This class is responsible for execution of order.
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class ExecuteOrderTransaction extends DataBaseTransaction {
-private Double amount;
 
+    /**
+     * The field for storage a amount.
+     */
+   private Double amount;
+
+    /**
+     * The field for storage a user.
+     */
    private User user;
+
+    /**
+     * The field for storage a order.
+     */
    private Order order;
 
+
+    /**
+     * The getter for amount.
+     * @return amount
+     */
     public Double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    /**
+     * The setter for amount.
+     * @param amount amount
+     */
+    public void setAmount(final Double amount) {
         this.amount = amount;
     }
 
+
+    /**
+     * The getter for user.
+     * @return user
+     */
     public User getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    /**
+     * The setter for user.
+     * @param user user
+     */
+    public void setUser(final User user) {
         this.user = user;
     }
 
+
+    /**
+     * The getter for order.
+     * @return order
+     */
     public Order getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    /**
+     * The setter for order.
+     * @param order order
+     */
+    public void setOrder(final Order order) {
         this.order = order;
     }
 
-    public ExecuteOrderTransaction(Connection connection) {
+    /**
+     * The constructor with a parameter.
+     * @param connection connection
+     */
+    public ExecuteOrderTransaction(final Connection connection) {
         super(connection);
     }
 
+
+    /**
+     * Transaction method that executes orders.
+     * @throws PersistentException
+     */
     @Override
     public void commit() throws PersistentException {
 
 
-            try{
+            try {
                 WalletDaoImpl walletDao = new WalletDaoImpl();
                 walletDao.setConnection(connection);
                 OrderDaoImpl orderDao = new OrderDaoImpl();
@@ -91,13 +134,13 @@ private Double amount;
 
 
 
-                }else {
+                } else {
 
                     if ("Bid".equals(order.getType())) {
 
-                        walletQualifier.reduceCurrency(amount,firstCurrency,wallet1);
-                        walletQualifier.increaseCurrency(amount,firstCurrency,wallet2);
-                        walletQualifier.increaseCurrency(amount * order.getPrice(), secondCurrency,wallet1);
+                        walletQualifier.reduceCurrency(amount, firstCurrency, wallet1);
+                        walletQualifier.increaseCurrency(amount, firstCurrency, wallet2);
+                        walletQualifier.increaseCurrency(amount * order.getPrice(), secondCurrency, wallet1);
 
                         Order newOrder = new Order();
                         newOrder.setState(order.getState());
@@ -110,9 +153,9 @@ private Double amount;
                     }
                     if ("Ask".equals(order.getType())) {
 
-                        walletQualifier.reduceCurrency(amount * order.getPrice(),secondCurrency,wallet1);
-                        walletQualifier.increaseCurrency(amount * order.getPrice(),secondCurrency,wallet2);
-                        walletQualifier.increaseCurrency(amount , firstCurrency,wallet1);
+                        walletQualifier.reduceCurrency(amount * order.getPrice(), secondCurrency, wallet1);
+                        walletQualifier.increaseCurrency(amount * order.getPrice(), secondCurrency, wallet2);
+                        walletQualifier.increaseCurrency(amount, firstCurrency, wallet1);
 
                         Order newOrder = new Order();
                         newOrder.setState(order.getState());
@@ -123,7 +166,6 @@ private Double amount;
                         newOrder.setType(order.getType());
                         orderDao.create(newOrder);
                     }
-
 
 
                 }
@@ -142,14 +184,13 @@ private Double amount;
             }
 
 
-
-
-
-
-
-
     }
 
+
+    /**
+     * The transaction rollback method.
+     * @throws PersistentException
+     */
     @Override
     void rollback() throws PersistentException {
         try {

@@ -3,9 +3,6 @@ package by.taining.cryptomarket.dao.sql;
 import by.taining.cryptomarket.entity.Transaction;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.TransactionDao;
-import by.taining.cryptomarket.entity.Transaction;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,7 +65,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
 
                 transaction = new Transaction();
 
@@ -85,18 +82,18 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             }
 
             return arrayList;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in TransactionDaoImpl, method read()");
             }
         }
@@ -107,10 +104,10 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
      * The method that creates a new record.
      * @param transaction transaction
      * @return number of record
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public Integer create(Transaction transaction) throws PersistentException {
+    public Integer create(final Transaction transaction) throws PersistentException {
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -132,17 +129,17 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
                 LOGGER.info("PersistentException in TransactionDaoImpl, method create()");
                 throw new PersistentException();
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method create()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in TransactionDaoImpl, method create()");
             }
         }
@@ -152,12 +149,12 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
     /**
      * The method that returns transaction by id.
-     * @param identity
+     * @param identity identity
      * @return transaction
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public Transaction read(Integer identity) throws PersistentException {
+    public Transaction read(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -165,7 +162,7 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             statement.setInt(1, identity);
             resultSet = statement.executeQuery();
             Transaction transaction = null;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 transaction = new Transaction();
                 transaction.setIdentity(resultSet.getInt("identity"));
                 transaction.setUserId(resultSet.getInt("user_id"));
@@ -177,18 +174,18 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
             }
             return transaction;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
             }
         }
@@ -198,10 +195,10 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
     /**
      * The method that updates transaction.
      * @param transaction transaction
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public void update(Transaction transaction) throws PersistentException {
+    public void update(final Transaction transaction) throws PersistentException {
         PreparedStatement statement = null;
         try {
 
@@ -217,13 +214,13 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
 
 
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method update()");
             }
         }
@@ -233,10 +230,10 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
     /**
      *  The method that deletes transaction by id.
      * @param identity identity
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public void delete(Integer identity) throws PersistentException {
+    public void delete(final Integer identity) throws PersistentException {
 
 
         PreparedStatement statement = null;
@@ -244,13 +241,13 @@ public class TransactionDaoImpl extends BaseDao implements TransactionDao {
             statement = connection.prepareStatement(deleteSql);
             statement.setInt(1, identity);
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method delete()");
             }
         }

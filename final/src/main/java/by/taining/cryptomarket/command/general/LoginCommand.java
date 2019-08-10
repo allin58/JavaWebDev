@@ -7,15 +7,8 @@ import by.taining.cryptomarket.service.UserService;
 import by.taining.cryptomarket.command.Command;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.mapping.TraidingCouple;
-import by.taining.cryptomarket.service.CryptoPairService;
-import by.taining.cryptomarket.service.OrderService;
-import by.taining.cryptomarket.service.TransactionService;
-import by.taining.cryptomarket.service.UserService;
-
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.util.List;
 
 /**
@@ -35,30 +28,30 @@ public class LoginCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
+       String username = request.getParameter("username");
+       String password = request.getParameter("password");
 
-
-
-            String username = request.getParameter("username");
-            String password = request.getParameter("password");
-
-        request.getSession().setAttribute("loginmessage",null);
+        request.getSession().setAttribute("loginmessage", null);
             if (username != null && password != null) {
                 UserService userService = new UserService();
-
-               Integer id = userService.getIdByUserNameAndPassword(username, password);
+               Integer id = userService.getIdByUserNameAndPassword(username,
+                       password);
 
                 User user = userService.getUserById(id);
                 if (user != null) {
                     request.getSession().setAttribute("user", user);
                   switch (user.getRole()) {
                       case "admin" :
-                          request.getSession().setAttribute("transactionData", new TransactionService().getPendingTransactions());
+                         request.getSession().setAttribute("transactionData",
+                                 new TransactionService().getPendingTransactions());
                           return "views/admin.jsp";
 
                       case "sec" :
-                          request.getSession().setAttribute("secData", new CryptoPairService().getAllPairs());
+                          request.getSession().setAttribute("secData",
+                                  new CryptoPairService().getAllPairs());
                           return "views/sec.jsp";
 
                       case "user" :
@@ -70,25 +63,25 @@ public class LoginCommand implements Command {
 
                                   pair = activePairs.get(0).getPair();
                               } else {
-                                  request.getSession().setAttribute("activepairs",null);
-                                  request.getSession().setAttribute("pair",null);
-                                  request.getSession().setAttribute("marketerror","marketerror");
+                                  request.getSession().setAttribute("activepairs", null);
+                                  request.getSession().setAttribute("pair", null);
+                                  request.getSession().setAttribute("marketerror", "marketerror");
                                   return "views/market.jsp";
                               }
                           }
-                          request.getSession().setAttribute("pair",pair);
-                          request.getSession().setAttribute("typeoforder","limit");
+                          request.getSession().setAttribute("pair", pair);
+                          request.getSession().setAttribute("typeoforder", "limit");
 
                           CryptoPairService cryptoPairService = new CryptoPairService();
                           List activePairs = cryptoPairService.getActivePairs();
-                          request.getSession().setAttribute("activepairs",activePairs);
+                          request.getSession().setAttribute("activepairs", activePairs);
 
                           OrderService orderService = new OrderService();
                           List askList = orderService.getAskOrdersByPair(pair.trim());
-                          request.getSession().setAttribute("asklist",askList);
+                          request.getSession().setAttribute("asklist", askList);
 
                           List bidList = orderService.getBidOrdersByPair(pair.trim());
-                          request.getSession().setAttribute("bidlist",bidList);
+                          request.getSession().setAttribute("bidlist", bidList);
 
                           return "views/market.jsp";
                   }
@@ -96,7 +89,7 @@ public class LoginCommand implements Command {
             }
 
 
-        request.getSession().setAttribute("loginmessage","loginfailed");
+        request.getSession().setAttribute("loginmessage", "loginfailed");
 
         return "login.jsp";
 

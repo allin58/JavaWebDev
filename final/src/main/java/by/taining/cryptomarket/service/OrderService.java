@@ -26,11 +26,11 @@ public class OrderService {
 
     /**
      * This method returns a collection of ask orders by text view of pair.
-     * @param pair
+     * @param pair pair
      * @return ask orders by pair
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public List getAskOrdersByPair(String pair) throws Exception{
+    public List getAskOrdersByPair(final String pair) throws Exception {
         List<Order> resultOrders = new ArrayList<>();
         Connection connection = null;
         try {
@@ -39,14 +39,13 @@ public class OrderService {
             orderDao.setConnection(connection);
             List<Order> orders = orderDao.read();
             for (Order order : orders) {
-              if (pair.equals(order.getPair()) && "Ask".equals(order.getType()) && "active".equals(order.getState())) {
+              if (pair.equals(order.getPair())
+                      && "Ask".equals(order.getType())
+                      && "active".equals(order.getState())) {
                   resultOrders.add(order);
               }
             }
-
             Collections.sort(resultOrders, new OrderComparatorImpl());
-
-
 
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
@@ -57,11 +56,11 @@ public class OrderService {
 
     /**
      * This method returns a collection of bid orders by text view of pair.
-     * @param pair
+     * @param pair pair
      * @return bid orders by pair
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public List getBidOrdersByPair(String pair) throws Exception{
+    public List getBidOrdersByPair(final String pair) throws Exception {
         List<Order> resultOrders = new ArrayList<>();
         Connection connection = null;
         try {
@@ -70,17 +69,13 @@ public class OrderService {
             orderDao.setConnection(connection);
             List<Order> orders = orderDao.read();
             for (Order order : orders) {
-                if (pair.equals(order.getPair()) && "Bid".equals(order.getType()) && "active".equals(order.getState())) {
+                if (pair.equals(order.getPair())
+                        && "Bid".equals(order.getType())
+                        && "active".equals(order.getState())) {
                     resultOrders.add(order);
                 }
             }
-
             Collections.sort(resultOrders, new OrderComparatorImpl());
-
-
-
-
-
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
@@ -91,9 +86,9 @@ public class OrderService {
     /**
      *  This method creates a new order.
      * @param order order
-     * @throws Exception
+     * @throws Exception Exception
      */
-   public void createNewOrder(Order order) throws Exception {
+   public void createNewOrder(final Order order) throws Exception {
        Connection connection = null;
 
 
@@ -102,12 +97,9 @@ public class OrderService {
            SetOrderTransaction setOrderTransaction = new SetOrderTransaction(connection);
            setOrderTransaction.setOrder(order);
            setOrderTransaction.commit();
-
        } finally {
            BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
        }
-
-
    }
 
 
@@ -115,9 +107,9 @@ public class OrderService {
      * This method executes orders.
      * @param order order to be processed
      * @param user user who requested order processing
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void executeOrder(Order order, User user) throws Exception {
+    public void executeOrder(final Order order, final User user) throws Exception {
         Connection connection = null;
 
 
@@ -131,7 +123,6 @@ public class OrderService {
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
-
 
     }
 
@@ -141,11 +132,10 @@ public class OrderService {
      * @param order order to be processed
      * @param user user who requested order processing
      * @param amount amount
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void executePartlyOrder(Order order, User user, Double amount) throws Exception {
+    public void executePartlyOrder(final Order order, final User user, final Double amount) throws Exception {
         Connection connection = null;
-
 
         try {
             connection = BasicConnectionPool.getBasicConnectionPool().getConnection();
@@ -154,12 +144,9 @@ public class OrderService {
             executeOrderTransaction.setUser(user);
             executeOrderTransaction.setAmount(amount);
             executeOrderTransaction.commit();
-
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
-
-
     }
 
 
@@ -167,9 +154,9 @@ public class OrderService {
      * This method returns a collection of orders userId.
      * @param userId identity of user
      * @return specific user orders
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public List getOrdersByUserId(Integer userId) throws Exception{
+    public List getOrdersByUserId(final Integer userId) throws Exception {
         List<Order> resultOrders = new ArrayList<>();
         Connection connection = null;
         try {
@@ -193,9 +180,9 @@ public class OrderService {
     /**
      * This method rejects order by id.
      * @param identity identity
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public void rejectOrderById(Integer identity) throws Exception {
+    public void rejectOrderById(final Integer identity) throws Exception {
 
 
 
@@ -212,9 +199,5 @@ public class OrderService {
         } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
-
-
     }
-
-
 }

@@ -19,7 +19,7 @@ public class OrderComparatorImpl implements OrderComparator {
      * @return int
      */
     @Override
-    public int compare(Order o1, Order o2) {
+    public int compare(final Order o1, final Order o2) {
 
         return  o2.getPrice().compareTo(o1.getPrice());
     }

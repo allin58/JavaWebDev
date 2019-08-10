@@ -7,9 +7,6 @@ import by.taining.cryptomarket.entity.Order;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
-import by.taining.cryptomarket.service.OrderService;
-import by.taining.cryptomarket.service.WalletService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,19 +27,18 @@ public class SetLimitOrderCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-String typeOfOrder = null;
-       /* request.getSession().setAttribute("setlimitordermessage",null);
-        request.getSession().setAttribute("executemarketordermessage",null);*/
-        request.getSession().setAttribute("ordermessage",null);
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
+        String typeOfOrder = null;
+        request.getSession().setAttribute("ordermessage", null);
 
         if (request.getParameter("buybutton") != null) {
-         typeOfOrder = request.getParameter("buybutton").trim();
+            typeOfOrder = request.getParameter("buybutton").trim();
              }
         if (request.getParameter("sellbutton") != null) {
             typeOfOrder = request.getParameter("sellbutton").trim();
         }
-        String pair = ((String)request.getSession().getAttribute("pair")).trim();
+        String pair = ((String) request.getSession().getAttribute("pair")).trim();
         String firstCoin = pair.split("-")[0];
         String secondCoin = pair.split("-")[1];
         Double price = 0.0;
@@ -56,20 +52,20 @@ String typeOfOrder = null;
             }
 
         } catch (Exception e) {
-            request.getSession().setAttribute("ordermessage","incorrectamount");
+            request.getSession().setAttribute("ordermessage", "incorrectamount");
             return "views/market.jsp";
         }
 
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         WalletService walletService = new WalletService();
         Wallet wallet = walletService.getWalletByUserId(user.getIdentity());
         WalletQualifier walletQualifier = new WalletQualifier();
 
-        switch(typeOfOrder) {
+        switch (typeOfOrder) {
             case "buy" :
                 Double sum = amount * price;
-                if (walletQualifier.getAmountByTicker(wallet,secondCoin) < sum) {
-                    request.getSession().setAttribute("ordermessage","insufficientfunds");
+                if (walletQualifier.getAmountByTicker(wallet, secondCoin) < sum) {
+                    request.getSession().setAttribute("ordermessage", "insufficientfunds");
                     return "views/market.jsp";
                 }
 
@@ -86,8 +82,8 @@ String typeOfOrder = null;
 
             case "sell" :
 
-                if (walletQualifier.getAmountByTicker(wallet,firstCoin) < amount) {
-                    request.getSession().setAttribute("ordermessage","insufficientfunds");
+                if (walletQualifier.getAmountByTicker(wallet, firstCoin) < amount) {
+                    request.getSession().setAttribute("ordermessage", "insufficientfunds");
                     return "views/market.jsp";
                 }
 
@@ -107,12 +103,12 @@ String typeOfOrder = null;
 
         OrderService orderService = new OrderService();
         List askList = orderService.getAskOrdersByPair(pair.trim());
-        request.getSession().setAttribute("asklist",askList);
+        request.getSession().setAttribute("asklist", askList);
 
         List bidList = orderService.getBidOrdersByPair(pair.trim());
-        request.getSession().setAttribute("bidlist",bidList);
+        request.getSession().setAttribute("bidlist", bidList);
 
-        request.getSession().setAttribute("ordermessage","yourorderisaccepted");
+        request.getSession().setAttribute("ordermessage", "yourorderisaccepted");
 
         return "views/market.jsp";
     }

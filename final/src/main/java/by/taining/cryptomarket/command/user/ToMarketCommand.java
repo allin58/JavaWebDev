@@ -3,11 +3,7 @@ package by.taining.cryptomarket.command.user;
 import by.taining.cryptomarket.service.CryptoPairService;
 import by.taining.cryptomarket.service.OrderService;
 import by.taining.cryptomarket.command.Command;
-import by.taining.cryptomarket.entity.CryptoPair;
 import by.taining.cryptomarket.entity.mapping.TraidingCouple;
-import by.taining.cryptomarket.service.CryptoPairService;
-import by.taining.cryptomarket.service.OrderService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -28,13 +24,14 @@ public class ToMarketCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
 
 
-        request.getSession().setAttribute("marketerror",null);
-        request.getSession().setAttribute("ordermessage",null);
-        request.getSession().setAttribute("typeoforder","limit");
+        request.getSession().setAttribute("marketerror", null);
+        request.getSession().setAttribute("ordermessage", null);
+        request.getSession().setAttribute("typeoforder", "limit");
        String pair = request.getParameter("pair");
 
        if (pair == null || "".equals(pair)) {
@@ -48,9 +45,9 @@ if (activePairs.size() > 0) {
 
 } else {
 
-    request.getSession().setAttribute("activepairs",null);
-    request.getSession().setAttribute("pair",null);
-    request.getSession().setAttribute("marketerror","marketerror");
+    request.getSession().setAttribute("activepairs", null);
+    request.getSession().setAttribute("pair", null);
+    request.getSession().setAttribute("marketerror", "marketerror");
     return "views/market.jsp";
 }
 
@@ -61,19 +58,19 @@ if (activePairs.size() > 0) {
 
 
 
-        request.getSession().setAttribute("pair",pair);
+        request.getSession().setAttribute("pair", pair);
         OrderService orderService = new OrderService();
 
         CryptoPairService cryptoPairService = new CryptoPairService();
         List activePairs = cryptoPairService.getActivePairs();
 
-        request.getSession().setAttribute("activepairs",activePairs);
+        request.getSession().setAttribute("activepairs", activePairs);
 
         List askList = orderService.getAskOrdersByPair(pair.trim());
-        request.getSession().setAttribute("asklist",askList);
+        request.getSession().setAttribute("asklist", askList);
 
         List bidList = orderService.getBidOrdersByPair(pair.trim());
-        request.getSession().setAttribute("bidlist",bidList);
+        request.getSession().setAttribute("bidlist", bidList);
 
         return "views/market.jsp";
     }

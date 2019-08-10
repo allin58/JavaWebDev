@@ -1,50 +1,69 @@
 package by.taining.cryptomarket.dao.transaction;
 
-
 import by.taining.cryptomarket.entity.Order;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.sql.WalletDaoImpl;
-import by.taining.cryptomarket.entity.Order;
-import by.taining.cryptomarket.entity.Wallet;
-import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * This class is responsible for setting of order.
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class SetOrderTransaction extends DataBaseTransaction {
 
-
+    /**
+     * The field for storage a sql query.
+     */
     private static  String createSql = "INSERT INTO `orders` (`user_id`,`pair`,`amount`,`price`,`type`,`state`) VALUES (?, ?, ?, ?, ?, ?)";
 
 
-    public SetOrderTransaction(Connection connection) {
+    /**
+     * The constructor with a parameter.
+     * @param connection connection
+     */
+    public SetOrderTransaction(final Connection connection) {
         super(connection);
 
     }
 
+    /**
+     * The field for storage a order.
+     */
     private Order order;
 
-
+    /**
+     * The getter for order.
+     * @return order
+     */
     public Order getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    /**
+     * The setter for order.
+     * @param order order
+     */
+    public void setOrder(final Order order) {
         this.order = order;
     }
 
+    /**
+     * Transaction method that sets orders.
+     * @throws PersistentException
+     */
     @Override
     public void commit() throws PersistentException {
 
 
 
-        try{
+        try {
             WalletDaoImpl walletDao = new WalletDaoImpl();
             walletDao.setConnection(connection);
             Wallet wallet = walletDao.read(order.getUserId());
@@ -61,10 +80,10 @@ public class SetOrderTransaction extends DataBaseTransaction {
             WalletQualifier walletQualifier = new WalletQualifier();
 
             switch (order.getType()) {
-                case "Ask": walletQualifier.reduceCurrency(order.getAmount(),stringArr[0],wallet);
+                case "Ask": walletQualifier.reduceCurrency(order.getAmount(), stringArr[0], wallet);
                     break;
 
-                case "Bid": walletQualifier.reduceCurrency(order.getAmount() * order.getPrice() ,stringArr[1],wallet);
+                case "Bid": walletQualifier.reduceCurrency(order.getAmount() * order.getPrice(), stringArr[1], wallet);
                     break;
             }
             walletDao.update(wallet);
@@ -81,6 +100,11 @@ public class SetOrderTransaction extends DataBaseTransaction {
 
     }
 
+
+    /**
+     * The transaction rollback method.
+     * @throws PersistentException
+     */
     @Override
     public void rollback() throws PersistentException {
         try {

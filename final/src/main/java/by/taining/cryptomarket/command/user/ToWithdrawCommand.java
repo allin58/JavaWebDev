@@ -21,10 +21,11 @@ public class ToWithdrawCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
         String coin = request.getParameter("coin");
-        request.getSession().setAttribute("coin",coin);
-        request.getSession().setAttribute("transactionerror",null);
+        request.getSession().setAttribute("coin", coin);
+        request.getSession().setAttribute("transactionerror", null);
         return "views/withdraw.jsp";
     }
 }

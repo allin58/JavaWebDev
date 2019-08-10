@@ -14,10 +14,10 @@ public interface Command {
 
     /**
      * Abstract method for getting appropriate jsp.
-     * @param request
-     * @param response
-     * @return
-     * @throws Exception
+     * @param request request
+     * @param response response
+     * @return jsp
+     * @throws Exception Exception
      */
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws  Exception;
+    String execute(HttpServletRequest request, HttpServletResponse response) throws Exception;
 }

@@ -47,9 +47,9 @@ public class MappingTransaction extends Entity {
 
     /**
      * Setter for status.
-     * @param status
+     * @param status status
      */
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -63,9 +63,9 @@ public class MappingTransaction extends Entity {
 
     /**
      * Setter for user.
-     * @param user
+     * @param user user
      */
-    public void setUser(String user) {
+    public void setUser(final String user) {
         this.user = user;
     }
 
@@ -79,9 +79,9 @@ public class MappingTransaction extends Entity {
 
     /**
      * Setter for coin.
-     * @param coin
+     * @param coin coin
      */
-    public void setCoin(String coin) {
+    public void setCoin(final String coin) {
         this.coin = coin;
     }
 
@@ -95,9 +95,9 @@ public class MappingTransaction extends Entity {
 
     /**
      * Setter for amount.
-     * @param amount
+     * @param amount amount
      */
-    public void setAmount(Double amount) {
+    public void setAmount(final Double amount) {
         this.amount = amount;
     }
 
@@ -111,9 +111,9 @@ public class MappingTransaction extends Entity {
 
     /**
      * Setter for type.
-     * @param type
+     * @param type type
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 }

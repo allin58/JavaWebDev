@@ -28,10 +28,9 @@ public class LanguageFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) throws ServletException {
 
     }
-
 
     /**
      *  The method for setting of language depend on parameter.
@@ -42,17 +41,19 @@ public class LanguageFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain filterChain) throws IOException, ServletException {
 
 
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpSession session = httpRequest.getSession();
 
-        if ((session != null && session.getAttribute("language") == null) ){
-            httpRequest.getSession().setAttribute("language","en");
+        if ((session != null && session.getAttribute("language") == null)) {
+            httpRequest.getSession().setAttribute("language", "en");
         }
 
-        if (session != null ) {
+        if (session != null) {
             Locale locale = new Locale((String) httpRequest.getSession().getAttribute("language"));
 
             ResourceBundle resourceBundle = ResourceBundle.getBundle("text", locale, new UTF8Control());
@@ -89,42 +90,48 @@ public class LanguageFilter implements Filter {
             httpRequest.getSession().setAttribute("volume", resourceBundle.getString("text.volume"));
             httpRequest.getSession().setAttribute("price", resourceBundle.getString("text.price"));
 
-            HashMap<String,String> orderState = new HashMap<>();
-            orderState.put("executed",resourceBundle.getString("text.executed"));
-            orderState.put("canceled",resourceBundle.getString("text.canceled"));
-            orderState.put("active",resourceBundle.getString("text.active"));
+            httpRequest.getSession().setAttribute("cryptocurrencymarket", resourceBundle.getString("text.cryptocurrencymarket"));
 
-            HashMap<String,String> transactionType = new HashMap<>();
-            transactionType.put("withdraw",resourceBundle.getString("button.withdraw"));
-            transactionType.put("deposit",resourceBundle.getString("button.deposit"));
+            httpRequest.getSession().setAttribute("applicationfordw", resourceBundle.getString("text.applicationfordw"));
 
-            HashMap<String,String> transactionStatus = new HashMap<>();
-            transactionStatus.put("pending",resourceBundle.getString("text.pending"));
-            transactionStatus.put("approved",resourceBundle.getString("text.approved"));
-            transactionStatus.put("rejected",resourceBundle.getString("text.rejected"));
+            httpRequest.getSession().setAttribute("accessiblemarkets", resourceBundle.getString("text.accessiblemarkets"));
 
-            HashMap<String,String> loginFailed = new HashMap<>();
-            loginFailed.put("loginfailed",resourceBundle.getString("text.loginfailed"));
-            loginFailed.put("protection",resourceBundle.getString("text.protection"));
-            loginFailed.put("successful",resourceBundle.getString("text.successful"));
+            HashMap<String, String> orderState = new HashMap<>();
+            orderState.put("executed", resourceBundle.getString("text.executed"));
+            orderState.put("canceled", resourceBundle.getString("text.canceled"));
+            orderState.put("active", resourceBundle.getString("text.active"));
+
+            HashMap<String, String> transactionType = new HashMap<>();
+            transactionType.put("withdraw", resourceBundle.getString("button.withdraw"));
+            transactionType.put("deposit", resourceBundle.getString("button.deposit"));
+
+            HashMap<String, String> transactionStatus = new HashMap<>();
+            transactionStatus.put("pending", resourceBundle.getString("text.pending"));
+            transactionStatus.put("approved", resourceBundle.getString("text.approved"));
+            transactionStatus.put("rejected", resourceBundle.getString("text.rejected"));
+
+            HashMap<String, String> loginFailed = new HashMap<>();
+            loginFailed.put("loginfailed", resourceBundle.getString("text.loginfailed"));
+            loginFailed.put("protection", resourceBundle.getString("text.protection"));
+            loginFailed.put("successful", resourceBundle.getString("text.successful"));
 
 
-            HashMap<String,String> registrationFailed = new HashMap<>();
-            registrationFailed.put("allfield",resourceBundle.getString("text.allfield"));
-            registrationFailed.put("useralredyexist",resourceBundle.getString("text.useralredyexist"));
+            HashMap<String, String> registrationFailed = new HashMap<>();
+            registrationFailed.put("allfield", resourceBundle.getString("text.allfield"));
+            registrationFailed.put("useralredyexist", resourceBundle.getString("text.useralredyexist"));
 
-            HashMap<String,String> transactionError = new HashMap<>();
-            transactionError.put("incorrectamount",resourceBundle.getString("text.incorrectamount"));
-            transactionError.put("insufficientfunds",resourceBundle.getString("text.insufficientfunds"));
-            transactionError.put("yourorderisaccepted",resourceBundle.getString("text.yourorderisaccepted"));
-            transactionError.put("yourapplicationiscompleted",resourceBundle.getString("text.yourapplicationiscompleted"));
+            HashMap<String, String> transactionError = new HashMap<>();
+            transactionError.put("incorrectamount", resourceBundle.getString("text.incorrectamount"));
+            transactionError.put("insufficientfunds", resourceBundle.getString("text.insufficientfunds"));
+            transactionError.put("yourorderisaccepted", resourceBundle.getString("text.yourorderisaccepted"));
+            transactionError.put("yourapplicationiscompleted", resourceBundle.getString("text.yourapplicationiscompleted"));
 
-            HashMap<String,String> marketError = new HashMap<>();
-            marketError.put("marketerror",resourceBundle.getString("text.marketerror"));
+            HashMap<String, String> marketError = new HashMap<>();
+            marketError.put("marketerror", resourceBundle.getString("text.marketerror"));
 
-            HashMap<String,String> typeOfOrder = new HashMap<>();
-            typeOfOrder.put("limit",resourceBundle.getString("text.limit"));
-            typeOfOrder.put("market",resourceBundle.getString("text.market"));
+            HashMap<String, String> typeOfOrder = new HashMap<>();
+            typeOfOrder.put("limit", resourceBundle.getString("text.limit"));
+            typeOfOrder.put("market", resourceBundle.getString("text.market"));
 
 
             httpRequest.getSession().setAttribute("orderState", orderState);
@@ -135,8 +142,6 @@ public class LanguageFilter implements Filter {
             httpRequest.getSession().setAttribute("transactionError", transactionError);
             httpRequest.getSession().setAttribute("marketError", marketError);
             httpRequest.getSession().setAttribute("typeOfOrder", typeOfOrder);
-
-
         }
 
         filterChain.doFilter(servletRequest, servletResponse);

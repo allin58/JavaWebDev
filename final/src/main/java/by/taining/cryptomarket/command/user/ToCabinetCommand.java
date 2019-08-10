@@ -3,12 +3,9 @@ package by.taining.cryptomarket.command.user;
 import by.taining.cryptomarket.service.CryptoPairService;
 import by.taining.cryptomarket.service.TransactionService;
 import by.taining.cryptomarket.command.Command;
-import by.taining.cryptomarket.entity.Transaction;
+
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.mapping.MappingTransaction;
-import by.taining.cryptomarket.service.CryptoPairService;
-import by.taining.cryptomarket.service.TransactionService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,8 +27,9 @@ public class ToCabinetCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        String role = ((User)request.getSession().getAttribute("user")).getRole();
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
+        String role = ((User) request.getSession().getAttribute("user")).getRole();
 
         switch (role) {
             case "admin" :

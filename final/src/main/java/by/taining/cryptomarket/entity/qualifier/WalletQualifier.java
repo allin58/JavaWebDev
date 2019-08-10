@@ -17,9 +17,11 @@ public class WalletQualifier {
      * @param value value
      * @param ticker ticker
      * @param wallet wallet
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public void reduceCurrency(Double value, String ticker, Wallet wallet) throws PersistentException {
+    public void reduceCurrency(final Double value,
+                               final String ticker,
+                               final Wallet wallet) throws PersistentException {
 
         switch (ticker) {
             case "BTC" :  wallet.setBtc(wallet.getBtc() - value);
@@ -32,7 +34,9 @@ public class WalletQualifier {
                 break;
 
         }
-        if (wallet.getBtc() < 0 || wallet.getEth() < 0 ||wallet.getUsdt() < 0) {
+        if (wallet.getBtc() < 0
+                || wallet.getEth() < 0
+                || wallet.getUsdt() < 0) {
             throw new PersistentException();
         }
 
@@ -46,9 +50,11 @@ public class WalletQualifier {
      * @param value value
      * @param ticker ticker
      * @param wallet wallet
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public void increaseCurrency(Double value, String ticker,Wallet wallet) throws PersistentException {
+    public void increaseCurrency(final Double value,
+                                 final String ticker,
+                                 final Wallet wallet) throws PersistentException {
 
         switch (ticker) {
             case "BTC" : wallet.setBtc(wallet.getBtc() + value);
@@ -60,7 +66,9 @@ public class WalletQualifier {
             case "USDT" : wallet.setUsdt(wallet.getUsdt() + value);
                 break;
         }
-        if (wallet.getBtc() < 0 || wallet.getEth() < 0 ||wallet.getUsdt() < 0) {
+        if (wallet.getBtc() < 0
+                || wallet.getEth() < 0
+                || wallet.getUsdt() < 0) {
             throw new PersistentException();
         }
     }
@@ -72,8 +80,8 @@ public class WalletQualifier {
      * @param ticker ticker
      * @return amount of currency
      */
-    public Double getAmountByTicker(Wallet wallet, String ticker) {
-switch(ticker){
+    public Double getAmountByTicker(final Wallet wallet, final String ticker) {
+switch(ticker) {
     case "BTC": return wallet.getBtc();
     case "ETH": return wallet.getEth();
     case "USDT": return wallet.getUsdt();

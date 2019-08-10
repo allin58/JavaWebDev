@@ -17,7 +17,10 @@
 <body>
     <c:url value="/login.html?command=registration" var="regUrl"/>
 
-    <div class="container"  style="background-color:#f1f1f1">
+    <div class="container"  style="background-color:#f1f1f1;  top: 25%;">
+
+        <H2 style="color: black">${registration} </H2>
+
     <FORM action="${regUrl}" method="post">
          <LABEL for="username">${username}</LABEL>
         <INPUT type="text" id="username" name="username">

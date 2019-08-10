@@ -13,14 +13,18 @@ import javax.servlet.http.HttpServletRequest;
  * This class exists for logging of command from users.
  */
 public class MarketServletListener implements ServletRequestListener {
-    final static Logger LOGGER = LogManager.getLogger("by.training.final.ServletLogger");
+
+    /**
+     * The field for storage a logger.
+     */
+    static final Logger LOGGER = LogManager.getLogger("by.training.final.ServletLogger");
 
     /**
      * The empty method.
      * @param servletRequestEvent servletRequestEvent
      */
     @Override
-    public void requestDestroyed(ServletRequestEvent servletRequestEvent) {
+    public void requestDestroyed(final ServletRequestEvent servletRequestEvent) {
 
     }
 
@@ -30,18 +34,18 @@ public class MarketServletListener implements ServletRequestListener {
      * @param servletRequestEvent servletRequestEvent
      */
     @Override
-    public void requestInitialized(ServletRequestEvent servletRequestEvent) {
+    public void requestInitialized(final ServletRequestEvent servletRequestEvent) {
         HttpServletRequest request = (HttpServletRequest) servletRequestEvent.getServletRequest();
        if (request.getParameter("command") != null) {
            String userName = "unknown";
            String role = "unknown";
            if (request.getSession().getAttribute("user") != null) {
-               User user = (User)request.getSession().getAttribute("user");
+               User user = (User) request.getSession().getAttribute("user");
                userName = user.getUserName();
                role = user.getRole();
            }
+           LOGGER.info("username-" + userName + ", role-" + role + ", command-" +  request.getParameter("command"));
 
-           LOGGER.info("username-" +userName + ", role-" + role + ", command-" +  request.getParameter("command"));
 
        }
 

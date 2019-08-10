@@ -1,7 +1,6 @@
 package by.taining.cryptomarket.command.general;
 
 import by.taining.cryptomarket.command.Command;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -22,9 +21,8 @@ public class LogoutCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-
-        //request.getSession().setAttribute("user",null);
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
         request.getSession().invalidate();
 
         return "login.jsp";

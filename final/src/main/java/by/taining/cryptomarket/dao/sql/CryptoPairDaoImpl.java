@@ -3,10 +3,6 @@ package by.taining.cryptomarket.dao.sql;
 import by.taining.cryptomarket.entity.CryptoPair;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.CryptoPairDao;
-import by.taining.cryptomarket.entity.Coin;
-import by.taining.cryptomarket.entity.CryptoPair;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -66,7 +62,7 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
 
                 cryptoPair = new CryptoPair();
                 cryptoPair.setIdentity((resultSet.getInt("identity")));
@@ -77,18 +73,18 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
                             }
 
             return arrayList;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in CryptoPairDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in CryptoPairDaoImpl, method read()");
             }
         }
@@ -99,10 +95,10 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
      * The method that creates a new record.
      * @param cryptoPair cryptoPair
      * @return number of record
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public Integer create(CryptoPair cryptoPair) throws PersistentException {
+    public Integer create(final CryptoPair cryptoPair) throws PersistentException {
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -119,18 +115,18 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             resultSet = statement.getGeneratedKeys();
             return cryptoPair.getIdentity();
 
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in CryptoPairDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method create()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in CryptoPairDaoImpl, method create()");
             }
         }
@@ -142,10 +138,10 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
      * The method that returns cryptoPair by id.
      * @param identity
      * @return cryptoPair
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public CryptoPair read(Integer identity) throws PersistentException {
+    public CryptoPair read(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -153,7 +149,7 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             statement.setInt(1, identity);
             resultSet = statement.executeQuery();
             CryptoPair cryptoPair = null;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
 
                 cryptoPair = new CryptoPair();
 
@@ -166,18 +162,18 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
 
             }
             return cryptoPair;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in CryptoPairDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in CryptoPairDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in CryptoPairDaoImpl, method read()");
             }
         }
@@ -189,7 +185,7 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
      * @throws PersistentException
      */
     @Override
-    public void update(CryptoPair cryptoPair) throws PersistentException {
+    public void update(final CryptoPair cryptoPair) throws PersistentException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(updateSql);
@@ -201,13 +197,13 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
             statement.setInt(4, cryptoPair.getIdentity());
 
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in CryptoPairDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in CryptoPairDaoImpl, method update()");
             }
         }
@@ -220,19 +216,19 @@ public class CryptoPairDaoImpl extends BaseDao implements CryptoPairDao {
      * @throws PersistentException
      */
     @Override
-    public void delete(Integer identity) throws PersistentException {
+    public void delete(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(deleteSql);
             statement.setInt(1, identity);
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in CryptoPairDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in CryptoPairDaoImpl, method delete()");
             }
         }

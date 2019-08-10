@@ -6,9 +6,6 @@ import by.taining.cryptomarket.command.Command;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.entity.mapping.MappingTransaction;
-import by.taining.cryptomarket.service.TransactionService;
-import by.taining.cryptomarket.service.WalletService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,7 +27,8 @@ public class WithdrawCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
         request.getSession().setAttribute("transactionerror",null);
 
         try {

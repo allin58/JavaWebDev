@@ -12,14 +12,14 @@ public class PersistentException extends Exception {
     /**
      * Empty constructor.
      */
-    public PersistentException() {}
+    public PersistentException() { }
 
     /**
      * Constructor with params.
      * @param message message
      * @param cause cause
      */
-    public PersistentException(String message, Throwable cause) {
+    public PersistentException(final String message, final Throwable cause) {
         super(message, cause);
     }
 
@@ -27,7 +27,7 @@ public class PersistentException extends Exception {
      * Constructor with param.
      * @param message message
      */
-    public PersistentException(String message) {
+    public PersistentException(final String message) {
         super(message);
     }
 
@@ -35,7 +35,7 @@ public class PersistentException extends Exception {
      * Constructor with param.
      * @param cause cause
      */
-    public PersistentException(Throwable cause) {
+    public PersistentException(final Throwable cause) {
         super(cause);
     }
 }

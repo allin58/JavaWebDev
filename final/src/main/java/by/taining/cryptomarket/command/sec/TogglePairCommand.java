@@ -2,8 +2,6 @@ package by.taining.cryptomarket.command.sec;
 
 import by.taining.cryptomarket.service.CryptoPairService;
 import by.taining.cryptomarket.command.Command;
-import by.taining.cryptomarket.service.CryptoPairService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,7 +22,7 @@ public class TogglePairCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request, final HttpServletResponse response) throws Exception {
 
         CryptoPairService cryptoPairService = new CryptoPairService();
 

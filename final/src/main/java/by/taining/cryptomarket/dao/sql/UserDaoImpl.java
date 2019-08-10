@@ -3,9 +3,6 @@ package by.taining.cryptomarket.dao.sql;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.UserDao;
-import by.taining.cryptomarket.entity.User;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -49,7 +46,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     /**
      * The method that returns collection of users.
      * @return collection of users
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     public List<User> read() throws PersistentException {
         PreparedStatement statement = null;
@@ -62,7 +59,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
 
                 user = new User();
                 user.setIdentity(resultSet.getInt("identity"));
@@ -76,16 +73,20 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             }
 
             return arrayList;
-        } catch(SQLException e) {
-            LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
+        } catch (SQLException e) {
+            LOGGER.info("PersistentException in UserDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch (SQLException | NullPointerException e) {
+                LOGGER.info("failed to close resultSet in UserDaoImpl, method read()");
+            }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {}
+            } catch (SQLException | NullPointerException e) {
+                LOGGER.info("failed to close statement in UserDaoImpl, method read()");
+            }
         }
     }
 
@@ -93,9 +94,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
      * The method that creates a new record.
      * @param user user
      * @return number of record
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public Integer create(User user) throws PersistentException {
+    public Integer create(final User user) throws PersistentException {
 
         PreparedStatement statement = null;
         ResultSet resultSet = null;
@@ -111,24 +112,24 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
             statement.executeUpdate();
             resultSet = statement.getGeneratedKeys();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 return resultSet.getInt(1);
             } else {
 
                 throw new PersistentException();
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method create()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method create()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in TransactionDaoImpl, method create()");
             }
         }
@@ -136,11 +137,11 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
     /**
      * The method that returns user by id.
-     * @param identity
+     * @param identity identity
      * @return user
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public User read(Integer identity) throws PersistentException {
+    public User read(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -148,7 +149,7 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             statement.setInt(1, identity);
             resultSet = statement.executeQuery();
             User user = null;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 user = new User();
                 user.setIdentity(identity);
                 user.setUserName(resultSet.getString("user_name"));
@@ -160,18 +161,18 @@ public class UserDaoImpl extends BaseDao implements UserDao {
 
             }
             return user;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in TransactionDaoImpl, method read()");
             }
         }
@@ -181,9 +182,9 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     /**
      * The method that updates user.
      * @param user user
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public void update(User user) throws PersistentException {
+    public void update(final User user) throws PersistentException {
 
              PreparedStatement statement = null;
         try {
@@ -195,13 +196,13 @@ public class UserDaoImpl extends BaseDao implements UserDao {
             statement.setString(5, user.getRole());
             statement.setInt(6, user.getIdentity());
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method update()");
             }
         }
@@ -213,22 +214,22 @@ public class UserDaoImpl extends BaseDao implements UserDao {
     /**
      *  The method that deletes user by id.
      * @param identity identity
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
-    public void delete(Integer identity) throws PersistentException {
+    public void delete(final Integer identity) throws PersistentException {
 
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(deleteSql);
             statement.setInt(1, identity);
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in TransactionDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in TransactionDaoImpl, method delete()");
             }
         }

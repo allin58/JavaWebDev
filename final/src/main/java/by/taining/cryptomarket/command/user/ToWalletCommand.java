@@ -3,13 +3,9 @@ package by.taining.cryptomarket.command.user;
 import by.taining.cryptomarket.service.TransactionService;
 import by.taining.cryptomarket.service.WalletService;
 import by.taining.cryptomarket.command.Command;
-import by.taining.cryptomarket.entity.Transaction;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.entity.mapping.MappingTransaction;
-import by.taining.cryptomarket.service.TransactionService;
-import by.taining.cryptomarket.service.WalletService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -30,26 +26,15 @@ public class ToWalletCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
-       User user = (User)request.getSession().getAttribute("user");
-
-
-
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
+        User user = (User) request.getSession().getAttribute("user");
         WalletService walletService = new WalletService();
         Wallet wallet = walletService.getWalletByUserId(user.getIdentity());
-
-
-        request.getSession().setAttribute("wallet",wallet);
-
-
+        request.getSession().setAttribute("wallet", wallet);
         TransactionService transactionService = new TransactionService();
         List<MappingTransaction> transactionList = transactionService.getTransactionsByUser(user.getUserName());
-
-
-
-
-        request.getSession().setAttribute("transactions",transactionList);
-
+        request.getSession().setAttribute("transactions", transactionList);
 
 
         return "views/wallet.jsp";

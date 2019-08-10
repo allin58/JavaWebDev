@@ -25,11 +25,7 @@
     </head>
     <body>
 
-
-
-
-    <H2>${usertext} ${user.userName} </H2>
-
+    <H2>${usertext} ${user.userName} ${market}</H2>
 
     <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">
 
@@ -56,6 +52,7 @@
 
     <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 25%; left: 0%;">
 
+        <H2 style="float: left; color: black">${accessiblemarkets} </H2>
 
         <c:set var="messagemarketerror">${marketerror}</c:set>
         ${marketError[messagemarketerror]}
@@ -137,7 +134,7 @@
 
 
 
-    <div class="container"  style="background-color:#f1f1f1 ;  left: 40%; top: 45%; width: 10%">
+    <div class="container"  style="background-color:#f1f1f1 ;  left: 40%; top: 45%; width: 10%; ">
         <h1>${ask}</h1>
         <hr>
         <table>
@@ -152,7 +149,7 @@
     </div>
 
 
-    <div class="container"  style="background-color:#f1f1f1 ;  left: 60%; top: 45%; width: 10%">
+    <div class="container"  style="background-color:#f1f1f1 ;  left: 60%; top: 45%; width: 10%;">
         <h1>${bid}</h1>
         <hr>
         <table>

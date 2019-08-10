@@ -50,9 +50,9 @@ public class Transaction extends Entity {
 
     /**
      * The setter for status.
-     * @param status
+     * @param status status
      */
-    public void setStatus(String status) {
+    public void setStatus(final String status) {
         this.status = status;
     }
 
@@ -67,9 +67,9 @@ public class Transaction extends Entity {
 
     /**
      * The setter for userId.
-     * @param userId
+     * @param userId userId
      */
-    public void setUserId(Integer userId) {
+    public void setUserId(final Integer userId) {
         this.userId = userId;
     }
 
@@ -84,9 +84,9 @@ public class Transaction extends Entity {
 
     /**
      * The setter for coinId.
-     * @param coinId
+     * @param coinId coinId
      */
-    public void setCoinId(Integer coinId) {
+    public void setCoinId(final Integer coinId) {
         this.coinId = coinId;
     }
 
@@ -100,9 +100,9 @@ public class Transaction extends Entity {
 
     /**
      * The setter for amount.
-     * @param amount
+     * @param amount amount
      */
-    public void setAmount(Double amount) {
+    public void setAmount(final Double amount) {
         this.amount = amount;
     }
 
@@ -116,9 +116,9 @@ public class Transaction extends Entity {
 
     /**
      * The setter for type.
-     * @param type
+     * @param type type
      */
-    public void setType(String type) {
+    public void setType(final String type) {
         this.type = type;
     }
 
@@ -132,7 +132,7 @@ public class Transaction extends Entity {
 
     /**
      * The setter for timestamp.
-     * @param timestamp
+     * @param timestamp timestamp
      */
     public void setTimestamp(Timestamp timestamp) {
         this.timestamp = timestamp;

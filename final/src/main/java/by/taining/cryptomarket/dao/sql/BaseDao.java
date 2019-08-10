@@ -16,7 +16,7 @@ public class BaseDao {
     /**
      * The field for storage a logger.
      */
-    final static Logger LOGGER = LogManager.getLogger("by.training.final.DataBaseLogger");
+    static final Logger LOGGER = LogManager.getLogger("by.training.final.DataBaseLogger");
 
     /**
      * The field for storage a connection.
@@ -25,9 +25,9 @@ public class BaseDao {
 
     /**
      * The setter for connection.
-     * @param connection
+     * @param connection connection
      */
-    public void setConnection(Connection connection) {
+    public void setConnection(final Connection connection) {
         this.connection = connection;
     }
 }

@@ -2,13 +2,25 @@ package by.taining.cryptomarket.command;
 
 import by.taining.cryptomarket.command.admin.ApproveTransactionCommand;
 import by.taining.cryptomarket.command.admin.RejectTransactionCommand;
-import by.taining.cryptomarket.command.general.*;
-import by.taining.cryptomarket.command.user.*;
-import by.taining.cryptomarket.command.admin.ApproveTransactionCommand;
-import by.taining.cryptomarket.command.admin.RejectTransactionCommand;
-import by.taining.cryptomarket.command.general.*;
+import by.taining.cryptomarket.command.general.LoginCommand;
+import by.taining.cryptomarket.command.general.LogoutCommand;
+import by.taining.cryptomarket.command.general.RegistrationCommand;
+import by.taining.cryptomarket.command.general.ToRegistrationCommand;
+import by.taining.cryptomarket.command.general.ChangeLanguageCommand;
 import by.taining.cryptomarket.command.sec.TogglePairCommand;
-import by.taining.cryptomarket.command.user.*;
+import by.taining.cryptomarket.command.user.ExecuteMarketOrderCommand;
+import by.taining.cryptomarket.command.user.SetLimitOrderCommand;
+import by.taining.cryptomarket.command.user.SetTypeOfOrderCommand;
+import by.taining.cryptomarket.command.user.ToMarketCommand;
+import by.taining.cryptomarket.command.user.RejectOrderCommand;
+import by.taining.cryptomarket.command.user.ToCabinetCommand;
+import by.taining.cryptomarket.command.user.ToWalletCommand;
+import by.taining.cryptomarket.command.user.DepositCommand;
+import by.taining.cryptomarket.command.user.ToDepositCommand;
+import by.taining.cryptomarket.command.user.ToWithdrawCommand;
+import by.taining.cryptomarket.command.user.WithdrawCommand;
+import by.taining.cryptomarket.command.user.ToMyOrdersCommand;
+
 
 import java.util.HashMap;
 import java.util.Map;
@@ -20,7 +32,7 @@ import java.util.Map;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class CommandFactory {
+ public final class CommandFactory {
 
 
     /**
@@ -68,7 +80,7 @@ public class CommandFactory {
 
     /**
      * Method for getting instance of CommandFactory.
-     * @return
+     * @return factoryInstance
      */
     public static synchronized CommandFactory getInstance() {
         if (factoryInstance == null) {
@@ -80,9 +92,10 @@ public class CommandFactory {
 
     /**
      * Method for getting instance of command depend on name of command.
-     * @return
+     * @param command command
+     * @return toReturn
      */
-    public Command createCommand(String command) {
+    public Command createCommand(final String command) {
         Command toReturn = commands.get(command.trim());
         if (toReturn == null) {
             toReturn = commands.get("view/error.jsp");

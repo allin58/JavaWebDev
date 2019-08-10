@@ -27,7 +27,7 @@
 
 
 
-   <H2>${usertext} ${user.userName}</H2>
+   <H2>${usertext} ${user.userName} ${mywallet}</H2>
 
 
 

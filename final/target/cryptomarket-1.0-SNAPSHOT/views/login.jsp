@@ -20,23 +20,13 @@
    <body>
 
    <c:url value="/login.html?command=login" var="loginUrl"/>
-    <c:url value="/login.html?command=toregistration" var="regUrl"/>
-    <c:url value="/login.html?command=changelanguage" var="changelanguageUrl"/>
+   <c:url value="/login.html?command=toregistration" var="regUrl"/>
+   <c:url value="/login.html?command=changelanguage" var="changelanguageUrl"/>
 
 
 
-   <%--<FORM action="${changelanguageUrl}" method="post">
-
-       <select name="language">
-           <option value="en">en</option>
-           <option value="ru">ru</option>
-       </select>
-       <BUTTON type="submit">change</BUTTON>
-
-   </FORM>--%>
-
-   <div class="container"  style="background-color:#f1f1f1">
-
+     <div class="container"  style="background-color:#f1f1f1">
+<H2 style="color: #222222">${cryptocurrencymarket}</H2>
 
        <FORM action="${changelanguageUrl}" method="post">
            <c:if test="${language=='en'}">

@@ -14,13 +14,12 @@ import java.util.concurrent.ArrayBlockingQueue;
  * @author Nikita Karchahin
  * @version 1.0
  */
-public class BasicConnectionPool  implements ConnectionPool {
-
+public final class BasicConnectionPool  implements ConnectionPool {
 
     /**
-     * DataBaseLogger
+     * DataBaseLogger.
      */
-    final static Logger LOGGER = LogManager.getLogger("by.training.final.DataBaseLogger");
+    static final Logger LOGGER = LogManager.getLogger("by.training.final.DataBaseLogger");
 
     /**
      * The field for storage a url.
@@ -58,16 +57,16 @@ public class BasicConnectionPool  implements ConnectionPool {
     private static int INITIAL_POOL_SIZE = 10;
 
 
-
-
     /**
      * The method for creating of connection pool.
      * @param url url
      * @param user user
      * @param password password
-     * @throws SQLException
+     * @throws SQLException SQLException
      */
-    public static void create(String url, String user, String password) throws SQLException {
+    public static void create(final String url,
+                              final String user,
+                              final String password) throws SQLException {
         if (basicConnectionPool == null) {
             ArrayBlockingQueue<Connection> pool = new ArrayBlockingQueue<>(INITIAL_POOL_SIZE);
             for (int i = 0; i < INITIAL_POOL_SIZE; i++) {
@@ -96,7 +95,10 @@ public class BasicConnectionPool  implements ConnectionPool {
      * @param password password
      * @param connectionPool connectionPool
      */
-    private BasicConnectionPool(String url, String user, String password, ArrayBlockingQueue<Connection> connectionPool) {
+    private BasicConnectionPool(final String url,
+                                final String user,
+                                final  String password,
+                                final ArrayBlockingQueue<Connection> connectionPool) {
         this.url = url;
         this.user = user;
         this.password = password;
@@ -129,7 +131,7 @@ public class BasicConnectionPool  implements ConnectionPool {
      * @return
      */
     @Override
-    public boolean releaseConnection(Connection connection) {
+    public boolean releaseConnection(final Connection connection) {
 
         connectionPool.add(connection);
         LOGGER.info("connection released");
@@ -143,10 +145,11 @@ public class BasicConnectionPool  implements ConnectionPool {
      * @param user user
      * @param password password
      * @return new connection
-     * @throws SQLException
+     * @throws SQLException SQLException
      */
-    private static Connection createConnection(
-            String url, String user, String password)
+    private static Connection createConnection(final String url,
+                                               final  String user,
+                                               final  String password)
             throws SQLException {
         return DriverManager.getConnection(url, user, password);
     }
@@ -183,9 +186,9 @@ public class BasicConnectionPool  implements ConnectionPool {
 
     /**
      * The setter for url.
-     * @param url
+     * @param url url
      */
-    public void setUrl(String url) {
+    public void setUrl(final String url) {
         this.url = url;
     }
 
@@ -200,9 +203,9 @@ public class BasicConnectionPool  implements ConnectionPool {
 
     /**
      * The setter for user.
-     * @param user
+     * @param user user
      */
-    public void setUser(String user) {
+    public void setUser(final String user) {
         this.user = user;
     }
 
@@ -216,9 +219,9 @@ public class BasicConnectionPool  implements ConnectionPool {
 
     /**
      * The setter for password.
-     * @param password
+     * @param password password
      */
-    public void setPassword(String password) {
+    public void setPassword(final String password) {
         this.password = password;
     }
 }

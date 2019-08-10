@@ -6,30 +6,50 @@ import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.sql.OrderDaoImpl;
 import by.taining.cryptomarket.dao.sql.WalletDaoImpl;
-import by.taining.cryptomarket.entity.Order;
-import by.taining.cryptomarket.entity.Wallet;
-import by.taining.cryptomarket.entity.qualifier.WalletQualifier;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.sql.Connection;
 import java.sql.SQLException;
 
+/**
+ * This class is responsible for canceling of order.
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class CancelOrderTransaction extends DataBaseTransaction {
 
+    /**
+     * The field for storage a order.
+     */
     private Order order;
 
-    public CancelOrderTransaction(Connection connection) {
+    /**
+     * The constructor with a parameter.
+     * @param connection connection
+     */
+    public CancelOrderTransaction(final Connection connection) {
         super(connection);
     }
 
+
+    /**
+     * The getter for order.
+     * @return order
+     */
     public Order getOrder() {
         return order;
     }
 
-    public void setOrder(Order order) {
+    /**
+     * The setter for order.
+     * @param order order
+     */
+    public void setOrder(final Order order) {
         this.order = order;
     }
 
+    /**
+     * Transaction method that cancels orders.
+     * @throws PersistentException
+     */
     @Override
     public void commit() throws PersistentException {
 
@@ -46,10 +66,10 @@ public class CancelOrderTransaction extends DataBaseTransaction {
 
 
             switch (order.getType()) {
-                case "Ask":    walletQualifier.increaseCurrency(order.getAmount(),stringArr[0],wallet);
+                case "Ask":    walletQualifier.increaseCurrency(order.getAmount(), stringArr[0], wallet);
                     break;
 
-                case "Bid":    walletQualifier.increaseCurrency(order.getAmount() * order.getPrice() ,stringArr[1],wallet);
+                case "Bid":    walletQualifier.increaseCurrency(order.getAmount() * order.getPrice(), stringArr[1], wallet);
                     break;
             }
             order.setState("canceled");
@@ -67,6 +87,10 @@ public class CancelOrderTransaction extends DataBaseTransaction {
 
     }
 
+    /**
+     * The transaction rollback method.
+     * @throws PersistentException
+     */
     @Override
     public void rollback() throws PersistentException {
         try {

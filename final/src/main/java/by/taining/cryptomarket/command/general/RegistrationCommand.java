@@ -5,8 +5,6 @@ import by.taining.cryptomarket.command.Command;
 import by.taining.cryptomarket.entity.User;
 import by.taining.cryptomarket.entity.Wallet;
 import by.taining.cryptomarket.service.UserService;
-import by.taining.cryptomarket.service.WalletService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -27,20 +25,24 @@ public class RegistrationCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
         String username = request.getParameter("username");
         String name = request.getParameter("name");
         String surname = request.getParameter("surname");
         String password = request.getParameter("password");
 
-        request.getSession().setAttribute("registrationmessage",null);
+        request.getSession().setAttribute("registrationmessage", null);
 
-        if (!"".equals(username) && !"".equals(name)  && !"".equals(surname)  &&!"".equals(password)) {
+        if (!"".equals(username) && !"".equals(name)
+                && !"".equals(surname)
+                && !"".equals(password)) {
             UserService userService = new UserService();
             if (userService.userIsExist(username)) {
 
-                request.getSession().setAttribute("registrationmessage","useralredyexist");
+                request.getSession().setAttribute("registrationmessage",
+                        "useralredyexist");
                 return "views/registration.jsp";
             } else {
 
@@ -50,7 +52,7 @@ public class RegistrationCommand implements Command {
                 user.setSurname(surname);
                 user.setRole("user");
                 user.setHashOfPassword(password);
-                Integer userId =userService.addUser(user);
+                Integer userId = userService.addUser(user);
 
 
                 WalletService walletService = new WalletService();
@@ -65,14 +67,15 @@ public class RegistrationCommand implements Command {
 
 
 
-                request.getSession().setAttribute("loginmessage","successful");
+                request.getSession().setAttribute("loginmessage", "successful");
                 return "login.jsp";
 
             }
 
         } else {
 
-            request.getSession().setAttribute("registrationmessage","allfield");
+            request.getSession().setAttribute("registrationmessage",
+                    "allfield");
             return "views/registration.jsp";
 
         }

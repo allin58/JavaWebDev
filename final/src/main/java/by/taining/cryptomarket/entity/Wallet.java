@@ -1,5 +1,11 @@
 package by.taining.cryptomarket.entity;
 
+/**
+ * The wallet class entity.
+ *
+ * @author Nikita Karchahin
+ * @version 1.0
+ */
 public class Wallet extends Entity {
 
     /**
@@ -27,7 +33,7 @@ public class Wallet extends Entity {
 
     /**
      * The setter for btc.
-     * @param btc
+     * @param btc btc
      */
     public void setBtc(Double btc) {
         this.btc = btc;
@@ -43,7 +49,7 @@ public class Wallet extends Entity {
 
     /**
      * The setter for eth.
-     * @param eth
+     * @param eth eth
      */
     public void setEth(Double eth) {
         this.eth = eth;
@@ -59,7 +65,7 @@ public class Wallet extends Entity {
 
     /**
      * The setter for usdt.
-     * @param usdt
+     * @param usdt usdt
      */
     public void setUsdt(Double usdt) {
         this.usdt = usdt;

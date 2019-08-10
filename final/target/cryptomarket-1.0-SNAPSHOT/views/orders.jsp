@@ -3,7 +3,7 @@
 <%--<%@ taglib prefix="ctg" uri="/WEB-INF/tld/navigation.tld" %>--%>
 
 <html>
-<H2>${usertext} ${user.userName}</H2>
+<H2>${usertext} ${user.userName} ${myorders} </H2>
 
     <c:url value="/login.html?command=logout" var="logoutUrl"/>
     <c:url value="/login.html?command=towallet" var="walletUrl"/>

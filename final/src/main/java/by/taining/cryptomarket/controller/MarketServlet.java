@@ -8,6 +8,7 @@ import by.taining.cryptomarket.dao.connectionpool.BasicConnectionPool;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -25,10 +26,26 @@ import java.sql.SQLException;
  * @version 1.0
  */
 public class MarketServlet extends HttpServlet {
+
+    /**
+     * The field for storage a url.
+     */
     public static final String url = "jdbc:mariadb://localhost:3306/market";
+
+    /**
+     * The field for storage a username.
+     */
     public static final String username = "market";
+
+    /**
+     * The field for storage a password.
+     */
     public static final String password = "market";
-    final static Logger LOGGER = LogManager.getLogger("by.training.final.ServletLogger");
+
+    /**
+     * The field for storage a logger.
+     */
+  static final Logger LOGGER = LogManager.getLogger("by.training.final.ServletLogger");
 
 
     /**
@@ -38,7 +55,7 @@ public class MarketServlet extends HttpServlet {
 
         try {
             Class.forName("org.mariadb.jdbc.Driver");
-            BasicConnectionPool.create(url,username,password);
+            BasicConnectionPool.create(url, username, password);
 
 
         } catch (Exception e) {
@@ -53,10 +70,11 @@ public class MarketServlet extends HttpServlet {
      * The method for handling of get requests.
      * @param request request
      * @param response response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException IOException
+     * @throws ServletException ServletException
      */
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doGet(final HttpServletRequest request,
+                      final HttpServletResponse response) throws IOException, ServletException {
 
         process(request, response);
     }
@@ -65,10 +83,11 @@ public class MarketServlet extends HttpServlet {
      * The method for handling of post requests.
      * @param request request
      * @param response response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException IOException
+     * @throws ServletException ServletException
      */
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    public void doPost(final HttpServletRequest request,
+                       final HttpServletResponse response) throws IOException, ServletException {
 
         process(request, response);
     }
@@ -78,10 +97,11 @@ public class MarketServlet extends HttpServlet {
      *
      * @param request request
      * @param response response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException IOException
+     * @throws ServletException ServletException
      */
-    private void process(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+    private void process(final HttpServletRequest request,
+                         final HttpServletResponse response) throws IOException, ServletException {
 
 
         CommandFactory commandFactory = CommandFactory.getInstance();
@@ -101,7 +121,7 @@ public class MarketServlet extends HttpServlet {
 
            response.sendRedirect(response.encodeRedirectURL(path));
 
-       }
+        }
 
 
     /**

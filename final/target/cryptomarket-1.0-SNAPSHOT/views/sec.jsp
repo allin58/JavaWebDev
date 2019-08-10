@@ -37,6 +37,8 @@
 
 
     <div class="container"  style="background-color:#f1f1f1">
+        <H2 style="color: black">${accessiblemarkets} </H2>
+
     <table>
         <c:forEach var="pair" items="${secData}" >
         <tr> <td>${pair.identity}</td> <td>${pair.pair}</td> <td>${pair.active}</td>

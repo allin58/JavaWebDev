@@ -1,6 +1,12 @@
 package by.taining.cryptomarket.controller.filter;
 
-import javax.servlet.*;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterChain;
+import javax.servlet.ServletResponse;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import java.io.IOException;
 
 
@@ -18,7 +24,7 @@ public class EncodingFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) throws ServletException {
 
     }
 
@@ -33,7 +39,9 @@ public class EncodingFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain filterChain) throws IOException, ServletException {
         servletRequest.setCharacterEncoding("UTF-8");
         filterChain.doFilter(servletRequest, servletResponse);
     }

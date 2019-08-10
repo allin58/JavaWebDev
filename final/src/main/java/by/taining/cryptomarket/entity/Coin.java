@@ -30,9 +30,9 @@ public class Coin extends Entity {
 
     /**
      * Setter for ticker.
-     * @param ticker
+     * @param ticker ticker
      */
-    public void setTicker(String ticker) {
+    public void setTicker(final String ticker) {
         this.ticker = ticker;
     }
 
@@ -46,9 +46,9 @@ public class Coin extends Entity {
 
     /**
      * Setter for fullName.
-     * @param fullName
+     * @param fullName fullName
      */
-    public void setFullName(String fullName) {
+    public void setFullName(final String fullName) {
         this.fullName = fullName;
     }
 }

@@ -3,9 +3,6 @@ package by.taining.cryptomarket.dao.sql;
 import by.taining.cryptomarket.entity.Order;
 import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.OrderDao;
-import by.taining.cryptomarket.entity.Order;
-import by.taining.cryptomarket.exception.PersistentException;
-
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -67,7 +64,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
             resultSet = statement.executeQuery();
 
-            while(resultSet.next()) {
+            while (resultSet.next()) {
 
                 order = new Order();
 
@@ -84,18 +81,18 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             }
 
             return arrayList;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in OrderDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in OrderDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in OrderDaoImpl, method read()");
             }
         }
@@ -109,7 +106,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
      * @throws PersistentException
      */
     @Override
-    public Integer create(Order order) throws PersistentException {
+    public Integer create(final Order order) throws PersistentException {
 
 
         PreparedStatement statement = null;
@@ -127,23 +124,23 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
             statement.executeUpdate();
             resultSet = statement.getGeneratedKeys();
-            if(resultSet.next()) {
+            if (resultSet.next()) {
                 return resultSet.getInt(1);
             } else {
                 LOGGER.info("PersistentException in OrderDaoImpl, method create()");
                 throw new PersistentException();
             }
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in OrderDaoImpl, method create()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in OrderDaoImpl, method create()");
             }
         }
@@ -158,7 +155,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
      * @throws PersistentException
      */
     @Override
-    public Order read(Integer identity) throws PersistentException {
+    public Order read(final Integer identity) throws PersistentException {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
@@ -166,7 +163,7 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             statement.setInt(1, identity);
             resultSet = statement.executeQuery();
             Order order = null;
-            if(resultSet.next()) {
+            if (resultSet.next()) {
 
                 order = new Order();
                 order.setIdentity(identity);
@@ -181,18 +178,18 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
             }
             return order;
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in OrderDaoImpl, method read()");
             throw new PersistentException(e);
         } finally {
             try {
                 resultSet.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close resultSet in OrderDaoImpl, method read()");
             }
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in OrderDaoImpl, method read()");
             }
         }
@@ -202,10 +199,10 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
     /**
      * The method that updates order.
      * @param order order
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     @Override
-    public void update(Order order) throws PersistentException {
+    public void update(final Order order) throws PersistentException {
 
 
 
@@ -224,13 +221,13 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
 
 
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in OrderDaoImpl, method update()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in OrderDaoImpl, method update()");
             }
         }
@@ -243,20 +240,20 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
      * @throws PersistentException
      */
     @Override
-    public void delete(Integer identity) throws PersistentException {
+    public void delete(final Integer identity) throws PersistentException {
 
         PreparedStatement statement = null;
         try {
             statement = connection.prepareStatement(deleteSql);
             statement.setInt(1, identity);
             statement.executeUpdate();
-        } catch(SQLException e) {
+        } catch (SQLException e) {
             LOGGER.info("PersistentException in OrderDaoImpl, method delete()");
             throw new PersistentException(e);
         } finally {
             try {
                 statement.close();
-            } catch(SQLException | NullPointerException e) {
+            } catch (SQLException | NullPointerException e) {
                 LOGGER.info("failed to close statement in OrderDaoImpl, method delete()");
             }
         }

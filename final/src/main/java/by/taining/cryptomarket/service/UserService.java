@@ -4,13 +4,10 @@ import by.taining.cryptomarket.exception.PersistentException;
 import by.taining.cryptomarket.dao.connectionpool.BasicConnectionPool;
 import by.taining.cryptomarket.dao.sql.UserDaoImpl;
 import by.taining.cryptomarket.entity.User;
-import by.taining.cryptomarket.exception.PersistentException;
 import org.bouncycastle.util.encoders.Hex;
-
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.sql.Connection;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -25,9 +22,9 @@ public class UserService {
      *  Method for adding of new user.
      * @param user user
      * @return identity of user
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public Integer addUser(User user) throws Exception {
+    public Integer addUser(final User user) throws Exception {
 
         MessageDigest digest = MessageDigest.getInstance("SHA-256");
         byte[] hash = digest.digest((user.getHashOfPassword() + "cryptomarket").getBytes(StandardCharsets.UTF_8));
@@ -40,24 +37,20 @@ public class UserService {
             UserDaoImpl userDao = new UserDaoImpl();
             userDao.setConnection(connection);
             return userDao.create(user);
-
-
-        }
-        finally {
+        } finally {
             BasicConnectionPool.getBasicConnectionPool().releaseConnection(connection);
         }
-
-          }
+      }
 
 
     /**
      *
      * This method checks the presence of the user.
-     * @param name
+     * @param name name
      * @return boolean value
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public boolean userIsExist(String name) throws Exception {
+    public boolean userIsExist(final String name) throws Exception {
         Connection connection = null;
 
         List<User> users;
@@ -84,9 +77,9 @@ public class UserService {
      * @param userName userName
      * @param password password
      * @return identity of user
-     * @throws Exception
+     * @throws Exception Exception
      */
-  public Integer getIdByUserNameAndPassword(String userName,String password)throws Exception {
+  public Integer getIdByUserNameAndPassword(final String userName, String password)throws Exception {
       MessageDigest digest = MessageDigest.getInstance("SHA-256");
       byte[] hash = digest.digest((password + "cryptomarket").getBytes(StandardCharsets.UTF_8));
       password = new String(Hex.encode(hash));
@@ -115,11 +108,11 @@ public class UserService {
 
     /**
      * This method returns user by identity.
-     * @param id
+     * @param id id
      * @return user
-     * @throws Exception
+     * @throws Exception Exception
      */
-    public User getUserById(Integer id)throws Exception {
+    public User getUserById(final Integer id)throws Exception {
 
         User user = null;
         Connection connection = null;
@@ -143,7 +136,7 @@ public class UserService {
     /**
      * The method for getting all users.
      * @return collection of users
-     * @throws Exception
+     * @throws Exception Exception
      */
     public List getAllUsers() throws Exception {
         Connection connection = null;

@@ -20,7 +20,7 @@
 
 </head>
 <body>
-<H2>${usertext} ${user.userName}</H2>
+<H2>${usertext} ${user.userName} ${deposit}</H2>
 
 
 <div class="container"  style="background-color:#f1f1f1;  width: 100%; top: 5%; left: 0%">

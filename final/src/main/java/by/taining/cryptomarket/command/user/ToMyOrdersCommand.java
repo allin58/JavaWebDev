@@ -4,8 +4,6 @@ import by.taining.cryptomarket.service.OrderService;
 import by.taining.cryptomarket.command.Command;
 import by.taining.cryptomarket.entity.Order;
 import by.taining.cryptomarket.entity.User;
-import by.taining.cryptomarket.service.OrderService;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.List;
@@ -27,15 +25,16 @@ public class ToMyOrdersCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
-        User user = (User)request.getSession().getAttribute("user");
+        User user = (User) request.getSession().getAttribute("user");
         OrderService orderService = new OrderService();
         List<Order> orderList = orderService.getOrdersByUserId(user.getIdentity());
 
 
 
-        request.getSession().setAttribute("orders",orderList);
+        request.getSession().setAttribute("orders", orderList);
 
         return "views/orders.jsp";
     }

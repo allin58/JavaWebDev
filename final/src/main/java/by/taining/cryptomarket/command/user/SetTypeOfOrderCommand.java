@@ -22,9 +22,11 @@ public class SetTypeOfOrderCommand implements Command {
      * @throws Exception
      */
     @Override
-    public String execute(HttpServletRequest request, HttpServletResponse response) throws Exception {
+    public String execute(final HttpServletRequest request,
+                          final HttpServletResponse response) throws Exception {
 
-        request.getSession().setAttribute("typeoforder",request.getParameter("typeoforder"));
+        request.getSession().setAttribute("typeoforder",
+                request.getParameter("typeoforder"));
         return "views/market.jsp";
     }
 }

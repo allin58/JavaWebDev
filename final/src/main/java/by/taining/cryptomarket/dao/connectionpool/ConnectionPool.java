@@ -21,14 +21,14 @@ public interface ConnectionPool {
     /**
      * The abstract method for getting connection.
      * @return connection
-     * @throws PersistentException
+     * @throws PersistentException PersistentException
      */
     Connection getConnection() throws PersistentException;
 
     /**
      * The abstract method for releasing connection.
-     * @param connection
-     * @return
+     * @param connection connection
+     * @return boolean
      */
     boolean releaseConnection(Connection connection);
 
@@ -36,7 +36,7 @@ public interface ConnectionPool {
 
     /**
      * The abstract method for clearing connection pool.
-     * @throws SQLException
+     * @throws SQLException SQLException
      */
      void shutdown() throws SQLException;
 }

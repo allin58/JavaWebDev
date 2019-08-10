@@ -1,7 +1,14 @@
 package by.taining.cryptomarket.controller.filter;
 
 import by.taining.cryptomarket.entity.User;
-import javax.servlet.*;
+
+import javax.servlet.Filter;
+import javax.servlet.FilterConfig;
+import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
+import javax.servlet.FilterChain;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,7 +28,7 @@ public class AccessFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void init(FilterConfig filterConfig) throws ServletException {
+    public void init(final FilterConfig filterConfig) throws ServletException {
 
     }
 
@@ -34,7 +41,10 @@ public class AccessFilter implements Filter {
      * @throws ServletException
      */
     @Override
-    public void doFilter(ServletRequest servletRequest, ServletResponse servletResponse, FilterChain filterChain) throws IOException, ServletException {
+    public void doFilter(final ServletRequest servletRequest,
+                         final ServletResponse servletResponse,
+                         final FilterChain filterChain) throws IOException, ServletException {
+
 
         HttpServletRequest httpRequest = (HttpServletRequest) servletRequest;
         HttpServletResponse httpResponse = (HttpServletResponse) servletResponse;
@@ -47,7 +57,7 @@ public class AccessFilter implements Filter {
 
                 filterChain.doFilter(servletRequest, servletResponse);
             } else {
-                session.setAttribute("loginmessage","protection");
+                session.setAttribute("loginmessage", "protection");
                 session.setAttribute("user", null);
                 RequestDispatcher rd = servletRequest.getRequestDispatcher("login.jsp");
                 rd.forward(httpRequest, httpResponse);
@@ -68,43 +78,45 @@ public class AccessFilter implements Filter {
 
     /**
      * This method checks access rights.
-     * @param httpRequest
+     * @param httpRequest httpRequest
      * @return true if access matches role
      */
-    public boolean checkRequest(HttpServletRequest httpRequest) {
+    public boolean checkRequest(final HttpServletRequest httpRequest) {
 
-        User user = (User)httpRequest.getSession().getAttribute("user");
+        User user = (User) httpRequest.getSession().getAttribute("user");
 
         String role = user.getRole();
 
 
-        String servletPath= httpRequest.getServletPath();
+        String servletPath = httpRequest.getServletPath();
 
 
-        if("admin".equals(role) &&
-                (!servletPath.contains("admin")) &&
-                !( "logout".equals(httpRequest.getParameter("command")) ||
-                 "approvetransaction".equals(httpRequest.getParameter("command")) ||
-                  "rejectransaction".equals(httpRequest.getParameter("command")))) {
-
-            return false;
-        }
-
-
-        if("sec".equals(role) &&
-                (!servletPath.contains("sec")) &&
-                !( "logout".equals(httpRequest.getParameter("command")) ||
-                    "togglepair".equals(httpRequest.getParameter("command")))) {
+        if ("admin".equals(role) && (!servletPath.contains("admin"))
+                && !("logout".equals(httpRequest.getParameter("command"))
+                ||  "approvetransaction".equals(httpRequest.getParameter("command"))
+                || "rejectransaction".equals(httpRequest.getParameter("command")))) {
 
             return false;
         }
 
 
-        if("/views/registration.jsp".equals(servletPath.trim()) || "/views/login.jsp".equals(servletPath.trim())) {
+        if ("sec".equals(role)
+                && (!servletPath.contains("sec"))
+                && !("logout".equals(httpRequest.getParameter("command"))
+                || "togglepair".equals(httpRequest.getParameter("command")))) {
+
             return false;
         }
 
-if("user".equals(role) && (servletPath.contains("sec") || servletPath.contains("admin"))) {
+
+        if ("/views/registration.jsp".equals(servletPath.trim())
+                || "/views/login.jsp".equals(servletPath.trim())) {
+            return false;
+        }
+
+if ("user".equals(role)
+        && (servletPath.contains("sec")
+        || servletPath.contains("admin"))) {
     return false;
 }
 

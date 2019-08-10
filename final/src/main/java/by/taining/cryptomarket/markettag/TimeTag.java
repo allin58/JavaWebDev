@@ -5,7 +5,6 @@ import javax.servlet.jsp.JspWriter;
 import javax.servlet.jsp.tagext.TagSupport;
 import java.io.IOException;
 import java.util.GregorianCalendar;
-import java.util.Locale;
 
 
 /**
@@ -20,7 +19,7 @@ public class TimeTag extends TagSupport {
     /**
      * This method handles custom tag.
      * @return tag processing flag
-     * @throws JspException
+     * @throws JspException JspException
      */
     public int doStartTag() throws JspException {
         GregorianCalendar gc = new GregorianCalendar();
@@ -36,6 +35,8 @@ public class TimeTag extends TagSupport {
         }
         return SKIP_BODY;
     }
+
+
     @Override
     public int doEndTag() throws JspException {
         return EVAL_PAGE;
