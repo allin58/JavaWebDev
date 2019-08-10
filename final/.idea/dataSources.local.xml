@@ -11,5 +11,15 @@
       <user-name>market</user-name>
       <introspection-schemas>*:market</introspection-schemas>
     </data-source>
+    <data-source name="testmarket@localhost" uuid="dd648ed1-beeb-417e-89e7-8ec7ee9a2f10">
+      <database-info product="MariaDB" version="10.4.6-MariaDB" jdbc-version="4.2" driver-name="MariaDB Connector/J" driver-version="2.4.1">
+        <extra-name-characters>#@</extra-name-characters>
+        <identifier-quote-string>`</identifier-quote-string>
+      </database-info>
+      <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>testmarket</user-name>
+      <introspection-schemas>*:testmarket</introspection-schemas>
+    </data-source>
   </component>
 </project>

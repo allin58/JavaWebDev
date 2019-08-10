@@ -374,3 +374,39 @@
 2019-07-26 13:43:08.638 [main] INFO  by.training.final.DataBaseLogger - connection released
 2019-07-26 13:43:08.641 [main] INFO  by.training.final.DataBaseLogger - connection pool is shutdown
 2019-07-26 13:43:08.641 [main] INFO  by.training.final.DataBaseLogger - connection pool is shutdown
+2019-08-10 11:53:01.979 [main] INFO  by.training.final.DataBaseLogger - connection pool is created
+2019-08-10 11:53:01.996 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.010 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.018 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.019 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.022 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.024 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.024 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.025 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.025 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.026 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.027 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.028 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.028 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.030 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.031 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:02.032 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:02.037 [main] INFO  by.training.final.DataBaseLogger - connection pool is shutdown
+2019-08-10 11:53:09.872 [main] INFO  by.training.final.DataBaseLogger - connection pool is created
+2019-08-10 11:53:09.887 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:09.911 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:09.911 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:09.934 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:09.934 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:09.952 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:09.952 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:09.973 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:09.974 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:09.997 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:09.997 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:10.016 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:10.016 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:10.037 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:10.037 [main] INFO  by.training.final.DataBaseLogger - connection given
+2019-08-10 11:53:10.039 [main] INFO  by.training.final.DataBaseLogger - connection released
+2019-08-10 11:53:10.054 [main] INFO  by.training.final.DataBaseLogger - connection pool is shutdown

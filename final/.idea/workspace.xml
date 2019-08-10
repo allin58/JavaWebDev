@@ -36,7 +36,55 @@
     <select />
   </component>
   <component name="FileEditorManager">
-    <leaf />
+    <leaf>
+      <file leaf-file-name="ChangeLanguageCommand.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/command/general/ChangeLanguageCommand.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LanguageFilter.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/controller/filter/LanguageFilter.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="166">
+              <caret line="56" column="25" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="25" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.jsp" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/views/login.jsp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="459">
+              <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="text_es.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_es.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="493">
+              <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+            </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle" />
+        </entry>
+      </file>
+      <file leaf-file-name="text_ru.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_ru.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="171">
+              <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="24" />
+            </state>
+          </provider>
+          <provider editor-type-id="ResourceBundle" />
+        </entry>
+      </file>
+    </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -58,11 +106,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/CryptoPair.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/Order.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/Transaction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/User.java" />
-        <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/Wallet.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/qualifier/WalletQualifier.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/mapping/MappingTransaction.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/entity/mapping/TraidingCouple.java" />
@@ -95,7 +138,6 @@
         <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/controller/filter/AccessFilter.java" />
         <option value="$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/controller/filter/LoginFilter.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/main/webapp/views/login.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/orders.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/wallet.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/css/style.css" />
@@ -109,6 +151,12 @@
         <option value="$PROJECT_DIR$/src/main/webapp/views/withdraw.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/deposit.jsp" />
         <option value="$PROJECT_DIR$/src/main/webapp/views/market.jsp" />
+        <option value="$PROJECT_DIR$/src/main/sql_scrypts/allscrypt.sql" />
+        <option value="$PROJECT_DIR$/src/main/sql_scrypts/alltestscrypt.sql" />
+        <option value="$PROJECT_DIR$/src/test/java/service/CryptoPairServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/service/UserServiceTest.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_es.properties" />
+        <option value="$PROJECT_DIR$/src/main/webapp/views/login.jsp" />
       </list>
     </option>
   </component>
@@ -156,6 +204,141 @@
               <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
               <item name="final" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+              <item name="command" type="462c0819:PsiDirectoryNode" />
+              <item name="general" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="filter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cryptomarket" type="462c0819:PsiDirectoryNode" />
+              <item name="utf8control" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="resources" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="sql_scrypts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="views" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="WEB-INF" type="462c0819:PsiDirectoryNode" />
+              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="Resource Bundle 'text'" type="a6c14932:ResourceBundleNode" />
+            </path>
+            <path>
+              <item name="cryptomarket" type="b2602c69:ProjectViewProjectNode" />
+              <item name="final" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -177,24 +360,24 @@
     <property name="project.structure.side.proportion" value="0.2" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\WEB-INF\tld" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\css" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\views" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\WEB-INF" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\WEB-INF\classes" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\sql_scrypts" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\transaction" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\sql" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\connectionpool" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="utf8control" />
       <recent name="filter" />
       <recent name="controller" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\transaction" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\sql" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao\connectionpool" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\dao" />
-      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\java\by\taining\cryptomarket\entity\comparator" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\WEB-INF\tld" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\css" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\views" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp" />
+      <recent name="C:\Users\A1\Desktop\JavaWebReserve\final\src\main\webapp\WEB-INF" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -264,35 +447,6 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="CryptoPairServiceTest.testSAXParser" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
-      <module name="cryptomarket" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="service.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="SUITE_NAME" />
-      <option name="PACKAGE_NAME" value="service" />
-      <option name="MAIN_CLASS_NAME" value="service.CryptoPairServiceTest" />
-      <option name="METHOD_NAME" value="testSAXParser" />
-      <option name="GROUP_NAME" />
-      <option name="TEST_OBJECT" value="METHOD" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="OUTPUT_DIRECTORY" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <option name="USE_DEFAULT_REPORTERS" value="false" />
-      <option name="PROPERTIES_FILE" />
-      <properties />
-      <listeners />
-    </configuration>
     <configuration name="CryptoPairServiceTest.togglePairTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="cryptomarket" />
       <extension name="coverage">
@@ -336,6 +490,35 @@
       <option name="PACKAGE_NAME" value="service" />
       <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
       <option name="METHOD_NAME" value="togglePairTest" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="METHOD" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="UserServiceTest.userIsExistTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="cryptomarket" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="service.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="service" />
+      <option name="MAIN_CLASS_NAME" value="service.UserServiceTest" />
+      <option name="METHOD_NAME" value="userIsExistTest" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="METHOD" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -450,17 +633,17 @@
       <item itemvalue="Tomcat Server.Unnamed" />
       <item itemvalue="Application.Main" />
       <item itemvalue="TestNG.C:/Users/A1/Desktop/JavaWebReserve/final/src/test/testng.xml" />
-      <item itemvalue="TestNG.CryptoPairServiceTest.testSAXParser" />
       <item itemvalue="TestNG.CryptoPairServiceTest.togglePairTest" />
       <item itemvalue="TestNG.UserServiceTest.togglePairTest" />
+      <item itemvalue="TestNG.UserServiceTest.userIsExistTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="TestNG.CryptoPairServiceTest.togglePairTest" />
+        <item itemvalue="TestNG.UserServiceTest.userIsExistTest" />
         <item itemvalue="Application.Main" />
         <item itemvalue="TestNG.C:/Users/A1/Desktop/JavaWebReserve/final/src/test/testng.xml" />
         <item itemvalue="TestNG.UserServiceTest.togglePairTest" />
-        <item itemvalue="TestNG.CryptoPairServiceTest.togglePairTest" />
-        <item itemvalue="TestNG.CryptoPairServiceTest.testSAXParser" />
       </list>
     </recent_temporary>
   </component>
@@ -481,17 +664,11 @@
       <workItem from="1563726675822" duration="56082000" />
       <workItem from="1564064203658" duration="55996000" />
       <workItem from="1564679272919" duration="2938000" />
-      <workItem from="1565332542251" duration="7684000" />
+      <workItem from="1565332542251" duration="12730000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CryptoPairServiceTest_togglePairTest - 2019.07.25 at 18h 19m 08s.xml">
-      <configuration name="CryptoPairServiceTest.togglePairTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="CryptoPairServiceTest_togglePairTest - 2019.07.25 at 18h 20m 09s.xml">
-      <configuration name="CryptoPairServiceTest.togglePairTest" configurationId="TestNG" />
-    </history-entry>
     <history-entry file="CryptoPairServiceTest_togglePairTest - 2019.07.25 at 18h 20m 29s.xml">
       <configuration name="CryptoPairServiceTest.togglePairTest" configurationId="TestNG" />
     </history-entry>
@@ -516,12 +693,19 @@
     <history-entry file="C__Users_A1_Desktop_JavaWebReserve_final_src_test_testng_xml - 2019.07.26 at 13h 43m 09s.xml">
       <configuration name="C:/Users/A1/Desktop/JavaWebReserve/final/src/test/testng.xml" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="UserServiceTest_userIsExistTest - 2019.08.10 at 11h 53m 02s.xml">
+      <configuration name="UserServiceTest.userIsExistTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="CryptoPairServiceTest_togglePairTest - 2019.08.10 at 11h 53m 10s.xml">
+      <configuration name="CryptoPairServiceTest.togglePairTest" configurationId="TestNG" />
+    </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="324424000" />
+    <option name="totallyTimeSpent" value="329470000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="FindBugs-IDEA" order="7" />
@@ -531,7 +715,7 @@
       <window_info anchor="bottom" id="Database Changes" order="7" show_stripe_button="false" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.015991472" />
+      <window_info anchor="right" id="Database" order="3" visible="true" weight="0.0" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="2" />
@@ -543,10 +727,10 @@
       <window_info anchor="bottom" id="Java Enterprise" order="7" weight="0.32897604" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
       <window_info anchor="bottom" id="Version Control" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49946696" visible="true" weight="0.32897604" />
       <window_info anchor="bottom" id="CheckStyle" order="7" weight="0.32897604" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32897604" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22654584" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.22654584" />
       <window_info id="Web" order="2" side_tool="true" />
       <window_info anchor="bottom" id="SonarLint" order="7" />
       <window_info anchor="right" id="Theme Preview" order="3" />
@@ -609,48 +793,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/sql/OrderDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="242" column="29" selection-start-line="242" selection-start-column="29" selection-end-line="242" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/sql/UserDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="347">
-          <caret line="231" column="20" selection-start-line="231" selection-start-column="20" selection-end-line="231" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/sql/TransactionDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="342">
-          <caret line="188" column="94" lean-forward="true" selection-start-line="188" selection-start-column="14" selection-end-line="188" selection-end-column="94" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/sql/WalletDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="194" column="16" selection-start-line="194" selection-start-column="16" selection-end-line="194" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/transaction/CancelOrderTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="71" column="100" lean-forward="true" selection-start-line="71" selection-start-column="100" selection-end-line="71" selection-end-column="100" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/transaction/DataBaseTransaction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="398">
-          <caret line="42" column="54" selection-start-line="42" selection-start-column="54" selection-end-line="42" selection-end-column="54" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/dao/transaction/RejectRequestTransaction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -786,31 +928,10 @@
     <entry file="file://$PROJECT_DIR$/target/classes/by/taining/cryptomarket/command/CommandFactory.class">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/service/CryptoPairServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-337">
-          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/service/UserServiceTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-99">
-          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/markettag/TimeTag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
           <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/utf8control/UTF8Control.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="14" column="19" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
         </state>
       </provider>
     </entry>
@@ -832,18 +953,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="510">
           <caret line="78" column="34" selection-start-line="78" selection-start-column="34" selection-end-line="78" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/login.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="28" column="49" selection-start-line="28" selection-start-column="49" selection-end-line="28" selection-end-column="49" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#H2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#H2#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -900,14 +1009,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_ru.properties">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="35" column="45" lean-forward="true" selection-start-line="35" selection-start-column="45" selection-end-line="35" selection-end-column="45" />
-        </state>
-      </provider>
-      <provider editor-type-id="ResourceBundle" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_en.properties">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="460">
@@ -963,10 +1064,85 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sql_scrypts/4_init_tables.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="22" lean-forward="true" selection-start-line="3" selection-start-column="22" selection-end-line="3" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sql_scrypts/allscrypt.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="1" selection-start-column="1" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/consoles/db/dd648ed1-beeb-417e-89e7-8ec7ee9a2f10/console.sql">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/sql_scrypts/alltestscrypt.sql">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2663">
+          <caret line="161" selection-start-line="161" selection-end-line="161" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/service/CryptoPairServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="24" column="28" selection-start-line="24" selection-start-column="28" selection-end-line="24" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/utf8control/UTF8Control.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="14" column="27" selection-start-line="14" selection-start-column="27" selection-end-line="14" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/service/UserServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="20" column="58" selection-start-line="20" selection-start-column="52" selection-end-line="20" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/controller/filter/LanguageFilter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="302">
-          <caret line="96" column="119" selection-start-line="96" selection-start-column="102" selection-end-line="96" selection-end-column="119" />
+        <state relative-caret-position="166">
+          <caret line="56" column="25" selection-start-line="56" selection-start-column="19" selection-end-line="56" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_ru.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="171">
+          <caret line="24" column="14" lean-forward="true" selection-start-line="24" selection-start-column="14" selection-end-line="24" selection-end-column="24" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/by/taining/cryptomarket/command/general/ChangeLanguageCommand.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/classes/text_es.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="47" column="44" selection-start-line="47" selection-start-column="44" selection-end-line="47" selection-end-column="44" />
+        </state>
+      </provider>
+      <provider editor-type-id="ResourceBundle" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/views/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="51" column="49" selection-start-line="51" selection-start-column="49" selection-end-line="51" selection-end-column="49" />
         </state>
       </provider>
     </entry>

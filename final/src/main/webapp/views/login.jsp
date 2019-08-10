@@ -33,6 +33,7 @@
                <select name="language" onchange="this.form.submit()">
                    <option value="en" selected>en</option>
                    <option value="ru">ru</option>
+                   <option value="es">es</option>
                </select>
            </c:if>
 
@@ -40,8 +41,19 @@
                <select name="language" onchange="this.form.submit()">
                    <option value="en">en</option>
                    <option value="ru" selected>ru</option>
+                   <option value="es">es</option>
                </select>
            </c:if>
+
+           <c:if test="${language =='es'}">
+               <select name="language" onchange="this.form.submit()">
+                   <option value="en">en</option>
+                   <option value="ru">ru</option>
+                   <option value="es" selected>es</option>
+               </select>
+           </c:if>
+
+
        </FORM>
 
 
