@@ -96,6 +96,8 @@ public class LanguageFilter implements Filter {
 
             httpRequest.getSession().setAttribute("accessiblemarkets", resourceBundle.getString("text.accessiblemarkets"));
 
+
+
             HashMap<String, String> orderState = new HashMap<>();
             orderState.put("executed", resourceBundle.getString("text.executed"));
             orderState.put("canceled", resourceBundle.getString("text.canceled"));
@@ -119,6 +121,7 @@ public class LanguageFilter implements Filter {
             HashMap<String, String> registrationFailed = new HashMap<>();
             registrationFailed.put("allfield", resourceBundle.getString("text.allfield"));
             registrationFailed.put("useralredyexist", resourceBundle.getString("text.useralredyexist"));
+            registrationFailed.put("jsinjection", resourceBundle.getString("text.jsinjection"));
 
             HashMap<String, String> transactionError = new HashMap<>();
             transactionError.put("incorrectamount", resourceBundle.getString("text.incorrectamount"));

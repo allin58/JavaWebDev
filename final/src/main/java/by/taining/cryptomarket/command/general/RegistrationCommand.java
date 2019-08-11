@@ -39,12 +39,23 @@ public class RegistrationCommand implements Command {
                 && !"".equals(surname)
                 && !"".equals(password)) {
             UserService userService = new UserService();
+
+
             if (userService.userIsExist(username)) {
 
                 request.getSession().setAttribute("registrationmessage",
                         "useralredyexist");
                 return "views/registration.jsp";
             } else {
+
+
+                if (username.contains("script")) {
+
+                    request.getSession().setAttribute("registrationmessage",
+                            "jsinjection");
+                    return "views/registration.jsp";
+                }
+
 
                 User user = new User();
                 user.setUserName(username);
