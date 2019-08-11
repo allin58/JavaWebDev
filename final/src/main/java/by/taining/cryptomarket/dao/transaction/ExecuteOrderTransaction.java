@@ -114,7 +114,7 @@ public class ExecuteOrderTransaction extends DataBaseTransaction {
 
                 WalletQualifier walletQualifier = new WalletQualifier();
 
-             
+
                 if (amount == null) {
 
 

@@ -21,19 +21,11 @@ public class CryptoPairServiceTest {
 
     @BeforeTest
     public void init() throws Exception{
-         String url = "jdbc:mariadb://localhost:3306/market";
-         String username = "market";
-         String password = "market";
-
-
-
-            Class.forName("org.mariadb.jdbc.Driver");
-            BasicConnectionPool.create(url,username,password);
-
-
-
-
-
+         String url = "jdbc:mariadb://localhost:3306/testmarket";
+         String username = "testmarket";
+         String password = "testmarket";
+         Class.forName("org.mariadb.jdbc.Driver");
+         BasicConnectionPool.create(url,username,password);
     }
 
 
@@ -73,13 +65,9 @@ public class CryptoPairServiceTest {
 
     }
 
-
-@AfterTest
+    @AfterTest
     public void destroy() throws Exception{
-
-
             BasicConnectionPool.getBasicConnectionPool().shutdown();
-
     }
 
 

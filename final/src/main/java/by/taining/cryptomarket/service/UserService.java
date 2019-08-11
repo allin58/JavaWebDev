@@ -11,7 +11,7 @@ import java.sql.Connection;
 import java.util.List;
 
 /**
- * This service ensures interact with transactions.
+ * This service ensures interact with users.
  *
  * @author Nikita Karchahin
  * @version 1.0

@@ -18,9 +18,9 @@ public class UserServiceTest {
 
     @BeforeTest
     public void init() throws Exception{
-        String url = "jdbc:mariadb://localhost:3306/market";
-        String username = "market";
-        String password = "market";
+        String url = "jdbc:mariadb://localhost:3306/testmarket";
+        String username = "testmarket";
+        String password = "testmarket";
 
 
 

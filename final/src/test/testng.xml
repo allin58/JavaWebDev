@@ -7,6 +7,7 @@
         <classes>
             <class name="service.CryptoPairServiceTest" />
             <class name="service.UserServiceTest" />
+            <class name="service.ExchangeServiceTest" />
 
 
 

@@ -210,7 +210,6 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
         try {
 
             statement = connection.prepareStatement(updateSql);
-
             statement.setInt(1, order.getUserId());
             statement.setString(2, order.getPair());
             statement.setBigDecimal(3, new BigDecimal(order.getAmount()));
@@ -218,7 +217,6 @@ public class OrderDaoImpl extends BaseDao implements OrderDao {
             statement.setString(5, order.getType());
             statement.setString(6, order.getState());
             statement.setInt(7, order.getIdentity());
-
 
             statement.executeUpdate();
         } catch (SQLException e) {
